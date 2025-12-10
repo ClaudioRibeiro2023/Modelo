@@ -1,0 +1,208 @@
+import { useState } from 'react'
+import { User, Download, Trash2, AlertTriangle, CheckCircle, Clock, FileDown, Mail } from 'lucide-react'
+
+type RequestStatus = 'pending' | 'processing' | 'completed'
+
+interface DataRequest {
+  id: string
+  type: 'export' | 'delete'
+  status: RequestStatus
+  createdAt: string
+  completedAt?: string
+}
+
+const MOCK_REQUESTS: DataRequest[] = [
+  { id: '1', type: 'export', status: 'completed', createdAt: '2024-02-15T10:00:00', completedAt: '2024-02-15T10:30:00' },
+  { id: '2', type: 'export', status: 'processing', createdAt: '2024-03-10T14:00:00' },
+]
+
+const STATUS_CONFIG: Record<RequestStatus, { icon: typeof Clock; color: string; label: string }> = {
+  pending: { icon: Clock, color: 'text-gray-500', label: 'Pendente' },
+  processing: { icon: Clock, color: 'text-blue-500', label: 'Em processamento' },
+  completed: { icon: CheckCircle, color: 'text-green-500', label: 'Concluído' },
+}
+
+export default function MyDataPage() {
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
+  const [requests, setRequests] = useState<DataRequest[]>(MOCK_REQUESTS)
+
+  const requestExport = () => {
+    const newRequest: DataRequest = {
+      id: Date.now().toString(),
+      type: 'export',
+      status: 'pending',
+      createdAt: new Date().toISOString(),
+    }
+    setRequests([newRequest, ...requests])
+  }
+
+  const requestDelete = () => {
+    // API call to request deletion
+    setShowDeleteConfirm(false)
+    alert('Solicitação de exclusão enviada. Você receberá um email de confirmação.')
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      {/* Header */}
+      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex items-center gap-3">
+            <div className="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400">
+              <User size={28} />
+            </div>
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Meus Dados</h1>
+              <p className="text-gray-500 dark:text-gray-400">Exportar ou excluir seus dados pessoais</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Actions */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          {/* Export Data */}
+          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+                <Download size={24} />
+              </div>
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Exportar Dados</h2>
+            </div>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+              Solicite uma cópia de todos os seus dados pessoais armazenados em nosso sistema. 
+              O arquivo será enviado para seu email em até 24 horas.
+            </p>
+            <button
+              type="button"
+              onClick={requestExport}
+              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              <FileDown size={18} />
+              Solicitar Exportação
+            </button>
+          </div>
+
+          {/* Delete Data */}
+          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-2 rounded-lg bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400">
+                <Trash2 size={24} />
+              </div>
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Excluir Dados</h2>
+            </div>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+              Solicite a exclusão permanente de todos os seus dados pessoais. 
+              Esta ação é irreversível e pode levar até 30 dias.
+            </p>
+            <button
+              type="button"
+              onClick={() => setShowDeleteConfirm(true)}
+              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+            >
+              <Trash2 size={18} />
+              Solicitar Exclusão
+            </button>
+          </div>
+        </div>
+
+        {/* Delete Confirmation Modal */}
+        {showDeleteConfirm && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+            <div className="bg-white dark:bg-gray-800 rounded-xl max-w-md w-full p-6">
+              <div className="flex items-center gap-3 mb-4 text-red-600">
+                <AlertTriangle size={28} />
+                <h3 className="text-xl font-bold">Confirmar Exclusão</h3>
+              </div>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                Você está prestes a solicitar a exclusão permanente de todos os seus dados pessoais. 
+                Esta ação é <strong>irreversível</strong>.
+              </p>
+              <ul className="text-sm text-gray-500 dark:text-gray-400 mb-6 space-y-1">
+                <li>• Sua conta será desativada</li>
+                <li>• Todos os dados serão removidos em até 30 dias</li>
+                <li>• Você receberá uma confirmação por email</li>
+              </ul>
+              <div className="flex gap-3">
+                <button
+                  type="button"
+                  onClick={() => setShowDeleteConfirm(false)}
+                  className="flex-1 px-4 py-2 border border-gray-200 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="button"
+                  onClick={requestDelete}
+                  className="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+                >
+                  Confirmar Exclusão
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Request History */}
+        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Histórico de Solicitações</h2>
+          
+          {requests.length === 0 ? (
+            <p className="text-gray-500 text-center py-8">Nenhuma solicitação realizada</p>
+          ) : (
+            <div className="space-y-3">
+              {requests.map(request => {
+                const config = STATUS_CONFIG[request.status]
+                const StatusIcon = config.icon
+                return (
+                  <div
+                    key={request.id}
+                    className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg"
+                  >
+                    <div className="flex items-center gap-3">
+                      {request.type === 'export' ? (
+                        <Download size={20} className="text-blue-500" />
+                      ) : (
+                        <Trash2 size={20} className="text-red-500" />
+                      )}
+                      <div>
+                        <p className="font-medium text-gray-900 dark:text-white">
+                          {request.type === 'export' ? 'Exportação de Dados' : 'Exclusão de Dados'}
+                        </p>
+                        <p className="text-sm text-gray-500">
+                          Solicitado em {new Date(request.createdAt).toLocaleDateString('pt-BR')}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <StatusIcon size={16} className={config.color} />
+                      <span className={`text-sm ${config.color}`}>{config.label}</span>
+                      {request.status === 'completed' && request.type === 'export' && (
+                        <button
+                          type="button"
+                          className="ml-2 p-1.5 hover:bg-gray-200 dark:hover:bg-gray-600 rounded"
+                          title="Download"
+                        >
+                          <FileDown size={16} className="text-primary" />
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          )}
+        </div>
+
+        {/* Contact */}
+        <div className="mt-8 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center gap-3">
+          <Mail size={20} className="text-gray-400" />
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            Dúvidas? Entre em contato: <a href="mailto:dpo@empresa.com.br" className="text-primary hover:underline">dpo@empresa.com.br</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}

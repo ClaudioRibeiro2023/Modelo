@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Brand Colors - Customize for your project */
+  --brand-primary: #0087A8;
+  --brand-secondary: #005F73;
+  --brand-accent: #94D2BD;
+
+  /* Surface Colors */
+  --surface-base: #F8FAFC;
+  --surface-elevated: #FFFFFF;
+  --surface-muted: #F1F5F9;
+
+  /* Text Colors */
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+
+  /* Sidebar */
+  --sidebar-bg: linear-gradient(180deg, #1E293B 0%, #0F172A 100%);
+  --sidebar-width: 280px;
+  --sidebar-collapsed-width: 64px;
+}
+
+/* Dark mode */
+.dark {
+  --surface-base: #0F172A;
+  --surface-elevated: #1E293B;
+  --surface-muted: #334155;
+  --text-primary: #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --text-muted: #64748B;
+}
+
+/* Base styles */
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--surface-base);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+}
+
+/* Utility classes */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Sidebar gradient */
+.sidebar-gradient {
+  background: var(--sidebar-bg);
+}
+
+/* Progress bar */
+.progress-bar {
+  transition: width 0.3s ease;
+}
+
+/* Quality score backgrounds */
+.quality-score-excellent { background-color: #10B981; }
+.quality-score-good { background-color: #3B82F6; }
+.quality-score-warning { background-color: #F59E0B; }
+.quality-score-poor { background-color: #EF4444; }

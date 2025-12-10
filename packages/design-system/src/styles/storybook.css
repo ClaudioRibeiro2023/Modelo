@@ -1,0 +1,44 @@
+/**
+ * Storybook Global Styles
+ */
+
+/* CSS Variables */
+:root {
+  --brand-primary: #0087A8;
+  --brand-secondary: #005F73;
+  --brand-accent: #94D2BD;
+  
+  --surface-base: #F8FAFC;
+  --surface-elevated: #FFFFFF;
+  --surface-muted: #F1F5F9;
+  
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  
+  --border-default: #E2E8F0;
+}
+
+.dark {
+  --surface-base: #0F172A;
+  --surface-elevated: #1E293B;
+  --surface-muted: #334155;
+  
+  --text-primary: #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --text-muted: #64748B;
+  
+  --border-default: #475569;
+}
+
+/* Base */
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Storybook Canvas */
+.sb-show-main.sb-main-padded {
+  padding: 2rem;
+}
