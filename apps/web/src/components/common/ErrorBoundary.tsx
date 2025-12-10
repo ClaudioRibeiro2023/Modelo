@@ -43,11 +43,11 @@ export class ErrorBoundary extends Component<Props, State> {
 
       return (
         <div className="min-h-screen flex items-center justify-center bg-surface-base p-4">
-          <div className="max-w-md w-full bg-surface-elevated rounded-2xl shadow-xl p-8 border border-gray-200 dark:border-gray-700">
+          <div className="max-w-md w-full bg-surface-elevated rounded-2xl shadow-xl p-8 border border-border-default">
             <div className="flex flex-col items-center text-center">
               {/* Icon */}
-              <div className="w-16 h-16 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center mb-6">
-                <AlertTriangle className="w-8 h-8 text-red-600 dark:text-red-400" />
+              <div className="w-16 h-16 rounded-full bg-color-error/10 flex items-center justify-center mb-6">
+                <AlertTriangle className="w-8 h-8 text-color-error" />
               </div>
 
               {/* Title */}
@@ -62,12 +62,12 @@ export class ErrorBoundary extends Component<Props, State> {
 
               {/* Error details (dev only) */}
               {import.meta.env.DEV && this.state.error && (
-                <div className="w-full mb-6 p-4 bg-red-50 dark:bg-red-900/20 rounded-lg text-left">
-                  <p className="text-sm font-mono text-red-700 dark:text-red-300 break-all">
+                <div className="w-full mb-6 p-4 bg-color-error/10 rounded-lg text-left">
+                  <p className="text-sm font-mono text-color-error break-all">
                     {this.state.error.message}
                   </p>
                   {this.state.errorInfo?.componentStack && (
-                    <pre className="mt-2 text-xs text-red-600 dark:text-red-400 overflow-auto max-h-32">
+                    <pre className="mt-2 text-xs text-color-error/80 overflow-auto max-h-32">
                       {this.state.errorInfo.componentStack}
                     </pre>
                   )}

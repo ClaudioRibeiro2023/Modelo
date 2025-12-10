@@ -37,7 +37,7 @@ export function Header({ showPanelToggle, isPanelOpen, onTogglePanel, onMobileMe
     : 'Início'
 
   return (
-    <header className="h-16 bg-surface-elevated border-b border-gray-200 dark:border-gray-700 px-4 md:px-6 flex items-center justify-between">
+    <header className="h-16 bg-surface-elevated border-b border-border-default px-4 md:px-6 flex items-center justify-between">
       {/* Left section */}
       <div className="flex items-center gap-2 md:gap-3">
         {/* Mobile menu toggle */}
