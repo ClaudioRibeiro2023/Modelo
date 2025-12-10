@@ -687,6 +687,11 @@ Este arquivo acompanha o plano de melhorias faseado descrito em `docs/PROPOSTA_A
   - ✅ `ConsentPage.tsx` - status-card--info
   - ✅ `MyDataPage.tsx` - Button, animate-scale-in no modal
 
+- [x] [P1] Migrar módulo Docs para Design System:
+  - ✅ `DocsPage.tsx` - form-input, tokens de cor
+  - ✅ `ApiDocsPage.tsx` - Button component
+  - ✅ `ChangelogPage.tsx` - timeline com tokens
+
 ---
 
 ## Observações Finais
