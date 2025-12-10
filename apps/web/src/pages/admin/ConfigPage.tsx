@@ -58,25 +58,25 @@ export function ConfigPage() {
 function ConfigGeral() {
   return (
     <div className="p-6 space-y-6">
-      <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Configurações Gerais</h2>
+      <h2 className="text-lg font-semibold text-text-primary">Configurações Gerais</h2>
       
       <div className="grid gap-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label className="form-label">
             Nome da Aplicação
           </label>
           <input
             type="text"
             defaultValue="Template Platform"
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            className="form-input"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label className="form-label">
             Idioma Padrão
           </label>
-          <select className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-teal-500 focus:border-transparent">
+          <select className="form-select">
             <option value="pt-BR">Português (Brasil)</option>
             <option value="en-US">English (US)</option>
             <option value="es">Español</option>
@@ -84,20 +84,20 @@ function ConfigGeral() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label className="form-label">
             Fuso Horário
           </label>
-          <select className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-teal-500 focus:border-transparent">
+          <select className="form-select">
             <option value="America/Sao_Paulo">America/Sao_Paulo (GMT-3)</option>
             <option value="America/Cuiaba">America/Cuiaba (GMT-4)</option>
             <option value="UTC">UTC</option>
           </select>
         </div>
 
-        <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
+        <div className="flex items-center justify-between p-4 bg-surface-muted rounded-lg">
           <div>
-            <h3 className="font-medium text-gray-900 dark:text-white">Modo de Manutenção</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Desabilita acesso para usuários não-admin</p>
+            <h3 className="font-medium text-text-primary">Modo de Manutenção</h3>
+            <p className="text-sm text-text-secondary">Desabilita acesso para usuários não-admin</p>
           </div>
           <label className="relative inline-flex items-center cursor-pointer">
             <input type="checkbox" className="sr-only peer" />

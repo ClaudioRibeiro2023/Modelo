@@ -696,6 +696,11 @@ Este arquivo acompanha o plano de melhorias faseado descrito em `docs/PROPOSTA_A
   - ✅ `ExemploPage.tsx` - status-card--info, Button, hover-lift
   - ✅ `ExampleCard.tsx` - status colors semânticos
 
+- [x] [P1] Migrar páginas base para Design System:
+  - ✅ `ErrorPage.tsx` - Button, text-color-error
+  - ✅ `NotFoundPage.tsx` - Button component
+  - ✅ `ProfilePage.tsx` - border-border-default
+
 ---
 
 ## Observações Finais
