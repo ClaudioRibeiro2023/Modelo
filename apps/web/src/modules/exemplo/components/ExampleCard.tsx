@@ -7,14 +7,14 @@ interface ExampleCardProps {
 
 export function ExampleCard({ item, onClick }: ExampleCardProps) {
   const statusColors = {
-    active: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
-    inactive: 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-400',
-    pending: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400',
+    active: 'bg-color-success/10 text-color-success',
+    inactive: 'bg-surface-muted text-text-muted',
+    pending: 'bg-color-warning/10 text-color-warning',
   }
 
   return (
     <div
-      className="bg-surface-elevated rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:border-brand-primary transition-colors cursor-pointer"
+      className="bg-surface-elevated rounded-xl p-6 border border-border-default hover:border-brand-primary transition-colors cursor-pointer hover-lift"
       onClick={() => onClick?.(item)}
     >
       <div className="flex items-start justify-between mb-3">
