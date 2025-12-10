@@ -65,17 +65,17 @@ export default function ConsentPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-surface-base">
       {/* Header */}
-      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div className="bg-surface-elevated border-b border-border-default">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400">
+            <div className="p-2 rounded-lg bg-color-success/10 text-color-success">
               <CheckSquare size={28} />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Gerenciar Consentimento</h1>
-              <p className="text-gray-500 dark:text-gray-400">Controle como seus dados são utilizados</p>
+              <h1 className="text-2xl font-bold text-text-primary">Gerenciar Consentimento</h1>
+              <p className="text-text-secondary">Controle como seus dados são utilizados</p>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function ConsentPage() {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Info Banner */}
-        <div className="flex items-start gap-3 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg mb-6">
+        <div className="flex items-start gap-3 p-4 status-card status-card--info rounded-lg mb-6">
           <Info size={20} className="text-blue-500 mt-0.5" />
           <p className="text-sm text-blue-700 dark:text-blue-300">
             Você pode alterar suas preferências a qualquer momento. Algumas opções são obrigatórias 
@@ -96,19 +96,19 @@ export default function ConsentPage() {
           {consents.map(consent => (
             <div
               key={consent.id}
-              className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4"
+              className="bg-surface-elevated rounded-lg border border-border-default p-4"
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
-                    <h3 className="font-medium text-gray-900 dark:text-white">{consent.title}</h3>
+                    <h3 className="font-medium text-text-primary">{consent.title}</h3>
                     {consent.required && (
-                      <span className="px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-500 text-xs rounded">
+                      <span className="px-2 py-0.5 bg-surface-muted text-text-muted text-xs rounded">
                         Obrigatório
                       </span>
                     )}
                   </div>
-                  <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{consent.description}</p>
+                  <p className="mt-1 text-sm text-text-secondary">{consent.description}</p>
                 </div>
                 <button
                   type="button"

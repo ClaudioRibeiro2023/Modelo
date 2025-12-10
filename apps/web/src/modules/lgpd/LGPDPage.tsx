@@ -34,17 +34,17 @@ const SECTIONS = [
 
 export default function LGPDPage() {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-surface-base">
       {/* Header */}
-      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div className="bg-surface-elevated border-b border-border-default">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center gap-4">
-            <div className="p-3 rounded-xl bg-primary/10 text-primary">
+            <div className="p-3 rounded-xl bg-brand-primary/10 text-brand-primary">
               <ShieldCheck size={32} />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">LGPD & Privacidade</h1>
-              <p className="text-gray-500 dark:text-gray-400">Proteção de dados pessoais</p>
+              <h1 className="text-3xl font-bold text-text-primary">LGPD & Privacidade</h1>
+              <p className="text-text-secondary">Proteção de dados pessoais</p>
             </div>
           </div>
         </div>
@@ -59,12 +59,12 @@ export default function LGPDPage() {
               <Link
                 key={section.path}
                 to={section.path}
-                className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-4 hover:shadow-lg hover:border-primary/50 transition-all text-center"
+                className="bg-surface-elevated rounded-xl border border-border-default p-4 hover:shadow-lg hover:border-brand-primary/50 transition-all text-center hover-lift"
               >
                 <div className={`w-12 h-12 rounded-lg ${section.color} flex items-center justify-center mx-auto mb-3`}>
                   <Icon size={24} />
                 </div>
-                <h3 className="font-medium text-gray-900 dark:text-white text-sm">{section.title}</h3>
+                <h3 className="font-medium text-text-primary text-sm">{section.title}</h3>
               </Link>
             )
           })}
