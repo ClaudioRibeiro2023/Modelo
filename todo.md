@@ -667,6 +667,15 @@ Este arquivo acompanha o plano de melhorias faseado descrito em `docs/PROPOSTA_A
   - ✅ Guia de acessibilidade
   - ✅ Dark mode e responsividade
 
+### Padronização de Páginas (Auditoria Visual)
+
+- [x] [P1] Migrar páginas ETL para Design System:
+  - ✅ `ETLPage.tsx` - tokens de surface, text, Button component
+  - ✅ `ETLLogsPage.tsx` - form-input, form-select, Button
+  - ✅ `ETLQualityPage.tsx` - status-card--, Button
+  - ✅ Eliminadas classes `bg-gray-*`, `text-gray-*` hardcoded
+  - ✅ Netlify.toml para deploy em produção
+
 ---
 
 ## Observações Finais
