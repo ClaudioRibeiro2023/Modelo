@@ -705,6 +705,11 @@ Este arquivo acompanha o plano de melhorias faseado descrito em `docs/PROPOSTA_A
   - ✅ `UsersPage.tsx` - Button, form-input, role colors semânticos
   - ✅ `ConfigPage.tsx` - form-input, form-select, form-label
 
+- [x] [P1] Migrar componentes layout/common para Design System:
+  - ✅ `Header.tsx` - border-border-default
+  - ✅ `Footer.tsx` - tokens de surface, text, border
+  - ✅ `ErrorBoundary.tsx` - tokens de erro semânticos
+
 ---
 
 ## Observações Finais
