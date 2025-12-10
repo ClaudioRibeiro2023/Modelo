@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import { History, Search, Filter, Download, RefreshCw, CheckCircle, XCircle, Clock } from 'lucide-react'
+import { Button } from '@template/design-system'
 import type { ImportLogEntry, ImportStatus } from './types'
 
 interface LogEntry {
@@ -117,35 +118,27 @@ export default function ETLLogsPage() {
   }, [search, statusFilter])
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-surface-base">
       {/* Header */}
-      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div className="bg-surface-elevated border-b border-border-default">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400">
+              <div className="p-2 rounded-lg bg-color-warning/10 text-color-warning">
                 <History size={28} />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Logs & Histórico</h1>
-                <p className="text-gray-500 dark:text-gray-400">Rastreabilidade e reprocessamento</p>
+                <h1 className="text-2xl font-bold text-text-primary">Logs & Histórico</h1>
+                <p className="text-text-secondary">Rastreabilidade e reprocessamento</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <button
-                type="button"
-                className="flex items-center gap-2 px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
-              >
-                <Download size={18} />
+              <Button variant="ghost" leftIcon={<Download size={18} />}>
                 Exportar
-              </button>
-              <button
-                type="button"
-                className="flex items-center gap-2 px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
-              >
-                <RefreshCw size={18} />
+              </Button>
+              <Button variant="ghost" leftIcon={<RefreshCw size={18} />}>
                 Atualizar
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -153,7 +146,7 @@ export default function ETLLogsPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {/* Filters */}
-        <div className="flex flex-wrap items-center gap-3 mb-6 p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+        <div className="flex flex-wrap items-center gap-3 mb-6 p-4 bg-surface-elevated rounded-lg border border-border-default">
           <div className="relative flex-1 min-w-[200px]">
             <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
             <input
@@ -161,7 +154,7 @@ export default function ETLLogsPage() {
               placeholder="Buscar por fonte..."
               value={search}
               onChange={e => setSearch(e.target.value)}
-              className="w-full pl-9 pr-3 py-2 text-sm border border-gray-200 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700"
+              className="form-input pl-9"
             />
           </div>
           <div className="flex items-center gap-2">
@@ -170,7 +163,7 @@ export default function ETLLogsPage() {
               value={statusFilter}
               onChange={e => setStatusFilter(e.target.value as ImportStatus | 'all')}
               aria-label="Filtrar por status"
-              className="text-sm border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-gray-700"
+              className="form-input form-select"
             >
               <option value="all">Todos os status</option>
               <option value="completed">Concluído</option>

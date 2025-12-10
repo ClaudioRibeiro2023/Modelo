@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { Database, Upload, Plus, RefreshCw } from 'lucide-react'
+import { Button } from '@template/design-system'
 import { ImportCard, ETLFilters, JobProgress, DataSourceCard } from './components'
 import type { ETLFilter, DataSource, ImportJob, DataSourceType } from './types'
 
@@ -57,35 +58,27 @@ export default function ETLPage() {
   const runningJobs = MOCK_JOBS.filter(j => j.status === 'running')
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-surface-base">
       {/* Header */}
-      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div className="bg-surface-elevated border-b border-border-default">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-primary/10 text-primary">
+              <div className="p-2 rounded-lg bg-brand-primary/10 text-brand-primary">
                 <Database size={28} />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">ETL & Integração</h1>
-                <p className="text-gray-500 dark:text-gray-400">Importação, tratamento e catálogo de dados</p>
+                <h1 className="text-2xl font-bold text-text-primary">ETL & Integração</h1>
+                <p className="text-text-secondary">Importação, tratamento e catálogo de dados</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <button
-                type="button"
-                className="flex items-center gap-2 px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
-              >
-                <RefreshCw size={18} />
+              <Button variant="ghost" leftIcon={<RefreshCw size={18} />}>
                 Atualizar
-              </button>
-              <button
-                type="button"
-                className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
-              >
-                <Plus size={18} />
+              </Button>
+              <Button variant="primary" leftIcon={<Plus size={18} />}>
                 Nova Fonte
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -94,7 +87,7 @@ export default function ETLPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {/* Quick Import Options */}
         <div className="mb-6">
-          <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-3">Importação Rápida</h2>
+          <h2 className="text-lg font-medium text-text-primary mb-3">Importação Rápida</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {IMPORT_OPTIONS.map(opt => (
               <ImportCard
@@ -111,7 +104,7 @@ export default function ETLPage() {
         {/* Running Jobs */}
         {runningJobs.length > 0 && (
           <div className="mb-6">
-            <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-3">
+            <h2 className="text-lg font-medium text-text-primary mb-3">
               Em Execução ({runningJobs.length})
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -123,14 +116,14 @@ export default function ETLPage() {
         )}
 
         {/* Tabs */}
-        <div className="flex items-center gap-4 mb-4 border-b border-gray-200 dark:border-gray-700">
+        <div className="flex items-center gap-4 mb-4 border-b border-border-default">
           <button
             type="button"
             onClick={() => setActiveTab('sources')}
             className={`pb-3 px-1 text-sm font-medium border-b-2 transition-colors ${
               activeTab === 'sources'
-                ? 'border-primary text-primary'
-                : 'border-transparent text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
+                ? 'border-brand-primary text-brand-primary'
+                : 'border-transparent text-text-muted hover:text-text-primary'
             }`}
           >
             Fontes de Dados ({MOCK_SOURCES.length})
@@ -140,8 +133,8 @@ export default function ETLPage() {
             onClick={() => setActiveTab('jobs')}
             className={`pb-3 px-1 text-sm font-medium border-b-2 transition-colors ${
               activeTab === 'jobs'
-                ? 'border-primary text-primary'
-                : 'border-transparent text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
+                ? 'border-brand-primary text-brand-primary'
+                : 'border-transparent text-text-muted hover:text-text-primary'
             }`}
           >
             Histórico de Jobs ({MOCK_JOBS.length})
@@ -169,7 +162,7 @@ export default function ETLPage() {
                 />
               ))}
               {filteredSources.length === 0 && (
-                <div className="col-span-full text-center py-12 text-gray-500">
+                <div className="col-span-full text-center py-12 text-text-muted">
                   <Upload size={48} className="mx-auto mb-3 opacity-50" />
                   <p>Nenhuma fonte de dados encontrada</p>
                 </div>
@@ -181,7 +174,7 @@ export default function ETLPage() {
                 <JobProgress key={job.id} job={job} />
               ))}
               {filteredJobs.length === 0 && (
-                <div className="text-center py-12 text-gray-500">
+                <div className="text-center py-12 text-text-muted">
                   <Database size={48} className="mx-auto mb-3 opacity-50" />
                   <p>Nenhum job encontrado</p>
                 </div>

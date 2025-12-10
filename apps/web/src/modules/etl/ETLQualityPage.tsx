@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Shield, CheckCircle, AlertTriangle, XCircle, RefreshCw, Play } from 'lucide-react'
+import { Button } from '@template/design-system'
 import { QualityBadge } from './components'
 import type { DataQualityReport, DataQualityMetric, DataQualityIssue } from './types'
 
@@ -75,35 +76,27 @@ export default function ETLQualityPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-surface-base">
       {/* Header */}
-      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div className="bg-surface-elevated border-b border-border-default">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400">
+              <div className="p-2 rounded-lg bg-color-success/10 text-color-success">
                 <Shield size={28} />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Qualidade de Dados</h1>
-                <p className="text-gray-500 dark:text-gray-400">Validações, consistência e monitoramento</p>
+                <h1 className="text-2xl font-bold text-text-primary">Qualidade de Dados</h1>
+                <p className="text-text-secondary">Validações, consistência e monitoramento</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <button
-                type="button"
-                className="flex items-center gap-2 px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
-              >
-                <RefreshCw size={18} />
+              <Button variant="ghost" leftIcon={<RefreshCw size={18} />}>
                 Atualizar
-              </button>
-              <button
-                type="button"
-                className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90"
-              >
-                <Play size={18} />
+              </Button>
+              <Button variant="primary" leftIcon={<Play size={18} />}>
                 Executar Checks
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -112,30 +105,30 @@ export default function ETLQualityPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {/* Summary Cards */}
         <div className="grid grid-cols-3 gap-4 mb-6">
-          <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+          <div className="status-card status-card--success p-4">
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-500">Aprovados</span>
-              <CheckCircle size={20} className="text-green-500" />
+              <span className="text-sm text-text-secondary">Aprovados</span>
+              <CheckCircle size={20} className="text-color-success" />
             </div>
-            <div className="text-2xl font-bold text-green-600 mt-1">
+            <div className="text-2xl font-bold text-color-success mt-1">
               {MOCK_REPORTS.filter(r => r.status === 'passed').length}
             </div>
           </div>
-          <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+          <div className="status-card status-card--warning p-4">
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-500">Com Alertas</span>
-              <AlertTriangle size={20} className="text-yellow-500" />
+              <span className="text-sm text-text-secondary">Com Alertas</span>
+              <AlertTriangle size={20} className="text-color-warning" />
             </div>
-            <div className="text-2xl font-bold text-yellow-600 mt-1">
+            <div className="text-2xl font-bold text-color-warning mt-1">
               {MOCK_REPORTS.filter(r => r.status === 'warning').length}
             </div>
           </div>
-          <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+          <div className="status-card status-card--error p-4">
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-500">Reprovados</span>
-              <XCircle size={20} className="text-red-500" />
+              <span className="text-sm text-text-secondary">Reprovados</span>
+              <XCircle size={20} className="text-color-error" />
             </div>
-            <div className="text-2xl font-bold text-red-600 mt-1">
+            <div className="text-2xl font-bold text-color-error mt-1">
               {MOCK_REPORTS.filter(r => r.status === 'failed').length}
             </div>
           </div>
@@ -144,7 +137,7 @@ export default function ETLQualityPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Reports List */}
           <div className="space-y-3">
-            <h2 className="text-lg font-medium text-gray-900 dark:text-white">Relatórios</h2>
+            <h2 className="text-lg font-medium text-text-primary">Relatórios</h2>
             {MOCK_REPORTS.map(report => (
               <button
                 key={report.id}
