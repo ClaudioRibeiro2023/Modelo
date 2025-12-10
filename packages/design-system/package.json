@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "clsx": "^2.0.0",
-    "lucide-react": "^0.294.0",
+    "lucide-react": "^0.556.0",
     "tailwind-merge": "^2.1.0"
   },
   "peerDependencies": {
@@ -36,6 +36,6 @@
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "storybook": "8.6.14",
-    "typescript": "5.3.3"
+    "typescript": "5.9.3"
   }
 }
