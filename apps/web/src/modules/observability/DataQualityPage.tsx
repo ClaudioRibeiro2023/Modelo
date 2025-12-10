@@ -1,4 +1,5 @@
 import { ShieldCheck, CheckCircle, AlertTriangle, XCircle, Clock, RefreshCw, Play } from 'lucide-react'
+import { Button } from '@template/design-system'
 
 type CheckStatus = 'passed' | 'warning' | 'failed' | 'pending'
 
@@ -36,29 +37,27 @@ export default function DataQualityPage() {
   const failed = MOCK_CHECKS.filter(c => c.status === 'failed').length
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-surface-base">
       {/* Header */}
-      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div className="bg-surface-elevated border-b border-border-default">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400">
+              <div className="p-2 rounded-lg bg-brand-accent/20 text-brand-primary">
                 <ShieldCheck size={28} />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Qualidade de Dados</h1>
-                <p className="text-gray-500 dark:text-gray-400">Checks recorrentes e painéis de qualidade</p>
+                <h1 className="text-2xl font-bold text-text-primary">Qualidade de Dados</h1>
+                <p className="text-text-secondary">Checks recorrentes e painéis de qualidade</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <button type="button" className="flex items-center gap-2 px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
-                <RefreshCw size={18} />
+              <Button variant="ghost" leftIcon={<RefreshCw size={18} />}>
                 Atualizar
-              </button>
-              <button type="button" className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90">
-                <Play size={18} />
+              </Button>
+              <Button variant="primary" leftIcon={<Play size={18} />}>
                 Executar Todos
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -67,17 +66,17 @@ export default function DataQualityPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {/* Summary */}
         <div className="grid grid-cols-4 gap-4 mb-6">
-          <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 text-center">
-            <div className="text-2xl font-bold text-gray-900 dark:text-white">{MOCK_CHECKS.length}</div>
-            <div className="text-sm text-gray-500">Total de Checks</div>
+          <div className="bg-surface-elevated rounded-lg border border-border-default p-4 text-center">
+            <div className="text-2xl font-bold text-text-primary">{MOCK_CHECKS.length}</div>
+            <div className="text-sm text-text-secondary">Total de Checks</div>
           </div>
-          <div className="bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800 p-4 text-center">
-            <div className="text-2xl font-bold text-green-600">{passed}</div>
-            <div className="text-sm text-green-600">Aprovados</div>
+          <div className="status-card status-card--success p-4 text-center">
+            <div className="text-2xl font-bold text-color-success">{passed}</div>
+            <div className="text-sm text-color-success">Aprovados</div>
           </div>
-          <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border border-yellow-200 dark:border-yellow-800 p-4 text-center">
-            <div className="text-2xl font-bold text-yellow-600">{warnings}</div>
-            <div className="text-sm text-yellow-600">Alertas</div>
+          <div className="status-card status-card--warning p-4 text-center">
+            <div className="text-2xl font-bold text-color-warning">{warnings}</div>
+            <div className="text-sm text-color-warning">Alertas</div>
           </div>
           <div className="bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800 p-4 text-center">
             <div className="text-2xl font-bold text-red-600">{failed}</div>

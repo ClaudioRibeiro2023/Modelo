@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { HeartPulse, CheckCircle, XCircle, AlertTriangle, RefreshCw, Clock, Database, Server, Wifi } from 'lucide-react'
+import { Button } from '@template/design-system'
 
 type HealthStatus = 'healthy' | 'degraded' | 'unhealthy'
 
@@ -59,9 +60,9 @@ export default function HealthPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-surface-base">
       {/* Header */}
-      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div className="bg-surface-elevated border-b border-border-default">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -69,23 +70,22 @@ export default function HealthPage() {
                 <HeartPulse size={28} />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Saúde do Sistema</h1>
-                <p className="text-gray-500 dark:text-gray-400">Health checks, filas e storage</p>
+                <h1 className="text-2xl font-bold text-text-primary">Saúde do Sistema</h1>
+                <p className="text-text-secondary">Health checks, filas e storage</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-text-muted">
                 Última atualização: {lastRefresh.toLocaleTimeString('pt-BR')}
               </span>
-              <button
-                type="button"
+              <Button 
+                variant="ghost" 
+                leftIcon={<RefreshCw size={18} className={isRefreshing ? 'animate-spin' : ''} />}
                 onClick={refresh}
                 disabled={isRefreshing}
-                className="flex items-center gap-2 px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg disabled:opacity-50"
               >
-                <RefreshCw size={18} className={isRefreshing ? 'animate-spin' : ''} />
                 Atualizar
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -100,10 +100,10 @@ export default function HealthPage() {
               return <Icon size={32} className={STATUS_CONFIG[overallStatus].color} />
             })()}
             <div>
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+              <h2 className="text-xl font-bold text-text-primary">
                 Status Geral: {STATUS_CONFIG[overallStatus].label}
               </h2>
-              <p className="text-gray-500">
+              <p className="text-text-secondary">
                 {MOCK_HEALTH.filter(h => h.status === 'healthy').length} de {MOCK_HEALTH.length} serviços operacionais
               </p>
             </div>
