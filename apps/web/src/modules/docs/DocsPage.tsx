@@ -55,27 +55,27 @@ const QUICK_START_STEPS = [
 
 export default function DocsPage() {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-surface-base">
       {/* Header */}
-      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div className="bg-surface-elevated border-b border-border-default">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center gap-4">
-            <div className="p-3 rounded-xl bg-primary/10 text-primary">
+            <div className="p-3 rounded-xl bg-brand-primary/10 text-brand-primary">
               <BookOpen size={32} />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Documentação</h1>
-              <p className="text-gray-500 dark:text-gray-400">Guias, tutoriais e referências do sistema</p>
+              <h1 className="text-3xl font-bold text-text-primary">Documentação</h1>
+              <p className="text-text-secondary">Guias, tutoriais e referências do sistema</p>
             </div>
           </div>
           
           {/* Search */}
           <div className="mt-6 relative max-w-2xl">
-            <Search size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+            <Search size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-text-muted" />
             <input
               type="text"
               placeholder="Buscar na documentação..."
-              className="w-full pl-12 pr-4 py-3 text-lg border border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 focus:ring-2 focus:ring-primary/20 focus:border-primary"
+              className="form-input pl-12 py-3 text-lg rounded-xl focus-ring"
             />
           </div>
         </div>

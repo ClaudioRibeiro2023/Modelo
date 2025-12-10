@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Code, ChevronRight, Copy, Check, ExternalLink } from 'lucide-react'
+import { Button } from '@template/design-system'
 
 interface Endpoint {
   method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
@@ -49,29 +50,27 @@ export default function ApiDocsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-surface-base">
       {/* Header */}
-      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div className="bg-surface-elevated border-b border-border-default">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400">
+              <div className="p-2 rounded-lg bg-brand-accent/20 text-brand-secondary">
                 <Code size={28} />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">API Reference</h1>
-                <p className="text-gray-500 dark:text-gray-400">Documentação da API REST</p>
+                <h1 className="text-2xl font-bold text-text-primary">API Reference</h1>
+                <p className="text-text-secondary">Documentação da API REST</p>
               </div>
             </div>
-            <a
-              href="/api/docs"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90"
+            <Button
+              variant="primary"
+              leftIcon={<ExternalLink size={18} />}
+              onClick={() => window.open('/api/docs', '_blank')}
             >
-              <ExternalLink size={18} />
               Swagger UI
-            </a>
+            </Button>
           </div>
         </div>
       </div>

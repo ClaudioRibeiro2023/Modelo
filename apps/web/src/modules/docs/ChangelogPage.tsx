@@ -75,17 +75,17 @@ const VERSION_COLORS = {
 
 export default function ChangelogPage() {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-surface-base">
       {/* Header */}
-      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div className="bg-surface-elevated border-b border-border-default">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400">
+            <div className="p-2 rounded-lg bg-surface-muted text-text-secondary">
               <History size={28} />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Changelog</h1>
-              <p className="text-gray-500 dark:text-gray-400">Histórico de versões e atualizações</p>
+              <h1 className="text-2xl font-bold text-text-primary">Changelog</h1>
+              <p className="text-text-secondary">Histórico de versões e atualizações</p>
             </div>
           </div>
         </div>
@@ -95,26 +95,26 @@ export default function ChangelogPage() {
         {/* Timeline */}
         <div className="relative">
           {/* Vertical Line */}
-          <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700" />
+          <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-border-default" />
 
           {RELEASES.map((release) => (
             <div key={release.version} className="relative mb-8 last:mb-0">
               {/* Version Badge */}
               <div className="flex items-center gap-4 mb-4">
-                <div className="relative z-10 w-12 h-12 rounded-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center">
-                  <Tag size={20} className="text-primary" />
+                <div className="relative z-10 w-12 h-12 rounded-full bg-surface-elevated border-2 border-border-default flex items-center justify-center">
+                  <Tag size={20} className="text-brand-primary" />
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-xl font-bold text-gray-900 dark:text-white">v{release.version}</span>
+                  <span className="text-xl font-bold text-text-primary">v{release.version}</span>
                   <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${VERSION_COLORS[release.type]}`}>
                     {release.type}
                   </span>
-                  <span className="text-sm text-gray-500">{new Date(release.date).toLocaleDateString('pt-BR')}</span>
+                  <span className="text-sm text-text-muted">{new Date(release.date).toLocaleDateString('pt-BR')}</span>
                 </div>
               </div>
 
               {/* Changes */}
-              <div className="ml-16 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+              <div className="ml-16 bg-surface-elevated rounded-lg border border-border-default p-4">
                 <ul className="space-y-2">
                   {release.changes.map((change, changeIdx) => {
                     const config = CHANGE_ICONS[change.type]
