@@ -1,4 +1,4 @@
-# 📚 Índice da Documentação
+# Índice da Documentação
 
 > Template Platform v1.0.0 | Última atualização: Dezembro 2024
 
@@ -6,19 +6,19 @@ Este arquivo serve como índice central para toda a documentação do projeto.
 
 ---
 
-## 🎯 Por Onde Começar
+## Por Onde Começar
 
-| Seu Objetivo           | Documento                                  |
-| ---------------------- | ------------------------------------------ |
-| Configurar o ambiente  | [GETTING_STARTED.md](./GETTING_STARTED.md) |
-| Entender a arquitetura | [ARCHITECTURE.md](./ARCHITECTURE.md)       |
-| Contribuir com código  | [../CONTRIBUTING.md](../CONTRIBUTING.md)   |
-| Fazer deploy           | [DEPLOY.md](./DEPLOY.md)                   |
-| Resolver problemas     | [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) |
+| Seu Objetivo           | Documento                                                    |
+| ---------------------- | ------------------------------------------------------------ |
+| Configurar o ambiente  | [operacao/setup-local.md](./operacao/setup-local.md)         |
+| Entender a arquitetura | [arquitetura/c4-container.md](./arquitetura/c4-container.md) |
+| Contribuir com código  | [../CONTRIBUTING.md](../CONTRIBUTING.md)                     |
+| Fazer deploy           | [DEPLOY.md](./DEPLOY.md)                                     |
+| Resolver problemas     | [TROUBLESHOOTING.md](./TROUBLESHOOTING.md)                   |
 
 ---
 
-## 📖 Documentação Completa
+## Documentação Completa
 
 ### Entrada e Configuração
 
