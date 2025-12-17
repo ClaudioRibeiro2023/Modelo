@@ -941,10 +941,13 @@ Este arquivo acompanha o plano de melhorias faseado descrito em `docs/PROPOSTA_A
   - ✅ Preview service para testes
   - ✅ `scripts/blue-green-deploy.ps1` com rollback
 
-- [ ] [P3] Configurar Auto-scaling:
-  - HPA baseado em CPU/memória
-  - Métricas customizadas
-  - Alertas de scaling
+- [x] [P3] Configurar Auto-scaling:
+  - ✅ `infra/k8s/autoscaling.yaml` - Configuração completa
+  - ✅ HPA avançado com behavior tuning (scale up/down policies)
+  - ✅ Métricas customizadas via prometheus-adapter
+  - ✅ KEDA ScaledObjects para scaling event-driven
+  - ✅ PrometheusRules para alertas de scaling
+  - ✅ VPA (Vertical Pod Autoscaler) para recomendações
 
 ### Analytics & BI
 

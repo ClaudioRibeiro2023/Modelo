@@ -1,0 +1,380 @@
+# Advanced Auto-scaling Configuration for Template Platform
+# Includes: HPA with custom metrics, KEDA ScaledObjects, PrometheusRules for alerts
+#
+# Prerequisites:
+# - metrics-server installed (for CPU/memory metrics)
+# - prometheus-adapter installed (for custom metrics)
+# - KEDA installed (for event-driven scaling) - optional
+#
+# Apply with: kubectl apply -f autoscaling.yaml
+
+---
+# ============================================
+# HORIZONTAL POD AUTOSCALER (HPA) - Enhanced
+# ============================================
+
+# API HPA with behavior tuning
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: api-hpa-advanced
+  namespace: template-platform
+  labels:
+    app.kubernetes.io/name: template-platform
+    app.kubernetes.io/component: api
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: api
+  minReplicas: 2
+  maxReplicas: 20
+  metrics:
+    # CPU-based scaling
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+    # Memory-based scaling
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80
+    # Custom metric: requests per second (requires prometheus-adapter)
+    - type: Pods
+      pods:
+        metric:
+          name: http_requests_per_second
+        target:
+          type: AverageValue
+          averageValue: "100"
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300  # 5 min cooldown before scaling down
+      policies:
+        - type: Percent
+          value: 10
+          periodSeconds: 60
+        - type: Pods
+          value: 2
+          periodSeconds: 60
+      selectPolicy: Min  # Use the policy that scales down least
+    scaleUp:
+      stabilizationWindowSeconds: 0  # Scale up immediately
+      policies:
+        - type: Percent
+          value: 100
+          periodSeconds: 15
+        - type: Pods
+          value: 4
+          periodSeconds: 15
+      selectPolicy: Max  # Use the policy that scales up most
+
+---
+# Web HPA with behavior tuning
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: web-hpa-advanced
+  namespace: template-platform
+  labels:
+    app.kubernetes.io/name: template-platform
+    app.kubernetes.io/component: web
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: web
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 85
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+        - type: Percent
+          value: 20
+          periodSeconds: 60
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      policies:
+        - type: Percent
+          value: 50
+          periodSeconds: 30
+
+---
+# ============================================
+# KEDA SCALED OBJECTS (Event-driven scaling)
+# ============================================
+# Requires KEDA operator: https://keda.sh/docs/deploy/
+
+# Scale API based on Redis queue length
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: api-redis-scaler
+  namespace: template-platform
+  labels:
+    app.kubernetes.io/name: template-platform
+    app.kubernetes.io/component: api
+spec:
+  scaleTargetRef:
+    name: api
+  pollingInterval: 15
+  cooldownPeriod: 300
+  idleReplicaCount: 0
+  minReplicaCount: 2
+  maxReplicaCount: 20
+  fallback:
+    failureThreshold: 3
+    replicas: 3
+  triggers:
+    # Scale based on Redis queue length
+    - type: redis
+      metadata:
+        address: redis-service.template-platform.svc.cluster.local:6379
+        listName: job_queue
+        listLength: "10"
+      authenticationRef:
+        name: redis-trigger-auth
+    # Scale based on Prometheus metrics
+    - type: prometheus
+      metadata:
+        serverAddress: http://prometheus.monitoring.svc.cluster.local:9090
+        metricName: http_requests_total
+        threshold: "100"
+        query: sum(rate(http_requests_total{namespace="template-platform",service="api"}[2m]))
+
+---
+# KEDA TriggerAuthentication for Redis
+apiVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: redis-trigger-auth
+  namespace: template-platform
+spec:
+  secretTargetRef:
+    - parameter: password
+      name: template-platform-secrets
+      key: REDIS_PASSWORD
+
+---
+# ============================================
+# PROMETHEUS ADAPTER CONFIG (Custom Metrics)
+# ============================================
+# This ConfigMap configures prometheus-adapter to expose custom metrics for HPA
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-adapter-config
+  namespace: monitoring
+data:
+  config.yaml: |
+    rules:
+      # HTTP requests per second
+      - seriesQuery: 'http_requests_total{namespace!="",pod!=""}'
+        resources:
+          overrides:
+            namespace: {resource: "namespace"}
+            pod: {resource: "pod"}
+        name:
+          matches: "^(.*)_total$"
+          as: "${1}_per_second"
+        metricsQuery: 'sum(rate(<<.Series>>{<<.LabelMatchers>>}[2m])) by (<<.GroupBy>>)'
+      
+      # Request latency p95
+      - seriesQuery: 'http_request_duration_seconds_bucket{namespace!="",pod!=""}'
+        resources:
+          overrides:
+            namespace: {resource: "namespace"}
+            pod: {resource: "pod"}
+        name:
+          matches: "^(.*)_bucket$"
+          as: "${1}_p95"
+        metricsQuery: 'histogram_quantile(0.95, sum(rate(<<.Series>>{<<.LabelMatchers>>}[5m])) by (<<.GroupBy>>, le))'
+      
+      # Active connections
+      - seriesQuery: 'active_connections{namespace!="",pod!=""}'
+        resources:
+          overrides:
+            namespace: {resource: "namespace"}
+            pod: {resource: "pod"}
+        name:
+          matches: "^(.*)$"
+          as: "${1}"
+        metricsQuery: 'sum(<<.Series>>{<<.LabelMatchers>>}) by (<<.GroupBy>>)'
+
+---
+# ============================================
+# PROMETHEUS RULES (Scaling Alerts)
+# ============================================
+
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: autoscaling-alerts
+  namespace: template-platform
+  labels:
+    app.kubernetes.io/name: template-platform
+    prometheus: kube-prometheus
+    role: alert-rules
+spec:
+  groups:
+    - name: autoscaling.rules
+      rules:
+        # Alert when HPA is at max replicas
+        - alert: HPAAtMaxReplicas
+          expr: |
+            kube_horizontalpodautoscaler_status_current_replicas{namespace="template-platform"}
+            ==
+            kube_horizontalpodautoscaler_spec_max_replicas{namespace="template-platform"}
+          for: 15m
+          labels:
+            severity: warning
+            team: platform
+          annotations:
+            summary: "HPA {{ $labels.horizontalpodautoscaler }} at max replicas"
+            description: "HPA {{ $labels.horizontalpodautoscaler }} in namespace {{ $labels.namespace }} has been at max replicas for 15 minutes. Consider increasing max replicas."
+            runbook_url: "https://docs.example.com/runbooks/hpa-at-max"
+
+        # Alert when HPA cannot scale
+        - alert: HPAScalingLimited
+          expr: |
+            kube_horizontalpodautoscaler_status_condition{condition="ScalingLimited",status="true",namespace="template-platform"} == 1
+          for: 5m
+          labels:
+            severity: warning
+            team: platform
+          annotations:
+            summary: "HPA {{ $labels.horizontalpodautoscaler }} scaling limited"
+            description: "HPA {{ $labels.horizontalpodautoscaler }} cannot scale due to resource constraints."
+
+        # Alert on rapid scaling events
+        - alert: RapidScalingEvents
+          expr: |
+            changes(kube_horizontalpodautoscaler_status_current_replicas{namespace="template-platform"}[30m]) > 10
+          for: 5m
+          labels:
+            severity: info
+            team: platform
+          annotations:
+            summary: "Rapid scaling detected for {{ $labels.horizontalpodautoscaler }}"
+            description: "HPA {{ $labels.horizontalpodautoscaler }} has scaled more than 10 times in 30 minutes. Investigate for flapping."
+
+        # Alert when pods are pending due to resources
+        - alert: PodsPendingResources
+          expr: |
+            sum by (namespace) (kube_pod_status_phase{namespace="template-platform",phase="Pending"}) > 0
+          for: 10m
+          labels:
+            severity: warning
+            team: platform
+          annotations:
+            summary: "Pods pending in {{ $labels.namespace }}"
+            description: "There are pending pods in {{ $labels.namespace }} for more than 10 minutes. Check cluster resources."
+
+        # High CPU usage sustained
+        - alert: HighCPUUsageSustained
+          expr: |
+            avg by (namespace, pod) (rate(container_cpu_usage_seconds_total{namespace="template-platform"}[5m])) 
+            / 
+            avg by (namespace, pod) (kube_pod_container_resource_limits{namespace="template-platform",resource="cpu"})
+            > 0.9
+          for: 15m
+          labels:
+            severity: warning
+            team: platform
+          annotations:
+            summary: "High CPU usage for {{ $labels.pod }}"
+            description: "Pod {{ $labels.pod }} has sustained CPU usage above 90% for 15 minutes."
+
+        # Memory pressure
+        - alert: HighMemoryUsage
+          expr: |
+            avg by (namespace, pod) (container_memory_usage_bytes{namespace="template-platform"})
+            /
+            avg by (namespace, pod) (kube_pod_container_resource_limits{namespace="template-platform",resource="memory"})
+            > 0.85
+          for: 10m
+          labels:
+            severity: warning
+            team: platform
+          annotations:
+            summary: "High memory usage for {{ $labels.pod }}"
+            description: "Pod {{ $labels.pod }} has memory usage above 85% for 10 minutes."
+
+---
+# ============================================
+# VERTICAL POD AUTOSCALER (VPA) - Recommendations
+# ============================================
+# VPA automatically adjusts resource requests/limits
+# Requires VPA operator: https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler
+
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: api-vpa
+  namespace: template-platform
+  labels:
+    app.kubernetes.io/name: template-platform
+    app.kubernetes.io/component: api
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: api
+  updatePolicy:
+    updateMode: "Off"  # Start with recommendations only, switch to "Auto" when confident
+  resourcePolicy:
+    containerPolicies:
+      - containerName: api
+        minAllowed:
+          cpu: "100m"
+          memory: "128Mi"
+        maxAllowed:
+          cpu: "2"
+          memory: "2Gi"
+        controlledResources: ["cpu", "memory"]
+
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: web-vpa
+  namespace: template-platform
+  labels:
+    app.kubernetes.io/name: template-platform
+    app.kubernetes.io/component: web
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: web
+  updatePolicy:
+    updateMode: "Off"
+  resourcePolicy:
+    containerPolicies:
+      - containerName: web
+        minAllowed:
+          cpu: "50m"
+          memory: "64Mi"
+        maxAllowed:
+          cpu: "1"
+          memory: "1Gi"
