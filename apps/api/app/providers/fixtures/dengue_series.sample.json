@@ -1,0 +1,47 @@
+{
+  "source": "fixture",
+  "description": "Sample dengue epidemiological series data",
+  "data": [
+    {
+      "uf": "SP",
+      "ano": 2024,
+      "semana_epidemiologica": 1,
+      "casos_notificados": 1250,
+      "casos_confirmados": 890,
+      "incidencia_100k": 2.75,
+      "variacao_semanal_percent": 12.5
+    },
+    {
+      "uf": "SP",
+      "ano": 2024,
+      "semana_epidemiologica": 2,
+      "casos_notificados": 1420,
+      "casos_confirmados": 1015,
+      "incidencia_100k": 3.12,
+      "variacao_semanal_percent": 14.0
+    },
+    {
+      "uf": "RJ",
+      "ano": 2024,
+      "semana_epidemiologica": 1,
+      "casos_notificados": 850,
+      "casos_confirmados": 620,
+      "incidencia_100k": 3.85,
+      "variacao_semanal_percent": 8.2
+    },
+    {
+      "uf": "RJ",
+      "ano": 2024,
+      "semana_epidemiologica": 2,
+      "casos_notificados": 920,
+      "casos_confirmados": 685,
+      "incidencia_100k": 4.15,
+      "variacao_semanal_percent": 10.5
+    }
+  ],
+  "metadata": {
+    "generated_at": "2024-12-17T00:00:00Z",
+    "total_records": 4,
+    "note": "This is fixture data for development. Replace with real provider integration."
+  }
+}

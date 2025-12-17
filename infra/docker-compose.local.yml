@@ -52,6 +52,34 @@ services:
       retries: 5
       start_period: 90s
 
+  # TechDados BFF (FastAPI)
+  api:
+    build:
+      context: ..
+      dockerfile: apps/api/Dockerfile
+      target: development
+    ports:
+      - "8000:8000"
+    environment:
+      APP_NAME: techdados-api
+      APP_ENV: local
+      DEBUG: "true"
+      DEMO_MODE: "true"
+      KEYCLOAK_URL: http://keycloak:8080
+      KEYCLOAK_REALM: techdados
+      KEYCLOAK_AUDIENCE: techdados-api
+      PROVIDER_BASE_URL: ""
+      CACHE_ENABLED: "true"
+    depends_on:
+      keycloak:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
   # Frontend (Nginx serving built app)
   frontend:
     build:
@@ -67,6 +95,7 @@ services:
       - "13000:80"
     depends_on:
       - keycloak
+      - api
 
 volumes:
   postgres_data:

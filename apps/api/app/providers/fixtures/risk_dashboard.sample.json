@@ -1,0 +1,61 @@
+{
+  "source": "fixture",
+  "description": "Sample risk dashboard data",
+  "data": {
+    "summary": {
+      "estados_alto_risco": 5,
+      "estados_medio_risco": 12,
+      "estados_baixo_risco": 10,
+      "total_casos_semana": 45680,
+      "variacao_nacional_percent": 8.5
+    },
+    "estados": [
+      {
+        "uf": "SP",
+        "nome": "São Paulo",
+        "nivel_risco": "alto",
+        "casos_semana": 15420,
+        "incidencia_100k": 33.5,
+        "tendencia": "crescente"
+      },
+      {
+        "uf": "RJ",
+        "nome": "Rio de Janeiro",
+        "nivel_risco": "alto",
+        "casos_semana": 8750,
+        "incidencia_100k": 51.2,
+        "tendencia": "estavel"
+      },
+      {
+        "uf": "MG",
+        "nome": "Minas Gerais",
+        "nivel_risco": "medio",
+        "casos_semana": 5230,
+        "incidencia_100k": 24.8,
+        "tendencia": "crescente"
+      },
+      {
+        "uf": "BA",
+        "nome": "Bahia",
+        "nivel_risco": "medio",
+        "casos_semana": 3890,
+        "incidencia_100k": 26.1,
+        "tendencia": "decrescente"
+      }
+    ],
+    "alertas": [
+      {
+        "tipo": "epidemia",
+        "uf": "SP",
+        "mensagem": "Estado de São Paulo em situação de epidemia",
+        "data": "2024-12-15"
+      }
+    ]
+  },
+  "metadata": {
+    "semana_epidemiologica": 50,
+    "ano": 2024,
+    "generated_at": "2024-12-17T00:00:00Z",
+    "note": "This is fixture data for development. Replace with real provider integration."
+  }
+}
