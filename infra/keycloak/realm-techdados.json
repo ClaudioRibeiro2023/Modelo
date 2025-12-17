@@ -1,0 +1,232 @@
+{
+  "realm": "techdados",
+  "enabled": true,
+  "displayName": "TechDados - Dashboard Techdengue",
+  "displayNameHtml": "<strong>TechDados</strong>",
+  "sslRequired": "none",
+  "registrationAllowed": false,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "resetPasswordAllowed": true,
+  "editUsernameAllowed": false,
+  "bruteForceProtected": true,
+  "permanentLockout": false,
+  "maxFailureWaitSeconds": 900,
+  "minimumQuickLoginWaitSeconds": 60,
+  "waitIncrementSeconds": 60,
+  "quickLoginCheckMilliSeconds": 1000,
+  "maxDeltaTimeSeconds": 43200,
+  "failureFactor": 5,
+  "roles": {
+    "realm": [
+      {
+        "name": "admin",
+        "description": "Administrador do sistema - acesso total a todas as funcionalidades e dados"
+      },
+      {
+        "name": "estrategico",
+        "description": "Nível estratégico (Secretário/Diretor) - visão estadual, indicadores consolidados"
+      },
+      {
+        "name": "tatico",
+        "description": "Nível tático (Coordenador/Gerente Regional) - visão URS/Consórcio"
+      },
+      {
+        "name": "operacional",
+        "description": "Nível operacional (Supervisor/Técnico) - visão municipal/área"
+      },
+      {
+        "name": "auditoria",
+        "description": "Auditor - acesso somente leitura com logs de auditoria"
+      },
+      {
+        "name": "suporte",
+        "description": "Suporte técnico - diagnóstico e troubleshooting"
+      }
+    ]
+  },
+  "groups": [
+    {
+      "name": "admin",
+      "realmRoles": ["admin"]
+    },
+    {
+      "name": "estrategico",
+      "realmRoles": ["estrategico"]
+    },
+    {
+      "name": "tatico",
+      "realmRoles": ["tatico"]
+    },
+    {
+      "name": "operacional",
+      "realmRoles": ["operacional"]
+    },
+    {
+      "name": "auditoria",
+      "realmRoles": ["auditoria"]
+    },
+    {
+      "name": "suporte",
+      "realmRoles": ["suporte"]
+    }
+  ],
+  "clients": [
+    {
+      "clientId": "techdados-web",
+      "name": "TechDados Web Application",
+      "description": "Frontend SPA do TechDados (React + Vite)",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": false,
+      "authorizationServicesEnabled": false,
+      "redirectUris": [
+        "http://localhost:13000/*",
+        "http://localhost:5173/*",
+        "http://localhost:3000/*"
+      ],
+      "webOrigins": ["http://localhost:13000", "http://localhost:5173", "http://localhost:3000"],
+      "protocol": "openid-connect",
+      "attributes": {
+        "pkce.code.challenge.method": "S256",
+        "post.logout.redirect.uris": "http://localhost:13000/*"
+      },
+      "defaultClientScopes": ["web-origins", "acr", "profile", "roles", "email"],
+      "optionalClientScopes": ["address", "phone", "offline_access", "microprofile-jwt"]
+    },
+    {
+      "clientId": "techdados-api",
+      "name": "TechDados API (BFF)",
+      "description": "Backend FastAPI - Bearer-only client para validação de tokens",
+      "enabled": true,
+      "publicClient": false,
+      "bearerOnly": true,
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "protocol": "openid-connect"
+    }
+  ],
+  "users": [
+    {
+      "username": "admin@techdados.local",
+      "email": "admin@techdados.local",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Admin",
+      "lastName": "TechDados",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "admin123",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["admin"],
+      "groups": ["admin"]
+    },
+    {
+      "username": "estrategico@techdados.local",
+      "email": "estrategico@techdados.local",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Usuário",
+      "lastName": "Estratégico",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "demo123",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["estrategico"],
+      "groups": ["estrategico"]
+    },
+    {
+      "username": "tatico@techdados.local",
+      "email": "tatico@techdados.local",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Usuário",
+      "lastName": "Tático",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "demo123",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["tatico"],
+      "groups": ["tatico"]
+    },
+    {
+      "username": "operacional@techdados.local",
+      "email": "operacional@techdados.local",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Usuário",
+      "lastName": "Operacional",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "demo123",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["operacional"],
+      "groups": ["operacional"]
+    },
+    {
+      "username": "auditoria@techdados.local",
+      "email": "auditoria@techdados.local",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Usuário",
+      "lastName": "Auditoria",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "demo123",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["auditoria"],
+      "groups": ["auditoria"]
+    },
+    {
+      "username": "suporte@techdados.local",
+      "email": "suporte@techdados.local",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Usuário",
+      "lastName": "Suporte",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "demo123",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["suporte"],
+      "groups": ["suporte"]
+    }
+  ],
+  "scopeMappings": [
+    {
+      "client": "techdados-web",
+      "roles": ["admin", "estrategico", "tatico", "operacional", "auditoria", "suporte"]
+    }
+  ],
+  "clientScopeMappings": {
+    "realm-management": [
+      {
+        "client": "techdados-web",
+        "roles": ["view-users"]
+      }
+    ]
+  }
+}
