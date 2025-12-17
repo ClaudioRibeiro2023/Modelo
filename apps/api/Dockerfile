@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
     && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt .
+COPY apps/api/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # -----------------------------
@@ -25,7 +25,7 @@ WORKDIR /app
 
 RUN pip install --no-cache-dir pytest pytest-cov pytest-asyncio httpx
 
-COPY . .
+COPY apps/api/ .
 
 EXPOSE 8000
 
@@ -43,7 +43,7 @@ RUN groupadd -r appuser && useradd -r -g appuser appuser
 COPY --from=dependencies /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
 COPY --from=dependencies /usr/local/bin/uvicorn /usr/local/bin/uvicorn
 
-COPY app/ ./app/
+COPY apps/api/app/ ./app/
 
 RUN chown -R appuser:appuser /app
 

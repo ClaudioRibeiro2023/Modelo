@@ -84,3 +84,10 @@ async def root():
         "health": "/health",
         "api": f"{settings.API_PREFIX}/v1/status",
     }
+
+
+# Health endpoint at root (for container healthchecks)
+@app.get("/health", tags=["Health"])
+async def health():
+    """Health check at root level for container orchestration"""
+    return {"status": "ok"}
