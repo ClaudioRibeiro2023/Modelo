@@ -1,8 +1,10 @@
-# 🚀 Template Platform
+# 📊 TechDados
 
 > **Versão:** 1.0.0 | **Última atualização:** Dezembro 2024
 
-Um template moderno e robusto para criar aplicações web corporativas com React, TypeScript, TailwindCSS e autenticação via Keycloak.
+Plataforma de dashboard e analytics do ecossistema **Techdengue**. Solução para visualização, análise e gestão de dados epidemiológicos.
+
+> **Origem:** Baseado no template "modelo" - referência histórica em `docs/_archive/`
 
 ## ✨ Características
 
@@ -81,8 +83,8 @@ Um template moderno e robusto para criar aplicações web corporativas com React
 
 ```bash
 # Clone o template
-git clone <repo-url> meu-projeto
-cd meu-projeto
+git clone <repo-url> TechDados
+cd TechDados
 
 # Instale dependências
 pnpm install
@@ -226,7 +228,7 @@ pnpm test:e2e:ui
 
 ## 📖 Documentação
 
-Toda a documentação está em [`docs/`](./docs/INDEX.md):
+Toda a documentação está em [`docs/INDEX.md`](./docs/INDEX.md) (portal canônico):
 
 | Documento                                                         | Descrição                            |
 | ----------------------------------------------------------------- | ------------------------------------ |

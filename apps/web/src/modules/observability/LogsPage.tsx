@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 import { FileText, Search, Filter, Download, RefreshCw, Copy, Check } from 'lucide-react'
-import { Button } from '@template/design-system'
+import { Button } from '@techdados/design-system'
 
 type LogLevel = 'DEBUG' | 'INFO' | 'WARNING' | 'ERROR' | 'CRITICAL'
 
@@ -16,13 +16,64 @@ interface LogEntry {
 
 // Mock logs
 const MOCK_LOGS: LogEntry[] = [
-  { id: '1', timestamp: '2024-03-12T14:30:15.123Z', level: 'INFO', service: 'api-gateway', requestId: 'req-abc123', message: 'Request received: GET /api/users' },
-  { id: '2', timestamp: '2024-03-12T14:30:15.145Z', level: 'DEBUG', service: 'auth-service', requestId: 'req-abc123', message: 'Token validated successfully', details: { userId: 'usr-456' } },
-  { id: '3', timestamp: '2024-03-12T14:30:15.200Z', level: 'INFO', service: 'data-service', requestId: 'req-abc123', message: 'Query executed: SELECT * FROM users LIMIT 50' },
-  { id: '4', timestamp: '2024-03-12T14:30:16.000Z', level: 'WARNING', service: 'cache', requestId: 'req-def456', message: 'Cache miss for key: user_preferences_789' },
-  { id: '5', timestamp: '2024-03-12T14:30:17.500Z', level: 'ERROR', service: 'data-service', requestId: 'req-ghi789', message: 'Database connection timeout after 30000ms', details: { host: 'db-primary', port: 5432 } },
-  { id: '6', timestamp: '2024-03-12T14:30:18.000Z', level: 'INFO', service: 'api-gateway', requestId: 'req-jkl012', message: 'Request completed: 200 OK (45ms)' },
-  { id: '7', timestamp: '2024-03-12T14:30:19.000Z', level: 'CRITICAL', service: 'auth-service', requestId: 'req-mno345', message: 'Failed to connect to Keycloak: ECONNREFUSED' },
+  {
+    id: '1',
+    timestamp: '2024-03-12T14:30:15.123Z',
+    level: 'INFO',
+    service: 'api-gateway',
+    requestId: 'req-abc123',
+    message: 'Request received: GET /api/users',
+  },
+  {
+    id: '2',
+    timestamp: '2024-03-12T14:30:15.145Z',
+    level: 'DEBUG',
+    service: 'auth-service',
+    requestId: 'req-abc123',
+    message: 'Token validated successfully',
+    details: { userId: 'usr-456' },
+  },
+  {
+    id: '3',
+    timestamp: '2024-03-12T14:30:15.200Z',
+    level: 'INFO',
+    service: 'data-service',
+    requestId: 'req-abc123',
+    message: 'Query executed: SELECT * FROM users LIMIT 50',
+  },
+  {
+    id: '4',
+    timestamp: '2024-03-12T14:30:16.000Z',
+    level: 'WARNING',
+    service: 'cache',
+    requestId: 'req-def456',
+    message: 'Cache miss for key: user_preferences_789',
+  },
+  {
+    id: '5',
+    timestamp: '2024-03-12T14:30:17.500Z',
+    level: 'ERROR',
+    service: 'data-service',
+    requestId: 'req-ghi789',
+    message: 'Database connection timeout after 30000ms',
+    details: { host: 'db-primary', port: 5432 },
+  },
+  {
+    id: '6',
+    timestamp: '2024-03-12T14:30:18.000Z',
+    level: 'INFO',
+    service: 'api-gateway',
+    requestId: 'req-jkl012',
+    message: 'Request completed: 200 OK (45ms)',
+  },
+  {
+    id: '7',
+    timestamp: '2024-03-12T14:30:19.000Z',
+    level: 'CRITICAL',
+    service: 'auth-service',
+    requestId: 'req-mno345',
+    message: 'Failed to connect to Keycloak: ECONNREFUSED',
+  },
 ]
 
 const LEVEL_COLORS: Record<LogLevel, string> = {
@@ -43,9 +94,12 @@ export default function LogsPage() {
       if (levelFilter !== 'all' && log.level !== levelFilter) return false
       if (search) {
         const q = search.toLowerCase()
-        if (!log.message.toLowerCase().includes(q) &&
-            !log.service.toLowerCase().includes(q) &&
-            !log.requestId.toLowerCase().includes(q)) return false
+        if (
+          !log.message.toLowerCase().includes(q) &&
+          !log.service.toLowerCase().includes(q) &&
+          !log.requestId.toLowerCase().includes(q)
+        )
+          return false
       }
       return true
     })
@@ -127,7 +181,9 @@ export default function LogsPage() {
                   {new Date(log.timestamp).toLocaleTimeString('pt-BR', { hour12: false })}
                 </span>
                 <span className="text-xs font-bold uppercase w-16">{log.level}</span>
-                <span className="text-xs font-medium text-gray-600 dark:text-gray-400 w-24 truncate">{log.service}</span>
+                <span className="text-xs font-medium text-gray-600 dark:text-gray-400 w-24 truncate">
+                  {log.service}
+                </span>
                 <button
                   type="button"
                   onClick={() => copyRequestId(log.id, log.requestId)}

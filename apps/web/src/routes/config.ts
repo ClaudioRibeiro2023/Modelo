@@ -1,14 +1,20 @@
-import type { ComponentType } from 'react';
+import type { ComponentType } from 'react'
 import { lazy } from 'react'
-import type { Role } from '@template/shared'
+import type { Role } from '@techdados/shared'
 
 // Lazy-loaded page components
 const HomePage = lazy(() => import('@/pages/HomePage').then(m => ({ default: m.HomePage })))
-const ProfilePage = lazy(() => import('@/pages/ProfilePage').then(m => ({ default: m.ProfilePage })))
+const ProfilePage = lazy(() =>
+  import('@/pages/ProfilePage').then(m => ({ default: m.ProfilePage }))
+)
 const DocsPage = lazy(() => import('@/pages/DocsPage').then(m => ({ default: m.DocsPage })))
 const LgpdPage = lazy(() => import('@/pages/LgpdPage').then(m => ({ default: m.LgpdPage })))
-const ConfigPage = lazy(() => import('@/pages/admin/ConfigPage').then(m => ({ default: m.ConfigPage })))
-const UsersPage = lazy(() => import('@/pages/admin/UsersPage').then(m => ({ default: m.UsersPage })))
+const ConfigPage = lazy(() =>
+  import('@/pages/admin/ConfigPage').then(m => ({ default: m.ConfigPage }))
+)
+const UsersPage = lazy(() =>
+  import('@/pages/admin/UsersPage').then(m => ({ default: m.UsersPage }))
+)
 const ExemploPage = lazy(() => import('@/modules/exemplo').then(m => ({ default: m.ExemploPage })))
 
 /**
@@ -31,7 +37,10 @@ export interface RouteConfig {
  * Public routes (no authentication required)
  */
 export const publicRoutes: RouteConfig[] = [
-  { path: '/login', element: lazy(() => import('@/pages/auth/LoginPage').then(m => ({ default: m.LoginPage }))) },
+  {
+    path: '/login',
+    element: lazy(() => import('@/pages/auth/LoginPage').then(m => ({ default: m.LoginPage }))),
+  },
 ]
 
 /**
@@ -43,10 +52,10 @@ export const protectedRoutes: RouteConfig[] = [
   { path: '/profile', element: ProfilePage },
   { path: '/dashboard', element: HomePage },
   { path: '/relatorios', element: HomePage },
-  
+
   // Modules
   { path: '/exemplo', element: ExemploPage },
-  
+
   // Info pages
   { path: '/docs', element: DocsPage },
   { path: '/lgpd', element: LgpdPage },

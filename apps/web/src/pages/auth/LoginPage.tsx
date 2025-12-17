@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from '@template/shared'
+import { useAuth } from '@techdados/shared'
 import { LogIn } from 'lucide-react'
 
 export function LoginPage() {
@@ -50,9 +50,7 @@ export function LoginPage() {
           </button>
 
           {/* Footer */}
-          <p className="text-center text-text-muted text-sm mt-6">
-            Autenticação via Keycloak/OIDC
-          </p>
+          <p className="text-center text-text-muted text-sm mt-6">Autenticação via Keycloak/OIDC</p>
         </div>
       </div>
     </div>

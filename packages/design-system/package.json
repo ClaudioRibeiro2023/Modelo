@@ -1,5 +1,5 @@
 {
-  "name": "@template/design-system",
+  "name": "@techdados/design-system",
   "version": "0.1.0",
   "type": "module",
   "main": "./src/index.ts",

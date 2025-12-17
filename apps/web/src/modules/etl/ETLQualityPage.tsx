@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Shield, CheckCircle, AlertTriangle, XCircle, RefreshCw, Play } from 'lucide-react'
-import { Button } from '@template/design-system'
+import { Button } from '@techdados/design-system'
 import { QualityBadge } from './components'
 import type { DataQualityReport, DataQualityMetric, DataQualityIssue } from './types'
 
@@ -13,10 +13,34 @@ const MOCK_REPORTS: DataQualityReport[] = [
     executedAt: '2024-03-12T10:00:00',
     status: 'passed',
     metrics: [
-      { name: 'Completude', description: 'Campos preenchidos', value: 98.5, threshold: 95, status: 'passed' },
-      { name: 'Unicidade', description: 'Registros únicos', value: 99.9, threshold: 99, status: 'passed' },
-      { name: 'Validade', description: 'Formatos válidos', value: 97.2, threshold: 95, status: 'passed' },
-      { name: 'Atualidade', description: 'Dados recentes', value: 100, threshold: 90, status: 'passed' },
+      {
+        name: 'Completude',
+        description: 'Campos preenchidos',
+        value: 98.5,
+        threshold: 95,
+        status: 'passed',
+      },
+      {
+        name: 'Unicidade',
+        description: 'Registros únicos',
+        value: 99.9,
+        threshold: 99,
+        status: 'passed',
+      },
+      {
+        name: 'Validade',
+        description: 'Formatos válidos',
+        value: 97.2,
+        threshold: 95,
+        status: 'passed',
+      },
+      {
+        name: 'Atualidade',
+        description: 'Dados recentes',
+        value: 100,
+        threshold: 90,
+        status: 'passed',
+      },
     ],
     issues: [],
   },
@@ -27,14 +51,52 @@ const MOCK_REPORTS: DataQualityReport[] = [
     executedAt: '2024-03-12T09:30:00',
     status: 'warning',
     metrics: [
-      { name: 'Completude', description: 'Campos preenchidos', value: 92.1, threshold: 95, status: 'warning' },
-      { name: 'Unicidade', description: 'Registros únicos', value: 99.5, threshold: 99, status: 'passed' },
-      { name: 'Validade', description: 'Formatos válidos', value: 88.3, threshold: 95, status: 'warning' },
-      { name: 'Atualidade', description: 'Dados recentes', value: 95, threshold: 90, status: 'passed' },
+      {
+        name: 'Completude',
+        description: 'Campos preenchidos',
+        value: 92.1,
+        threshold: 95,
+        status: 'warning',
+      },
+      {
+        name: 'Unicidade',
+        description: 'Registros únicos',
+        value: 99.5,
+        threshold: 99,
+        status: 'passed',
+      },
+      {
+        name: 'Validade',
+        description: 'Formatos válidos',
+        value: 88.3,
+        threshold: 95,
+        status: 'warning',
+      },
+      {
+        name: 'Atualidade',
+        description: 'Dados recentes',
+        value: 95,
+        threshold: 90,
+        status: 'passed',
+      },
     ],
     issues: [
-      { id: '1', severity: 'medium', field: 'email', description: 'Emails inválidos detectados', affectedRecords: 350, suggestedFix: 'Validar formato de email' },
-      { id: '2', severity: 'low', field: 'telefone', description: 'Campos de telefone vazios', affectedRecords: 1200, suggestedFix: 'Solicitar atualização cadastral' },
+      {
+        id: '1',
+        severity: 'medium',
+        field: 'email',
+        description: 'Emails inválidos detectados',
+        affectedRecords: 350,
+        suggestedFix: 'Validar formato de email',
+      },
+      {
+        id: '2',
+        severity: 'low',
+        field: 'telefone',
+        description: 'Campos de telefone vazios',
+        affectedRecords: 1200,
+        suggestedFix: 'Solicitar atualização cadastral',
+      },
     ],
   },
   {
@@ -44,15 +106,59 @@ const MOCK_REPORTS: DataQualityReport[] = [
     executedAt: '2024-03-11T15:00:00',
     status: 'failed',
     metrics: [
-      { name: 'Completude', description: 'Campos preenchidos', value: 75.0, threshold: 95, status: 'failed' },
-      { name: 'Unicidade', description: 'Registros únicos', value: 85.2, threshold: 99, status: 'failed' },
-      { name: 'Validade', description: 'Formatos válidos', value: 60.5, threshold: 95, status: 'failed' },
-      { name: 'Atualidade', description: 'Dados recentes', value: 50, threshold: 90, status: 'failed' },
+      {
+        name: 'Completude',
+        description: 'Campos preenchidos',
+        value: 75.0,
+        threshold: 95,
+        status: 'failed',
+      },
+      {
+        name: 'Unicidade',
+        description: 'Registros únicos',
+        value: 85.2,
+        threshold: 99,
+        status: 'failed',
+      },
+      {
+        name: 'Validade',
+        description: 'Formatos válidos',
+        value: 60.5,
+        threshold: 95,
+        status: 'failed',
+      },
+      {
+        name: 'Atualidade',
+        description: 'Dados recentes',
+        value: 50,
+        threshold: 90,
+        status: 'failed',
+      },
     ],
     issues: [
-      { id: '3', severity: 'critical', field: 'codigo', description: 'Códigos duplicados', affectedRecords: 2500, suggestedFix: 'Deduplicar registros' },
-      { id: '4', severity: 'high', field: 'preco', description: 'Preços zerados ou negativos', affectedRecords: 800, suggestedFix: 'Corrigir valores de preço' },
-      { id: '5', severity: 'high', description: 'Dados desatualizados (>90 dias)', affectedRecords: 5000, suggestedFix: 'Reprocessar fonte de dados' },
+      {
+        id: '3',
+        severity: 'critical',
+        field: 'codigo',
+        description: 'Códigos duplicados',
+        affectedRecords: 2500,
+        suggestedFix: 'Deduplicar registros',
+      },
+      {
+        id: '4',
+        severity: 'high',
+        field: 'preco',
+        description: 'Preços zerados ou negativos',
+        affectedRecords: 800,
+        suggestedFix: 'Corrigir valores de preço',
+      },
+      {
+        id: '5',
+        severity: 'high',
+        description: 'Dados desatualizados (>90 dias)',
+        affectedRecords: 5000,
+        suggestedFix: 'Reprocessar fonte de dados',
+      },
     ],
   },
 ]
@@ -69,9 +175,12 @@ export default function ETLQualityPage() {
 
   const getMetricIcon = (status: DataQualityMetric['status']) => {
     switch (status) {
-      case 'passed': return <CheckCircle size={16} className="text-green-500" />
-      case 'warning': return <AlertTriangle size={16} className="text-yellow-500" />
-      case 'failed': return <XCircle size={16} className="text-red-500" />
+      case 'passed':
+        return <CheckCircle size={16} className="text-green-500" />
+      case 'warning':
+        return <AlertTriangle size={16} className="text-yellow-500" />
+      case 'failed':
+        return <XCircle size={16} className="text-red-500" />
     }
   }
 
@@ -150,7 +259,9 @@ export default function ETLQualityPage() {
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-medium text-gray-900 dark:text-white">{report.targetName}</span>
+                  <span className="font-medium text-gray-900 dark:text-white">
+                    {report.targetName}
+                  </span>
                   <QualityBadge status={report.status} size="sm" />
                 </div>
                 <div className="text-xs text-gray-500">
@@ -171,7 +282,9 @@ export default function ETLQualityPage() {
               <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
                 <div className="flex items-center justify-between mb-6">
                   <div>
-                    <h2 className="text-xl font-bold text-gray-900 dark:text-white">{selectedReport.targetName}</h2>
+                    <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+                      {selectedReport.targetName}
+                    </h2>
                     <p className="text-sm text-gray-500">
                       Executado em {new Date(selectedReport.executedAt).toLocaleString('pt-BR')}
                     </p>
@@ -181,7 +294,9 @@ export default function ETLQualityPage() {
 
                 {/* Metrics */}
                 <div className="mb-6">
-                  <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Métricas</h3>
+                  <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+                    Métricas
+                  </h3>
                   <div className="grid grid-cols-2 gap-3">
                     {selectedReport.metrics.map(metric => (
                       <div
@@ -189,7 +304,9 @@ export default function ETLQualityPage() {
                         className="p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg"
                       >
                         <div className="flex items-center justify-between mb-1">
-                          <span className="text-sm font-medium text-gray-900 dark:text-white">{metric.name}</span>
+                          <span className="text-sm font-medium text-gray-900 dark:text-white">
+                            {metric.name}
+                          </span>
                           {getMetricIcon(metric.status)}
                         </div>
                         <div className="text-xs text-gray-500 mb-2">{metric.description}</div>
@@ -197,8 +314,11 @@ export default function ETLQualityPage() {
                           <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden">
                             <div
                               className={`h-full transition-all ${
-                                metric.status === 'passed' ? 'bg-color-success' :
-                                metric.status === 'warning' ? 'bg-color-warning' : 'bg-color-error'
+                                metric.status === 'passed'
+                                  ? 'bg-color-success'
+                                  : metric.status === 'warning'
+                                    ? 'bg-color-warning'
+                                    : 'bg-color-error'
                               }`}
                               style={{ width: `${metric.value}%` }}
                               role="progressbar"
@@ -210,7 +330,9 @@ export default function ETLQualityPage() {
                           </div>
                           <span className="text-sm font-medium">{metric.value}%</span>
                         </div>
-                        <div className="text-xs text-gray-400 mt-1">Mínimo: {metric.threshold}%</div>
+                        <div className="text-xs text-gray-400 mt-1">
+                          Mínimo: {metric.threshold}%
+                        </div>
                       </div>
                     ))}
                   </div>

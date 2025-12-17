@@ -1,5 +1,5 @@
 {
-  "name": "@template/web",
+  "name": "@techdados/web",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -20,9 +20,9 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.12.2",
-    "@template/design-system": "workspace:*",
-    "@template/shared": "workspace:*",
-    "@template/types": "workspace:*",
+    "@techdados/design-system": "workspace:*",
+    "@techdados/shared": "workspace:*",
+    "@techdados/types": "workspace:*",
     "axios": "^1.6.2",
     "clsx": "^2.0.0",
     "date-fns": "^2.30.0",

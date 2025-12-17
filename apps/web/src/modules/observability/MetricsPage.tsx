@@ -8,7 +8,7 @@ import {
   Zap,
   RefreshCw,
 } from 'lucide-react'
-import { Button, PageHeader } from '@template/design-system'
+import { Button, PageHeader } from '@techdados/design-system'
 
 // Mock metrics data
 const MOCK_METRICS = {

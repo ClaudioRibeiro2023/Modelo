@@ -140,3 +140,162 @@ A documentação está:
 ---
 
 _Gerado em 2024-12-16 por auditoria automatizada_
+
+---
+
+## Validação: Fundação TechDados (2024-12-17)
+
+> **Operação:** Rebranding Template → TechDados  
+> **Status:** ✅ APROVADO
+
+### Comandos Executados
+
+| Comando          | Resultado | Observação             |
+| ---------------- | --------- | ---------------------- |
+| `pnpm install`   | ✅ Passou | 678 pacotes instalados |
+| `pnpm lint`      | ✅ Passou | ESLint sem erros       |
+| `pnpm typecheck` | ✅ Passou | TypeScript sem erros   |
+
+### Rebranding Aplicado
+
+| Item            | De                  | Para            | Status |
+| --------------- | ------------------- | --------------- | ------ |
+| Package names   | `@template/*`       | `@techdados/*`  | ✅     |
+| README.md       | Template Platform   | TechDados       | ✅     |
+| docs/INDEX.md   | Template Platform   | TechDados       | ✅     |
+| Keycloak realm  | `template`          | `techdados`     | ✅     |
+| Keycloak client | `template-web`      | `techdados-web` | ✅     |
+| Docker images   | `modelo-front`      | `techdados`     | ✅     |
+| Compose project | `template-platform` | `techdados`     | ✅     |
+| Source imports  | `@template/*`       | `@techdados/*`  | ✅     |
+
+### Novos Documentos Criados
+
+| Documento                                | Descrição                              |
+| ---------------------------------------- | -------------------------------------- |
+| `docs/contratos-integracao/api-dados.md` | Contrato da API de Dados (placeholder) |
+
+### Documentos Atualizados
+
+| Documento                             | Alteração                                                                                                                       |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `docs/seguranca/rbac.md`              | Adicionadas seções TechDados: classificação de dados, escopo territorial, auditoria, política de exportação, revisão de acessos |
+| `docs/operacao/variaveis-ambiente.md` | Atualizado para TechDados                                                                                                       |
+| `docs/operacao/setup-local.md`        | Atualizado para TechDados                                                                                                       |
+
+### Pendências (não bloqueantes)
+
+| Item                    | Prioridade | Descrição                              |
+| ----------------------- | ---------- | -------------------------------------- |
+| Markdown lint warnings  | P3         | Pré-existentes no template, cosméticos |
+| Integração API de Dados | P1         | Aguardando API disponível              |
+| Configuração Keycloak   | P2         | Criar realm `techdados` quando deploy  |
+
+### Conclusão
+
+**Status: ✅ APROVADO PARA DESENVOLVIMENTO**
+
+O repositório TechDados está pronto para iniciar desenvolvimento:
+
+- ✅ Rebranding completo aplicado
+- ✅ Setup local funcional (`pnpm install` + `pnpm dev`)
+- ✅ Lint e typecheck passando
+- ✅ Documentação canônica em `docs/INDEX.md`
+- ✅ Sem segredos no repositório
+- ✅ RBAC documentado com especificidades TechDados
+- ✅ Contrato de API placeholder criado
+
+---
+
+_Validação TechDados em 2024-12-17_
+
+---
+
+## Validação: Normalização da Documentação (2025-12-17)
+
+> **Operação:** Eliminação de duplicidade e consolidação de stubs  
+> **Status:** ✅ APROVADO
+
+### Comandos Executados
+
+| Comando          | Resultado |
+| ---------------- | --------- |
+| `pnpm lint`      | ✅ Passou |
+| `pnpm typecheck` | ✅ Passou |
+
+### Estrutura Normalizada
+
+| Categoria                           | Antes | Depois |
+| ----------------------------------- | ----- | ------ |
+| Arquivos long-form na raiz de docs/ | 4     | 0      |
+| Stubs na raiz de docs/              | 6     | 10     |
+| Arquivos canônicos em subpastas     | 16    | 20     |
+| Arquivos em \_archive/2025-12-17/   | 0     | 4      |
+
+### Mapeamento Stub → Canônico Final
+
+| Stub                      | Target Canônico                   |
+| ------------------------- | --------------------------------- |
+| `ARCHITECTURE.md`         | `arquitetura/*.md` + `adr_v2/`    |
+| `GETTING_STARTED.md`      | `operacao/setup-local.md`         |
+| `DEPLOY.md`               | `operacao/deploy.md`              |
+| `ROLES_E_ACESSO.md`       | `seguranca/rbac.md`               |
+| `PROPOSTA_ARQUITETURA.md` | `_archive/` (histórico)           |
+| `VALIDATION_CHECKLIST.md` | `00-auditoria/VALIDACAO_FINAL.md` |
+| `BOOK_OF_TESTS.md`        | `operacao/testes.md`              |
+| `DESIGN_SYSTEM.md`        | `produto/design-system.md`        |
+| `TROUBLESHOOTING.md`      | `operacao/troubleshooting.md`     |
+| `99-mapa-do-repo.md`      | `arquitetura/mapa-repo.md`        |
+
+### Git Status
+
+```
+Untracked (novos):
+  docs/_archive/2025-12-17/
+  docs/arquitetura/mapa-repo.md
+  docs/contratos-integracao/api-dados.md
+  docs/operacao/testes.md
+  docs/operacao/troubleshooting.md
+  docs/produto/
+  docs/seguranca/_refs/
+
+Modified (alterados):
+  docs/00-auditoria/LOG_DE_LIMPEZA.md
+  docs/00-auditoria/VALIDACAO_FINAL.md
+  docs/INDEX.md
+  docs/seguranca/rbac.md
+  + arquivos de rebranding anterior
+```
+
+### Checklist DoD
+
+- [x] Não existe conteúdo duplicado long-form em `docs/*.md` raiz
+- [x] Todos os `.md` na raiz de `docs/` são stubs curtos
+- [x] Arquivos substituídos estão em `docs/_archive/2025-12-17/`
+- [x] `docs/INDEX.md` funciona como portal canônico
+- [x] Auditoria e validação atualizadas
+- [x] `pnpm lint` passando
+- [x] `pnpm typecheck` passando
+
+### Pendências (não bloqueantes)
+
+| Item                      | Prioridade | Descrição                        |
+| ------------------------- | ---------- | -------------------------------- |
+| Markdown lint warnings    | P3         | Cosméticos (MD028, MD032, MD036) |
+| PDF Hierarquia de Acessos | P2         | Placeholder criado em `_refs/`   |
+
+### Conclusão
+
+**Status: ✅ APROVADO**
+
+A documentação está normalizada:
+
+- ✅ Portal canônico em `docs/INDEX.md`
+- ✅ Stubs na raiz apontam para canônicos
+- ✅ Sem duplicidade de conteúdo
+- ✅ Archive com rastreabilidade
+- ✅ Auditoria completa
+
+---
+
+_Validação Normalização em 2025-12-17_

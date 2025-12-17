@@ -9,9 +9,9 @@ import {
   FileDown,
   Mail,
 } from 'lucide-react'
-import { Button, StatusBadge } from '@template/design-system'
-import { EmptyState } from '@template/design-system'
-import { Alert } from '@template/design-system'
+import { Button, StatusBadge } from '@techdados/design-system'
+import { EmptyState } from '@techdados/design-system'
+import { Alert } from '@techdados/design-system'
 
 type RequestStatus = 'pending' | 'processing' | 'completed'
 

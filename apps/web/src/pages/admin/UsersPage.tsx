@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Users, Plus, Search, MoreVertical, Shield, Mail, Calendar } from 'lucide-react'
-import { Button } from '@template/design-system'
+import { Button } from '@techdados/design-system'
 
 interface User {
   id: string
@@ -12,10 +12,38 @@ interface User {
 }
 
 const mockUsers: User[] = [
-  { id: '1', name: 'Admin User', email: 'admin@template.com', roles: ['ADMIN'], status: 'active', lastLogin: '2025-12-08' },
-  { id: '2', name: 'Gestor Silva', email: 'gestor@template.com', roles: ['GESTOR'], status: 'active', lastLogin: '2025-12-07' },
-  { id: '3', name: 'Operador Santos', email: 'operador@template.com', roles: ['OPERADOR'], status: 'active', lastLogin: '2025-12-06' },
-  { id: '4', name: 'Viewer Costa', email: 'viewer@template.com', roles: ['VIEWER'], status: 'inactive', lastLogin: '2025-11-20' },
+  {
+    id: '1',
+    name: 'Admin User',
+    email: 'admin@template.com',
+    roles: ['ADMIN'],
+    status: 'active',
+    lastLogin: '2025-12-08',
+  },
+  {
+    id: '2',
+    name: 'Gestor Silva',
+    email: 'gestor@template.com',
+    roles: ['GESTOR'],
+    status: 'active',
+    lastLogin: '2025-12-07',
+  },
+  {
+    id: '3',
+    name: 'Operador Santos',
+    email: 'operador@template.com',
+    roles: ['OPERADOR'],
+    status: 'active',
+    lastLogin: '2025-12-06',
+  },
+  {
+    id: '4',
+    name: 'Viewer Costa',
+    email: 'viewer@template.com',
+    roles: ['VIEWER'],
+    status: 'inactive',
+    lastLogin: '2025-11-20',
+  },
 ]
 
 const roleColors: Record<string, string> = {
@@ -29,9 +57,10 @@ export function UsersPage() {
   const [searchTerm, setSearchTerm] = useState('')
   const [users] = useState<User[]>(mockUsers)
 
-  const filteredUsers = users.filter(user =>
-    user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    user.email.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredUsers = users.filter(
+    user =>
+      user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.email.toLowerCase().includes(searchTerm.toLowerCase())
   )
 
   return (
@@ -58,7 +87,7 @@ export function UsersPage() {
           type="text"
           placeholder="Buscar usuários..."
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={e => setSearchTerm(e.target.value)}
           className="form-input pl-10"
         />
       </div>
@@ -91,9 +120,7 @@ export function UsersPage() {
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-brand-primary/10 flex items-center justify-center">
-                      <span className="text-brand-primary font-medium">
-                        {user.name.charAt(0)}
-                      </span>
+                      <span className="text-brand-primary font-medium">{user.name.charAt(0)}</span>
                     </div>
                     <div>
                       <p className="font-medium text-text-primary">{user.name}</p>
@@ -118,11 +145,13 @@ export function UsersPage() {
                   </div>
                 </td>
                 <td className="px-6 py-4">
-                  <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                    user.status === 'active'
-                      ? 'bg-color-success/10 text-color-success'
-                      : 'bg-surface-muted text-text-muted'
-                  }`}>
+                  <span
+                    className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                      user.status === 'active'
+                        ? 'bg-color-success/10 text-color-success'
+                        : 'bg-surface-muted text-text-muted'
+                    }`}
+                  >
                     {user.status === 'active' ? 'Ativo' : 'Inativo'}
                   </span>
                 </td>
@@ -133,7 +162,7 @@ export function UsersPage() {
                   </div>
                 </td>
                 <td className="px-6 py-4 text-right">
-                  <button 
+                  <button
                     className="p-2 hover:bg-surface-muted rounded-lg transition-colors"
                     title="Mais opções"
                   >
@@ -150,9 +179,21 @@ export function UsersPage() {
       <div className="grid grid-cols-4 gap-4 mt-6">
         {[
           { label: 'Total', value: users.length, color: 'bg-surface-muted' },
-          { label: 'Ativos', value: users.filter(u => u.status === 'active').length, color: 'bg-color-success/10' },
-          { label: 'Admins', value: users.filter(u => u.roles.includes('ADMIN')).length, color: 'bg-color-error/10' },
-          { label: 'Gestores', value: users.filter(u => u.roles.includes('GESTOR')).length, color: 'bg-color-info/10' },
+          {
+            label: 'Ativos',
+            value: users.filter(u => u.status === 'active').length,
+            color: 'bg-color-success/10',
+          },
+          {
+            label: 'Admins',
+            value: users.filter(u => u.roles.includes('ADMIN')).length,
+            color: 'bg-color-error/10',
+          },
+          {
+            label: 'Gestores',
+            value: users.filter(u => u.roles.includes('GESTOR')).length,
+            color: 'bg-color-info/10',
+          },
         ].map(stat => (
           <div key={stat.label} className={`${stat.color} rounded-lg p-4`}>
             <p className="text-2xl font-bold text-text-primary">{stat.value}</p>

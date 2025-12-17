@@ -9,7 +9,7 @@ import {
   XCircle,
   Clock,
 } from 'lucide-react'
-import { Button, PageHeader } from '@template/design-system'
+import { Button, PageHeader } from '@techdados/design-system'
 import type { ImportLogEntry, ImportStatus } from './types'
 
 interface LogEntry {

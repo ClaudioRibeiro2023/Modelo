@@ -1,9 +1,9 @@
 import { NavLink, Link } from 'react-router-dom'
-import { useAuth } from '@template/shared'
-import { 
-  Home, 
-  User, 
-  Settings, 
+import { useAuth } from '@techdados/shared'
+import {
+  Home,
+  User,
+  Settings,
   LogOut,
   ChevronRight,
   LayoutGrid,
@@ -15,7 +15,7 @@ import {
   Activity,
   PanelLeftClose,
   PanelLeftOpen,
-  type LucideIcon
+  type LucideIcon,
 } from 'lucide-react'
 import clsx from 'clsx'
 import { useNavigationConfig } from '@/hooks/useNavigationConfig'
@@ -51,7 +51,7 @@ interface AppSidebarProps {
 
 export function AppSidebar({ collapsed = false, onToggle }: AppSidebarProps) {
   const { user, logout } = useAuth()
-  
+
   // Usar hook de configuração dinâmica
   const { authorizedModules } = useNavigationConfig()
 
@@ -66,7 +66,7 @@ export function AppSidebar({ collapsed = false, onToggle }: AppSidebarProps) {
     }))
 
   return (
-    <aside 
+    <aside
       className={clsx(
         'fixed left-0 top-0 h-screen flex flex-col sidebar-gradient transition-all duration-300 z-40',
         collapsed ? 'w-[var(--sidebar-collapsed-width,72px)]' : 'w-[var(--sidebar-width)]'
@@ -78,7 +78,9 @@ export function AppSidebar({ collapsed = false, onToggle }: AppSidebarProps) {
           <div className="w-8 h-8 min-w-[32px] rounded-lg bg-brand-primary flex items-center justify-center">
             <span className="text-white font-bold text-sm">T</span>
           </div>
-          {!collapsed && <span className="text-white font-semibold text-lg whitespace-nowrap">Template</span>}
+          {!collapsed && (
+            <span className="text-white font-semibold text-lg whitespace-nowrap">Template</span>
+          )}
         </div>
         {onToggle && (
           <button
@@ -94,17 +96,19 @@ export function AppSidebar({ collapsed = false, onToggle }: AppSidebarProps) {
       {/* Navigation */}
       <nav className="flex-1 py-4 px-2 overflow-y-auto">
         <ul className="space-y-1">
-          {navItems.map((item) => (
+          {navItems.map(item => (
             <li key={item.path}>
               <NavLink
                 to={item.path}
                 title={collapsed ? item.label : undefined}
-                className={({ isActive }) => clsx(
-                  'flex items-center gap-3 rounded-lg transition-all duration-200',
-                  'text-white/70 hover:text-white hover:bg-white/10',
-                  collapsed ? 'px-3 py-2.5 justify-center' : 'px-3 py-2.5',
-                  isActive && 'bg-brand-primary text-white shadow-lg'
-                )}
+                className={({ isActive }) =>
+                  clsx(
+                    'flex items-center gap-3 rounded-lg transition-all duration-200',
+                    'text-white/70 hover:text-white hover:bg-white/10',
+                    collapsed ? 'px-3 py-2.5 justify-center' : 'px-3 py-2.5',
+                    isActive && 'bg-brand-primary text-white shadow-lg'
+                  )
+                }
               >
                 <span className="min-w-[20px]">{item.icon}</span>
                 {!collapsed && (
@@ -155,7 +159,9 @@ export function AppSidebar({ collapsed = false, onToggle }: AppSidebarProps) {
       {!collapsed && (
         <div className="px-4 py-3 border-t border-white/10">
           <p className="text-white font-semibold">{APP_NAME}</p>
-          <p className="text-white/40 text-xs">v{APP_VERSION} · © {new Date().getFullYear()}</p>
+          <p className="text-white/40 text-xs">
+            v{APP_VERSION} · © {new Date().getFullYear()}
+          </p>
           <p className="text-white/40 text-xs">Todos os direitos reservados</p>
           <div className="flex items-center gap-2 mt-2">
             <Link

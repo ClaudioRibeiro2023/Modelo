@@ -1,4 +1,4 @@
-import { useAuth } from '@template/shared'
+import { useAuth } from '@techdados/shared'
 import { User, Mail, Shield } from 'lucide-react'
 
 export function ProfilePage() {
@@ -37,7 +37,9 @@ export function ProfilePage() {
               <Shield className="text-brand-primary" size={20} />
               <div>
                 <p className="text-sm text-text-secondary">Perfis</p>
-                <p className="font-medium text-text-primary">{user?.roles?.join(', ') || 'Nenhum'}</p>
+                <p className="font-medium text-text-primary">
+                  {user?.roles?.join(', ') || 'Nenhum'}
+                </p>
               </div>
             </div>
           </div>
@@ -46,8 +48,8 @@ export function ProfilePage() {
           <div>
             <h3 className="text-sm font-medium text-text-secondary mb-3">Permissões</h3>
             <div className="flex flex-wrap gap-2">
-              {user?.roles?.map((role) => (
-                <span 
+              {user?.roles?.map(role => (
+                <span
                   key={role}
                   className="px-3 py-1 bg-brand-primary/10 text-brand-primary rounded-full text-sm font-medium"
                 >

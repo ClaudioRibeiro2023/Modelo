@@ -1,5 +1,5 @@
 import type { ExampleItem } from '../types'
-import { StatusBadge } from '@template/design-system'
+import { StatusBadge } from '@techdados/design-system'
 
 interface ExampleCardProps {
   item: ExampleItem

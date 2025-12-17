@@ -33,8 +33,8 @@ corepack prepare pnpm@9.15.9 --activate
 ### 1. Clonar o Repositório
 
 ```bash
-git clone https://github.com/ClaudioRibeiro2023/Modelo.git template-platform
-cd template-platform
+git clone <repo-url> TechDados
+cd TechDados
 ```
 
 ### 2. Instalar Dependências (Frontend)
@@ -89,8 +89,8 @@ VITE_API_URL=http://localhost:8000/api
 
 # Keycloak
 VITE_KEYCLOAK_URL=http://localhost:8080
-VITE_KEYCLOAK_REALM=template
-VITE_KEYCLOAK_CLIENT_ID=template-web
+VITE_KEYCLOAK_REALM=techdados
+VITE_KEYCLOAK_CLIENT_ID=techdados-web
 
 # Desenvolvimento
 VITE_DEMO_MODE=true  # Bypass auth para dev rápido
@@ -161,7 +161,7 @@ VITE_DEMO_MODE=true pnpm dev
 
 Usuário mock:
 
-- **Email:** demo@template.com
+- **Email:** demo@techdados.local
 - **Roles:** ADMIN, GESTOR, OPERADOR, VIEWER
 
 ---
@@ -177,13 +177,13 @@ Usuário mock:
 ### Criar Realm (se necessário)
 
 1. Admin Console → Create Realm
-2. Name: `template`
+2. Name: `techdados`
 3. Enabled: ON
 
 ### Criar Client
 
 1. Clients → Create client
-2. **Client ID:** `template-web`
+2. **Client ID:** `techdados-web`
 3. **Client Protocol:** openid-connect
 4. **Root URL:** http://localhost:13000
 5. **Valid redirect URIs:**

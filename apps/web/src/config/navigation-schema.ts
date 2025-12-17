@@ -1,6 +1,6 @@
 /**
  * Navigation Configuration Schema
- * 
+ *
  * Define a estrutura de dados para configuração dinâmica de:
  * - Módulos (seções principais da aplicação)
  * - Funções (páginas/features dentro de módulos)
@@ -12,44 +12,89 @@
 // TIPOS BASE
 // ═══════════════════════════════════════════════════════════════
 
-/** Roles de usuário disponíveis no sistema (alinhado com @template/shared) */
+/** Roles de usuário disponíveis no sistema (alinhado com @techdados/shared) */
 export type UserRole = 'ADMIN' | 'GESTOR' | 'OPERADOR' | 'VIEWER'
 
 /** Categorias para agrupamento de funções */
-export type FunctionCategory = 
-  | 'ANALISE' 
-  | 'MAPEAMENTO' 
-  | 'INDICADORES' 
-  | 'CONTROLE' 
+export type FunctionCategory =
+  | 'ANALISE'
+  | 'MAPEAMENTO'
+  | 'INDICADORES'
+  | 'CONTROLE'
   | 'OPERACIONAL'
   | 'CONFIG'
   | 'OTHER'
 
 /** Tipos de filtro disponíveis */
-export type FilterType = 
-  | 'select'       // Dropdown único
-  | 'multiselect'  // Seleção múltipla
-  | 'search'       // Input de busca
-  | 'date'         // Seletor de data
-  | 'daterange'    // Intervalo de datas
-  | 'toggle'       // On/Off
-  | 'number'       // Input numérico
+export type FilterType =
+  | 'select' // Dropdown único
+  | 'multiselect' // Seleção múltipla
+  | 'search' // Input de busca
+  | 'date' // Seletor de data
+  | 'daterange' // Intervalo de datas
+  | 'toggle' // On/Off
+  | 'number' // Input numérico
 
 /** Ícones disponíveis (subset do Lucide) */
-export type IconName = 
-  | 'Home' | 'LayoutGrid' | 'BarChart3' | 'FileText' | 'Users'
-  | 'Settings' | 'Database' | 'Activity' | 'Shield' | 'Bell'
-  | 'Search' | 'Filter' | 'Calendar' | 'Clock' | 'Star'
-  | 'Folder' | 'File' | 'Upload' | 'Download' | 'Trash'
-  | 'Edit' | 'Plus' | 'Minus' | 'Check' | 'X'
-  | 'ChevronRight' | 'ChevronDown' | 'ChevronUp' | 'ChevronLeft'
-  | 'ArrowRight' | 'ArrowLeft' | 'ArrowUp' | 'ArrowDown'
-  | 'ExternalLink' | 'Link' | 'Copy' | 'Clipboard'
-  | 'Eye' | 'EyeOff' | 'Lock' | 'Unlock' | 'Key'
-  | 'User' | 'UserPlus' | 'UserMinus' | 'UserCheck'
-  | 'Mail' | 'Phone' | 'MapPin' | 'Globe'
-  | 'Server' | 'Cpu' | 'HardDrive' | 'Wifi'
-  | 'AlertTriangle' | 'AlertCircle' | 'Info' | 'HelpCircle'
+export type IconName =
+  | 'Home'
+  | 'LayoutGrid'
+  | 'BarChart3'
+  | 'FileText'
+  | 'Users'
+  | 'Settings'
+  | 'Database'
+  | 'Activity'
+  | 'Shield'
+  | 'Bell'
+  | 'Search'
+  | 'Filter'
+  | 'Calendar'
+  | 'Clock'
+  | 'Star'
+  | 'Folder'
+  | 'File'
+  | 'Upload'
+  | 'Download'
+  | 'Trash'
+  | 'Edit'
+  | 'Plus'
+  | 'Minus'
+  | 'Check'
+  | 'X'
+  | 'ChevronRight'
+  | 'ChevronDown'
+  | 'ChevronUp'
+  | 'ChevronLeft'
+  | 'ArrowRight'
+  | 'ArrowLeft'
+  | 'ArrowUp'
+  | 'ArrowDown'
+  | 'ExternalLink'
+  | 'Link'
+  | 'Copy'
+  | 'Clipboard'
+  | 'Eye'
+  | 'EyeOff'
+  | 'Lock'
+  | 'Unlock'
+  | 'Key'
+  | 'User'
+  | 'UserPlus'
+  | 'UserMinus'
+  | 'UserCheck'
+  | 'Mail'
+  | 'Phone'
+  | 'MapPin'
+  | 'Globe'
+  | 'Server'
+  | 'Cpu'
+  | 'HardDrive'
+  | 'Wifi'
+  | 'AlertTriangle'
+  | 'AlertCircle'
+  | 'Info'
+  | 'HelpCircle'
   | string // Permite qualquer string para flexibilidade
 
 // ═══════════════════════════════════════════════════════════════
@@ -60,40 +105,40 @@ export type IconName =
 export interface FunctionConfig {
   /** ID único da função */
   id: string
-  
+
   /** ID do módulo pai */
   moduleId: string
-  
+
   /** Nome de exibição */
   name: string
-  
+
   /** Subtítulo/descrição curta */
   subtitle?: string
-  
+
   /** Caminho da rota (relativo ao módulo ou absoluto) */
   path: string
-  
+
   /** Ícone (nome do Lucide icon) */
   icon?: IconName
-  
+
   /** Categoria para agrupamento */
   category: FunctionCategory
-  
+
   /** Se a função está habilitada */
   enabled: boolean
-  
+
   /** Ordem de exibição dentro da categoria */
   order: number
-  
+
   /** Roles que podem acessar esta função */
   roles: UserRole[]
-  
+
   /** Tags para busca e filtros */
   tags: string[]
-  
+
   /** IDs dos filtros aplicáveis a esta função */
   filterIds?: string[]
-  
+
   /** Metadados customizados */
   metadata?: Record<string, unknown>
 }
@@ -106,43 +151,43 @@ export interface FunctionConfig {
 export interface ModuleConfig {
   /** ID único do módulo */
   id: string
-  
+
   /** Nome de exibição */
   name: string
-  
+
   /** Descrição do módulo */
   description?: string
-  
+
   /** Ícone (nome do Lucide icon) */
   icon: IconName
-  
+
   /** Caminho base da rota */
   path: string
-  
+
   /** Se o módulo está habilitado */
   enabled: boolean
-  
+
   /** Ordem de exibição na sidebar */
   order: number
-  
+
   /** Roles que podem ver este módulo */
   roles: UserRole[]
-  
+
   /** Funções deste módulo */
   functions: FunctionConfig[]
-  
+
   /** Se deve mostrar na sidebar */
   showInSidebar: boolean
-  
+
   /** Se deve mostrar no painel de funções */
   showInFunctionsPanel: boolean
-  
+
   /** Grupo para agrupamento na sidebar (ex: 'Principal', 'Módulos', 'Administração') */
   group?: string
-  
+
   /** Cor do módulo (para personalização visual) */
   color?: string
-  
+
   /** Metadados customizados */
   metadata?: Record<string, unknown>
 }
@@ -163,38 +208,38 @@ export interface FilterOption {
 export interface FilterConfig {
   /** ID único do filtro */
   id: string
-  
+
   /** Nome de exibição */
   name: string
-  
+
   /** Tipo do filtro */
   type: FilterType
-  
+
   /** Placeholder do input */
   placeholder?: string
-  
+
   /** Opções (para select/multiselect) */
   options?: FilterOption[]
-  
+
   /** Valor padrão */
   defaultValue?: unknown
-  
+
   /** Se é obrigatório */
   required?: boolean
-  
+
   /** Ordem de exibição */
   order: number
-  
+
   /** IDs de módulos/funções onde este filtro aparece */
   appliesTo: {
     modules?: string[]
     functions?: string[]
     global?: boolean // Aparece em todos
   }
-  
+
   /** Se o filtro está habilitado */
   enabled: boolean
-  
+
   /** Validações */
   validation?: {
     min?: number
@@ -212,19 +257,19 @@ export interface FilterConfig {
 export interface CategoryConfig {
   /** ID da categoria */
   id: FunctionCategory
-  
+
   /** Nome de exibição */
   label: string
-  
+
   /** Ordem de exibição */
   order: number
-  
+
   /** Se está expandida por padrão */
   defaultExpanded: boolean
-  
+
   /** Ícone opcional */
   icon?: IconName
-  
+
   /** Cor opcional */
   color?: string
 }
@@ -237,43 +282,43 @@ export interface CategoryConfig {
 export interface NavigationConfig {
   /** Versão do schema */
   version: string
-  
+
   /** Nome da aplicação */
   appName: string
-  
+
   /** Versão da aplicação */
   appVersion: string
-  
+
   /** Logo URL (opcional) */
   logoUrl?: string
-  
+
   /** Módulos configurados */
   modules: ModuleConfig[]
-  
+
   /** Filtros globais */
   filters: FilterConfig[]
-  
+
   /** Configuração das categorias */
   categories: CategoryConfig[]
-  
+
   /** Configurações globais */
   settings: {
     /** Mostrar favoritos */
     enableFavorites: boolean
-    
+
     /** Mostrar busca global */
     enableGlobalSearch: boolean
-    
+
     /** Mostrar atalhos de teclado */
     enableKeyboardShortcuts: boolean
-    
+
     /** Tema padrão */
     defaultTheme: 'light' | 'dark' | 'system'
-    
+
     /** Idioma padrão */
     defaultLanguage: string
   }
-  
+
   /** Timestamp da última atualização */
   updatedAt: string
 }
@@ -283,7 +328,9 @@ export interface NavigationConfig {
 // ═══════════════════════════════════════════════════════════════
 
 /** Cria um módulo com valores padrão */
-export function createModuleConfig(partial: Partial<ModuleConfig> & Pick<ModuleConfig, 'id' | 'name' | 'path' | 'icon'>): ModuleConfig {
+export function createModuleConfig(
+  partial: Partial<ModuleConfig> & Pick<ModuleConfig, 'id' | 'name' | 'path' | 'icon'>
+): ModuleConfig {
   return {
     enabled: true,
     order: 0,
@@ -296,7 +343,9 @@ export function createModuleConfig(partial: Partial<ModuleConfig> & Pick<ModuleC
 }
 
 /** Cria uma função com valores padrão */
-export function createFunctionConfig(partial: Partial<FunctionConfig> & Pick<FunctionConfig, 'id' | 'moduleId' | 'name' | 'path'>): FunctionConfig {
+export function createFunctionConfig(
+  partial: Partial<FunctionConfig> & Pick<FunctionConfig, 'id' | 'moduleId' | 'name' | 'path'>
+): FunctionConfig {
   return {
     category: 'OTHER',
     enabled: true,
@@ -308,7 +357,9 @@ export function createFunctionConfig(partial: Partial<FunctionConfig> & Pick<Fun
 }
 
 /** Cria um filtro com valores padrão */
-export function createFilterConfig(partial: Partial<FilterConfig> & Pick<FilterConfig, 'id' | 'name' | 'type'>): FilterConfig {
+export function createFilterConfig(
+  partial: Partial<FilterConfig> & Pick<FilterConfig, 'id' | 'name' | 'type'>
+): FilterConfig {
   return {
     order: 0,
     enabled: true,
@@ -318,9 +369,12 @@ export function createFilterConfig(partial: Partial<FilterConfig> & Pick<FilterC
 }
 
 /** Valida uma configuração de navegação */
-export function validateNavigationConfig(config: NavigationConfig): { valid: boolean; errors: string[] } {
+export function validateNavigationConfig(config: NavigationConfig): {
+  valid: boolean
+  errors: string[]
+} {
   const errors: string[] = []
-  
+
   // Validar módulos
   const moduleIds = new Set<string>()
   for (const module of config.modules) {
@@ -328,11 +382,11 @@ export function validateNavigationConfig(config: NavigationConfig): { valid: boo
       errors.push(`Módulo duplicado: ${module.id}`)
     }
     moduleIds.add(module.id)
-    
+
     if (!module.path.startsWith('/')) {
       errors.push(`Path do módulo ${module.id} deve começar com /`)
     }
-    
+
     // Validar funções
     const functionIds = new Set<string>()
     for (const func of module.functions) {
@@ -342,7 +396,7 @@ export function validateNavigationConfig(config: NavigationConfig): { valid: boo
       functionIds.add(func.id)
     }
   }
-  
+
   // Validar filtros
   const filterIds = new Set<string>()
   for (const filter of config.filters) {
@@ -351,7 +405,7 @@ export function validateNavigationConfig(config: NavigationConfig): { valid: boo
     }
     filterIds.add(filter.id)
   }
-  
+
   return { valid: errors.length === 0, errors }
 }
 

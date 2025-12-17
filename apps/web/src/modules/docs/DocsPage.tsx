@@ -10,7 +10,7 @@ import {
   ExternalLink,
   Search,
 } from 'lucide-react'
-import { PageHeader } from '@template/design-system'
+import { PageHeader } from '@techdados/design-system'
 
 const SECTIONS = [
   {

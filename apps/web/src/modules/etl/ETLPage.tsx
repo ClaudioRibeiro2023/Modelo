@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { Database, Upload, Plus, RefreshCw } from 'lucide-react'
-import { Button, PageHeader } from '@template/design-system'
+import { Button, PageHeader } from '@techdados/design-system'
 import { ImportCard, ETLFilters, JobProgress, DataSourceCard } from './components'
 import type { ETLFilter, DataSource, ImportJob, DataSourceType } from './types'
 

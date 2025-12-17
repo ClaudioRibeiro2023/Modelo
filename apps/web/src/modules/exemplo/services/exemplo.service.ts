@@ -1,4 +1,4 @@
-import { apiClient } from '@template/shared'
+import { apiClient } from '@techdados/shared'
 import type { ExampleItem, ExampleFormData } from '../types'
 
 const BASE_PATH = '/exemplo'

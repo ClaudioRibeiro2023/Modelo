@@ -1,6 +1,8 @@
 # RBAC - Role-Based Access Control
 
-> Sistema de controle de acesso baseado em roles do Template Platform.
+> Sistema de controle de acesso baseado em roles do **TechDados** (dashboard/analytics do Techdengue).
+>
+> **Referência:** [Hierarquia de Acessos Techdengue](./_refs/README.md) (documento normativo externo)
 
 **Fonte:** `packages/shared/src/auth/types.ts`, `docs/ROLES_E_ACESSO.md`
 
@@ -8,7 +10,7 @@
 
 ## Visão Geral
 
-O Template Platform implementa RBAC (Role-Based Access Control) com integração ao Keycloak. As roles são definidas no Keycloak e propagadas via JWT.
+O TechDados implementa RBAC (Role-Based Access Control) com integração ao Keycloak. As roles são definidas no Keycloak e propagadas via JWT.
 
 ### Roles Disponíveis
 
@@ -312,8 +314,66 @@ async def log_action(
 
 ---
 
+## Classificação de Dados (TechDados)
+
+| Nível          | Descrição                     | Exemplos                                   | Acesso Mínimo             |
+| -------------- | ----------------------------- | ------------------------------------------ | ------------------------- |
+| **PUBLIC**     | Dados agregados, anonimizados | Estatísticas gerais, dashboards públicos   | VIEWER                    |
+| **RESTRICTED** | Dados operacionais            | Relatórios por região, métricas detalhadas | OPERADOR                  |
+| **SENSITIVE**  | Dados identificáveis          | Registros individuais, dados de saúde      | GESTOR+ com justificativa |
+
+---
+
+## Escopo Territorial
+
+O TechDados herda a hierarquia territorial do Techdengue:
+
+- **Nacional** → acesso a todos os estados
+- **Estadual** → acesso ao estado e seus municípios
+- **Municipal** → acesso apenas ao município
+
+O escopo é definido no Keycloak via atributos customizados (`territory_scope`, `territory_id`).
+
+---
+
+## Auditoria (Audit Logs)
+
+Todas as ações são registradas:
+
+- **Quem:** user ID, roles, IP
+- **O quê:** ação, recurso, parâmetros
+- **Quando:** timestamp UTC
+- **Resultado:** sucesso/falha
+
+Logs são retidos por **2 anos** conforme política de compliance.
+
+---
+
+## Política de Exportação
+
+| Tipo de Dado | Permissão | Formato             | Limite                       |
+| ------------ | --------- | ------------------- | ---------------------------- |
+| Agregado     | OPERADOR+ | CSV, Excel, PDF     | 10k registros/export         |
+| Detalhado    | GESTOR+   | CSV, Excel          | 1k registros/export          |
+| Sensível     | ADMIN     | CSV (criptografado) | 100 registros, com aprovação |
+
+---
+
+## Revisão de Acessos
+
+- **Frequência:** Semestral
+- **Responsável:** ADMIN + Gestor de Segurança
+- **Checklist:**
+  - [ ] Usuários inativos (>90 dias) desativados
+  - [ ] Roles compatíveis com função atual
+  - [ ] Escopos territoriais corretos
+  - [ ] Logs de acesso revisados
+
+---
+
 **Arquivos relacionados:**
 
 - `packages/shared/src/auth/types.ts`
 - `packages/shared/src/auth/AuthContext.tsx`
 - `docs/ROLES_E_ACESSO.md`
+- `docs/contratos-integracao/api-dados.md` (contrato da API de Dados)

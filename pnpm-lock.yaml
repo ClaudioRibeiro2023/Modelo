@@ -50,13 +50,13 @@ importers:
       '@tanstack/react-query':
         specifier: ^5.12.2
         version: 5.90.12(react@18.3.1)
-      '@template/design-system':
+      '@techdados/design-system':
         specifier: workspace:*
         version: link:../../packages/design-system
-      '@template/shared':
+      '@techdados/shared':
         specifier: workspace:*
         version: link:../../packages/shared
-      '@template/types':
+      '@techdados/types':
         specifier: workspace:*
         version: link:../../packages/types
       axios:

@@ -1,6 +1,6 @@
 /**
  * useNavigationConfig Hook
- * 
+ *
  * Hook para carregar e gerenciar a configuração de navegação.
  * Preparado para:
  * - Configuração local (fallback)
@@ -10,13 +10,13 @@
  */
 
 import { useState, useEffect, useCallback, useMemo } from 'react'
-import { useAuth, type UserRole } from '@template/shared'
-import type { 
-  NavigationConfig, 
-  ModuleConfig, 
-  FunctionConfig, 
+import { useAuth, type UserRole } from '@techdados/shared'
+import type {
+  NavigationConfig,
+  ModuleConfig,
+  FunctionConfig,
   FilterConfig,
-  CategoryConfig
+  CategoryConfig,
 } from '@/config/navigation-schema'
 import { DEFAULT_NAVIGATION_CONFIG } from '@/config/navigation-default'
 
@@ -27,34 +27,34 @@ import { DEFAULT_NAVIGATION_CONFIG } from '@/config/navigation-default'
 interface UseNavigationConfigReturn {
   /** Configuração completa */
   config: NavigationConfig
-  
+
   /** Módulos filtrados por permissão */
   authorizedModules: ModuleConfig[]
-  
+
   /** Filtros ativos */
   filters: FilterConfig[]
-  
+
   /** Categorias ordenadas */
   categories: CategoryConfig[]
-  
+
   /** Se está carregando */
   isLoading: boolean
-  
+
   /** Erro ao carregar */
   error: Error | null
-  
+
   /** Recarregar configuração */
   refresh: () => Promise<void>
-  
+
   /** Obter módulo por ID */
   getModule: (id: string) => ModuleConfig | undefined
-  
+
   /** Obter módulo por path */
   getModuleByPath: (path: string) => ModuleConfig | undefined
-  
+
   /** Obter funções autorizadas de um módulo */
   getModuleFunctions: (moduleId: string) => FunctionConfig[]
-  
+
   /** Obter filtros aplicáveis a um módulo/função */
   getApplicableFilters: (moduleId?: string, functionId?: string) => FilterConfig[]
 }
@@ -79,11 +79,11 @@ export function useNavigationConfig(): UseNavigationConfigReturn {
   // ─────────────────────────────────────────────────────────────
   // Carregar configuração
   // ─────────────────────────────────────────────────────────────
-  
+
   const loadConfig = useCallback(async () => {
     setIsLoading(true)
     setError(null)
-    
+
     try {
       // Tentar carregar do cache primeiro
       const cached = localStorage.getItem(CACHE_KEY)
@@ -95,7 +95,7 @@ export function useNavigationConfig(): UseNavigationConfigReturn {
           return
         }
       }
-      
+
       // TODO: Quando API estiver pronta, descomentar:
       // const response = await fetch('/api/config/navigation')
       // if (response.ok) {
@@ -104,10 +104,9 @@ export function useNavigationConfig(): UseNavigationConfigReturn {
       //   localStorage.setItem(CACHE_KEY, JSON.stringify({ data, timestamp: Date.now() }))
       //   return
       // }
-      
+
       // Fallback para config local
       setConfig(DEFAULT_NAVIGATION_CONFIG)
-      
     } catch (err) {
       console.error('[useNavigationConfig] Erro ao carregar:', err)
       setError(err instanceof Error ? err : new Error('Erro ao carregar configuração'))
@@ -126,7 +125,7 @@ export function useNavigationConfig(): UseNavigationConfigReturn {
   // ─────────────────────────────────────────────────────────────
   // Filtrar módulos por permissão
   // ─────────────────────────────────────────────────────────────
-  
+
   const authorizedModules = useMemo(() => {
     return config.modules
       .filter(module => {
@@ -140,17 +139,15 @@ export function useNavigationConfig(): UseNavigationConfigReturn {
   // ─────────────────────────────────────────────────────────────
   // Filtros ativos
   // ─────────────────────────────────────────────────────────────
-  
+
   const filters = useMemo(() => {
-    return config.filters
-      .filter(f => f.enabled)
-      .sort((a, b) => a.order - b.order)
+    return config.filters.filter(f => f.enabled).sort((a, b) => a.order - b.order)
   }, [config.filters])
 
   // ─────────────────────────────────────────────────────────────
   // Categorias ordenadas
   // ─────────────────────────────────────────────────────────────
-  
+
   const categories = useMemo(() => {
     return [...config.categories].sort((a, b) => a.order - b.order)
   }, [config.categories])
@@ -158,50 +155,60 @@ export function useNavigationConfig(): UseNavigationConfigReturn {
   // ─────────────────────────────────────────────────────────────
   // Helpers
   // ─────────────────────────────────────────────────────────────
-  
-  const getModule = useCallback((id: string) => {
-    return config.modules.find(m => m.id === id)
-  }, [config.modules])
 
-  const getModuleByPath = useCallback((path: string) => {
-    // Match exato ou início do path
-    return config.modules.find(m => 
-      path === m.path || path.startsWith(m.path + '/')
-    )
-  }, [config.modules])
+  const getModule = useCallback(
+    (id: string) => {
+      return config.modules.find(m => m.id === id)
+    },
+    [config.modules]
+  )
 
-  const getModuleFunctions = useCallback((moduleId: string): FunctionConfig[] => {
-    const module = config.modules.find(m => m.id === moduleId)
-    if (!module) return []
-    
-    return module.functions
-      .filter(func => {
-        if (!func.enabled) return false
-        if (func.roles.length === 0) return true
-        return hasAnyRole(func.roles as UserRole[])
+  const getModuleByPath = useCallback(
+    (path: string) => {
+      // Match exato ou início do path
+      return config.modules.find(m => path === m.path || path.startsWith(m.path + '/'))
+    },
+    [config.modules]
+  )
+
+  const getModuleFunctions = useCallback(
+    (moduleId: string): FunctionConfig[] => {
+      const module = config.modules.find(m => m.id === moduleId)
+      if (!module) return []
+
+      return module.functions
+        .filter(func => {
+          if (!func.enabled) return false
+          if (func.roles.length === 0) return true
+          return hasAnyRole(func.roles as UserRole[])
+        })
+        .sort((a, b) => a.order - b.order)
+    },
+    [config.modules, hasAnyRole]
+  )
+
+  const getApplicableFilters = useCallback(
+    (moduleId?: string, functionId?: string): FilterConfig[] => {
+      return filters.filter(filter => {
+        // Filtros globais
+        if (filter.appliesTo.global) return true
+
+        // Filtros de módulo
+        if (moduleId && filter.appliesTo.modules?.includes(moduleId)) return true
+
+        // Filtros de função
+        if (functionId && filter.appliesTo.functions?.includes(functionId)) return true
+
+        return false
       })
-      .sort((a, b) => a.order - b.order)
-  }, [config.modules, hasAnyRole])
-
-  const getApplicableFilters = useCallback((moduleId?: string, functionId?: string): FilterConfig[] => {
-    return filters.filter(filter => {
-      // Filtros globais
-      if (filter.appliesTo.global) return true
-      
-      // Filtros de módulo
-      if (moduleId && filter.appliesTo.modules?.includes(moduleId)) return true
-      
-      // Filtros de função
-      if (functionId && filter.appliesTo.functions?.includes(functionId)) return true
-      
-      return false
-    })
-  }, [filters])
+    },
+    [filters]
+  )
 
   // ─────────────────────────────────────────────────────────────
   // Return
   // ─────────────────────────────────────────────────────────────
-  
+
   return {
     config,
     authorizedModules,

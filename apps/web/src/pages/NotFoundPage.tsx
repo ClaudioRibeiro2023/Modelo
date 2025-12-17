@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Home, ArrowLeft } from 'lucide-react'
-import { Button } from '@template/design-system'
+import { Button } from '@techdados/design-system'
 
 export function NotFoundPage() {
   return (
@@ -12,7 +12,11 @@ export function NotFoundPage() {
           A página que você procura não existe ou foi movida.
         </p>
         <div className="flex items-center justify-center gap-4">
-          <Button variant="outline" leftIcon={<ArrowLeft size={18} />} onClick={() => window.history.back()}>
+          <Button
+            variant="outline"
+            leftIcon={<ArrowLeft size={18} />}
+            onClick={() => window.history.back()}
+          >
             Voltar
           </Button>
           <Link to="/">

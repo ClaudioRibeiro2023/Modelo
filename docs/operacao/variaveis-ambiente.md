@@ -1,6 +1,6 @@
 # Variáveis de Ambiente
 
-> Referência completa de todas as variáveis de ambiente do Template Platform.
+> Referência completa de todas as variáveis de ambiente do **TechDados**.
 
 **Fonte:** `infra/.env.example`, `infra/.env.production.example`
 
@@ -14,8 +14,8 @@ Prefixo obrigatório: `VITE_`
 | ------------------------- | ------- | --------------------------- | ---------------------------- |
 | `VITE_API_URL`            | string  | `http://localhost:8000/api` | URL base da API              |
 | `VITE_KEYCLOAK_URL`       | string  | `http://localhost:8080`     | URL do Keycloak              |
-| `VITE_KEYCLOAK_REALM`     | string  | `template`                  | Realm do Keycloak            |
-| `VITE_KEYCLOAK_CLIENT_ID` | string  | `template-web`              | Client ID OIDC               |
+| `VITE_KEYCLOAK_REALM`     | string  | `techdados`                 | Realm do Keycloak            |
+| `VITE_KEYCLOAK_CLIENT_ID` | string  | `techdados-web`             | Client ID OIDC               |
 | `VITE_APP_URL`            | string  | `window.location.origin`    | URL da aplicação             |
 | `VITE_DEMO_MODE`          | boolean | `false`                     | Ativa bypass de autenticação |
 
@@ -85,12 +85,12 @@ RATE_LIMIT_DEFAULT=100/minute
 
 ### PostgreSQL
 
-| Variável            | Default           | Descrição        |
-| ------------------- | ----------------- | ---------------- |
-| `POSTGRES_USER`     | `template`        | Usuário do banco |
-| `POSTGRES_PASSWORD` | `template_secret` | Senha do banco   |
-| `POSTGRES_DB`       | `template_db`     | Nome do database |
-| `POSTGRES_PORT`     | `5432`            | Porta exposta    |
+| Variável            | Default            | Descrição        |
+| ------------------- | ------------------ | ---------------- |
+| `POSTGRES_USER`     | `techdados`        | Usuário do banco |
+| `POSTGRES_PASSWORD` | `techdados_secret` | Senha do banco   |
+| `POSTGRES_DB`       | `techdados_db`     | Nome do database |
+| `POSTGRES_PORT`     | `5432`             | Porta exposta    |
 
 ### Redis
 

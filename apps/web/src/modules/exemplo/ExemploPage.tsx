@@ -1,8 +1,8 @@
 import { Info, Code, Folder, FileText, Plus } from 'lucide-react'
 import { ExampleCard } from './components'
 import { useExampleData } from './hooks'
-import { Button } from '@template/design-system'
-import { PageHeader } from '@template/design-system'
+import { Button } from '@techdados/design-system'
+import { PageHeader } from '@techdados/design-system'
 
 export function ExemploPage() {
   const { items, isLoading } = useExampleData()

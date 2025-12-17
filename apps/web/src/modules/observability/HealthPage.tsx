@@ -10,7 +10,7 @@ import {
   Server,
   Wifi,
 } from 'lucide-react'
-import { Button, PageHeader } from '@template/design-system'
+import { Button, PageHeader } from '@techdados/design-system'
 
 type HealthStatus = 'healthy' | 'degraded' | 'unhealthy'
 

@@ -1,6 +1,6 @@
 import { AlertTriangle, RefreshCw, Home, ArrowLeft } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-import { Button } from '@template/design-system'
+import { Button } from '@techdados/design-system'
 
 interface ErrorPageProps {
   /** Error code (e.g., 404, 500) */

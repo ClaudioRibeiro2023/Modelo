@@ -128,3 +128,107 @@ docs/
 ---
 
 _Gerado em 2024-12-16 por auditoria automatizada_
+
+---
+
+## Operação: Rebranding Template → TechDados
+
+> **Data:** 2024-12-17  
+> **Operação:** Transformação do template "modelo" para produto TechDados
+
+### Arquivos Modificados (Rebranding)
+
+| Arquivo                               | Alteração                                              |
+| ------------------------------------- | ------------------------------------------------------ |
+| `README.md`                           | Título e descrição → TechDados                         |
+| `docs/INDEX.md`                       | Portal canônico → TechDados                            |
+| `package.json` (root)                 | `@template/platform` → `@techdados/platform`           |
+| `apps/web/package.json`               | `@template/web` → `@techdados/web`                     |
+| `packages/design-system/package.json` | `@template/design-system` → `@techdados/design-system` |
+| `packages/shared/package.json`        | `@template/shared` → `@techdados/shared`               |
+| `packages/types/package.json`         | `@template/types` → `@techdados/types`                 |
+| `infra/.env.example`                  | Nomes de projeto → techdados                           |
+| `infra/.env.production.example`       | Imagens Docker → techdados                             |
+| `apps/web/.env.example`               | Realm/client → techdados                               |
+| `docs/operacao/setup-local.md`        | URLs e referências → TechDados                         |
+| `docs/TROUBLESHOOTING.md`             | Links GitHub atualizados                               |
+
+### Referências Mantidas (Histórico)
+
+| Local                        | Motivo                                                                   |
+| ---------------------------- | ------------------------------------------------------------------------ |
+| `docs/seguranca/rbac.md:216` | "Modelo Atual (Flat)" refere-se ao modelo de hierarquia, não ao template |
+| `docs/_archive/`             | Referências históricas preservadas                                       |
+
+### Novos Arquivos Criados
+
+| Arquivo                                  | Descrição                               |
+| ---------------------------------------- | --------------------------------------- |
+| `docs/seguranca/RBAC.md`                 | Baseline RBAC do TechDados (atualizado) |
+| `docs/contratos-integracao/api-dados.md` | Placeholder do contrato da API de Dados |
+| `docs/operacao/variaveis-ambiente.md`    | Referência de variáveis de ambiente     |
+| `docs/00-auditoria/VALIDACAO_FINAL.md`   | Resultado da validação final            |
+
+_Atualizado em 2024-12-17 - Fundação TechDados_
+
+---
+
+## Normalização da Documentação (2025-12-17)
+
+**Operação:** Eliminação de duplicidade e consolidação de stubs  
+**Motivo:** Garantir que `docs/INDEX.md` seja o portal canônico e que arquivos na raiz de `docs/` sejam apenas stubs
+
+### Arquivos Movidos para Archive
+
+| Arquivo Original          | Destino Archive                               | Motivo                 |
+| ------------------------- | --------------------------------------------- | ---------------------- |
+| `docs/BOOK_OF_TESTS.md`   | `docs/_archive/2025-12-17/BOOK_OF_TESTS.md`   | Long-form (268 linhas) |
+| `docs/DESIGN_SYSTEM.md`   | `docs/_archive/2025-12-17/DESIGN_SYSTEM.md`   | Long-form (706 linhas) |
+| `docs/TROUBLESHOOTING.md` | `docs/_archive/2025-12-17/TROUBLESHOOTING.md` | Long-form (329 linhas) |
+| `docs/99-mapa-do-repo.md` | `docs/_archive/2025-12-17/99-mapa-do-repo.md` | Long-form (326 linhas) |
+
+### Arquivos Movidos para Locais Canônicos
+
+| Conteúdo Original    | Novo Local Canônico                |
+| -------------------- | ---------------------------------- |
+| `BOOK_OF_TESTS.md`   | `docs/operacao/testes.md`          |
+| `DESIGN_SYSTEM.md`   | `docs/produto/design-system.md`    |
+| `TROUBLESHOOTING.md` | `docs/operacao/troubleshooting.md` |
+| `99-mapa-do-repo.md` | `docs/arquitetura/mapa-repo.md`    |
+
+### Stubs Criados/Atualizados
+
+| Stub                      | Aponta Para                        |
+| ------------------------- | ---------------------------------- |
+| `docs/BOOK_OF_TESTS.md`   | `docs/operacao/testes.md`          |
+| `docs/DESIGN_SYSTEM.md`   | `docs/produto/design-system.md`    |
+| `docs/TROUBLESHOOTING.md` | `docs/operacao/troubleshooting.md` |
+| `docs/99-mapa-do-repo.md` | `docs/arquitetura/mapa-repo.md`    |
+
+### Stubs Já Existentes (Mantidos)
+
+| Stub                           | Target Canônico                        |
+| ------------------------------ | -------------------------------------- |
+| `docs/ARCHITECTURE.md`         | `docs/arquitetura/` + `docs/adr_v2/`   |
+| `docs/GETTING_STARTED.md`      | `docs/operacao/setup-local.md`         |
+| `docs/DEPLOY.md`               | `docs/operacao/deploy.md`              |
+| `docs/ROLES_E_ACESSO.md`       | `docs/seguranca/rbac.md`               |
+| `docs/PROPOSTA_ARQUITETURA.md` | `docs/_archive/` (histórico)           |
+| `docs/VALIDATION_CHECKLIST.md` | `docs/00-auditoria/VALIDACAO_FINAL.md` |
+
+### Novos Arquivos/Pastas Criados
+
+| Arquivo/Pasta                    | Descrição                                     |
+| -------------------------------- | --------------------------------------------- |
+| `docs/seguranca/_refs/`          | Pasta para referências normativas externas    |
+| `docs/seguranca/_refs/README.md` | Placeholder para PDF de Hierarquia de Acessos |
+| `docs/_archive/2025-12-17/`      | Pasta de archive para esta operação           |
+
+### Atualizações em Arquivos Canônicos
+
+| Arquivo                  | Alteração                                                                    |
+| ------------------------ | ---------------------------------------------------------------------------- |
+| `docs/INDEX.md`          | Corrigido conteúdo corrompido; atualizado link para troubleshooting canônico |
+| `docs/seguranca/rbac.md` | Adicionado link para `_refs/README.md`                                       |
+
+_Atualizado em 2025-12-17 - Normalização da Documentação TechDados_

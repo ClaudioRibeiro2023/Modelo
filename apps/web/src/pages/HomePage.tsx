@@ -1,13 +1,28 @@
-import { useAuth } from '@template/shared'
-import { Card } from '@template/design-system'
+import { useAuth } from '@techdados/shared'
+import { Card } from '@techdados/design-system'
 import { ArrowRight, Database, Activity, FileText, Shield } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 
 const quickLinks = [
-  { title: 'ETL & Dados', description: 'Importar, tratar e catalogar dados', icon: Database, path: '/admin/etl' },
-  { title: 'Observabilidade', description: 'Métricas, logs e saúde do sistema', icon: Activity, path: '/admin/observability' },
+  {
+    title: 'ETL & Dados',
+    description: 'Importar, tratar e catalogar dados',
+    icon: Database,
+    path: '/admin/etl',
+  },
+  {
+    title: 'Observabilidade',
+    description: 'Métricas, logs e saúde do sistema',
+    icon: Activity,
+    path: '/admin/observability',
+  },
   { title: 'Documentação', description: 'Guias, API e changelog', icon: FileText, path: '/docs' },
-  { title: 'LGPD & Privacidade', description: 'Política, consentimento e meus dados', icon: Shield, path: '/lgpd' },
+  {
+    title: 'LGPD & Privacidade',
+    description: 'Política, consentimento e meus dados',
+    icon: Shield,
+    path: '/lgpd',
+  },
 ]
 
 export function HomePage() {
@@ -29,11 +44,11 @@ export function HomePage() {
       {/* Quick Links */}
       <h2 className="text-xl font-semibold text-text-primary mb-4">Acesso Rápido</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        {quickLinks.map((item) => (
-          <Card 
-            key={item.path} 
-            variant="outlined" 
-            interactive 
+        {quickLinks.map(item => (
+          <Card
+            key={item.path}
+            variant="outlined"
+            interactive
             className="group"
             onClick={() => navigate(item.path)}
           >
@@ -57,7 +72,8 @@ export function HomePage() {
           <div className="p-6">
             <h3 className="font-semibold text-text-primary mb-2">🚀 Começando</h3>
             <p className="text-text-secondary text-sm">
-              Este é um template pronto para uso. Adicione seus módulos em <code className="bg-surface-muted px-1 rounded">src/modules/</code>
+              Este é um template pronto para uso. Adicione seus módulos em{' '}
+              <code className="bg-surface-muted px-1 rounded">src/modules/</code>
             </p>
           </div>
         </Card>
@@ -65,7 +81,8 @@ export function HomePage() {
           <div className="p-6">
             <h3 className="font-semibold text-text-primary mb-2">📚 Documentação</h3>
             <p className="text-text-secondary text-sm">
-              Consulte a documentação em <code className="bg-surface-muted px-1 rounded">docs/</code> para mais informações.
+              Consulte a documentação em{' '}
+              <code className="bg-surface-muted px-1 rounded">docs/</code> para mais informações.
             </p>
           </div>
         </Card>

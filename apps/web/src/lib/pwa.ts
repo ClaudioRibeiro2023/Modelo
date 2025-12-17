@@ -1,8 +1,8 @@
 /**
  * Progressive Web App (PWA) Configuration
- * 
+ *
  * Para habilitar PWA completo:
- * 1. Instalar: pnpm --filter @template/web add -D vite-plugin-pwa
+ * 1. Instalar: pnpm --filter @techdados/web add -D vite-plugin-pwa
  * 2. Configurar em vite.config.ts
  * 3. Criar manifest.json e icons
  */
@@ -92,12 +92,12 @@ export const pwaManifest = {
 
 /**
  * Configuração do Vite PWA Plugin
- * 
+ *
  * Adicionar em vite.config.ts:
  * ```ts
  * import { VitePWA } from 'vite-plugin-pwa'
  * import { vitePwaConfig } from './src/lib/pwa'
- * 
+ *
  * export default defineConfig({
  *   plugins: [react(), VitePWA(vitePwaConfig)],
  * })
@@ -110,7 +110,7 @@ export const vitePwaConfig = {
   workbox: {
     // Cache de assets estáticos
     globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
-    
+
     // Cache de API responses
     runtimeCaching: [
       {
@@ -185,7 +185,7 @@ export async function registerServiceWorker(): Promise<ServiceWorkerRegistration
       const registration = await navigator.serviceWorker.register('/sw.js', {
         scope: '/',
       })
-      
+
       console.info('[PWA] Service Worker registrado:', registration.scope)
       return registration
     } catch (error) {
@@ -193,7 +193,7 @@ export async function registerServiceWorker(): Promise<ServiceWorkerRegistration
       return null
     }
   }
-  
+
   console.warn('[PWA] Service Workers não suportados')
   return null
 }
@@ -216,7 +216,7 @@ export async function checkForUpdates(): Promise<boolean> {
 export async function forceUpdate(): Promise<void> {
   if ('serviceWorker' in navigator) {
     const registration = await navigator.serviceWorker.ready
-    
+
     if (registration.waiting) {
       registration.waiting.postMessage({ type: 'SKIP_WAITING' })
       window.location.reload()

@@ -1,8 +1,8 @@
 /**
  * Internationalization (i18n) Configuration
- * 
+ *
  * Para habilitar i18n completo:
- * 1. Instalar: pnpm --filter @template/web add i18next react-i18next
+ * 1. Instalar: pnpm --filter @techdados/web add i18next react-i18next
  * 2. Descomentar o código abaixo
  * 3. Importar e chamar initI18n() no main.tsx
  */
@@ -171,7 +171,7 @@ export function initI18n(_defaultLanguage: LanguageCode = 'pt-BR') {
       },
     })
   */
-  
+
   // Placeholder - retorna Promise resolvida
   return Promise.resolve()
 }
@@ -182,15 +182,15 @@ export function initI18n(_defaultLanguage: LanguageCode = 'pt-BR') {
 export function t(key: string, lang: LanguageCode = 'pt-BR'): string {
   const translations = lang === 'en-US' ? enUS : ptBR
   const keys = key.split('.')
-  
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let value: any = translations
-  
+
   for (const k of keys) {
     value = value?.[k]
     if (value === undefined) return key
   }
-  
+
   return typeof value === 'string' ? value : key
 }
 
@@ -199,7 +199,7 @@ export function t(key: string, lang: LanguageCode = 'pt-BR'): string {
  */
 export function detectBrowserLanguage(): LanguageCode {
   const browserLang = navigator.language || 'pt-BR'
-  
+
   if (browserLang.startsWith('en')) return 'en-US'
   return 'pt-BR'
 }
