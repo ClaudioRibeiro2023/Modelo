@@ -1,119 +1,189 @@
-# Inventário de Documentação
+# Inventário de Documentação - COMPLETO
 
-> **Data:** 2024-12-16  
-> **Objetivo:** Mapear todos os .md em docs/ para consolidação
-
----
-
-## Resumo
-
-| Status     | Quantidade |
-| ---------- | ---------- |
-| KEEP       | 12         |
-| CONSOLIDAR | 8          |
-| ARCHIVE    | 12         |
-| **Total**  | **32**     |
+> **Data:** 2024-12-16 (atualizado)  
+> **Escopo:** TODOS os .md no repositório (não apenas docs/)
 
 ---
 
-## Inventário Completo
+## Resumo Geral
 
-### Raiz (`docs/`)
-
-| Caminho                   | Título                  | Assunto     | Público   | Status         | Motivo                           |
-| ------------------------- | ----------------------- | ----------- | --------- | -------------- | -------------------------------- |
-| `INDEX.md`                | Índice da Documentação  | Índice/TOC  | todos     | **KEEP**       | Índice mestre - atualizar        |
-| `99-mapa-do-repo.md`      | Mapa do Repositório     | Estrutura   | dev/ops   | **KEEP**       | Único - referência técnica       |
-| `ARCHITECTURE.md`         | Arquitetura do Template | Arquitetura | dev       | **CONSOLIDAR** | Sobrepõe c4-\*.md e adr_v2       |
-| `BOOK_OF_TESTS.md`        | Book de Testes          | Testes      | dev/qa    | **KEEP**       | Único - matriz de testes         |
-| `DEPLOY.md`               | Guia de Deploy          | Operação    | ops/dev   | **CONSOLIDAR** | Sobrepõe operacao/setup-local.md |
-| `DESIGN_SYSTEM.md`        | Design System           | UI/UX       | frontend  | **KEEP**       | Único - Design System completo   |
-| `GETTING_STARTED.md`      | Guia de Início Rápido   | Onboarding  | dev       | **CONSOLIDAR** | Sobrepõe operacao/setup-local.md |
-| `PROPOSTA_ARQUITETURA.md` | Proposta de Melhorias   | Backlog     | tech lead | **ARCHIVE**    | Histórico - tarefas concluídas   |
-| `ROLES_E_ACESSO.md`       | Sistema de Roles        | Segurança   | dev       | **CONSOLIDAR** | Sobrepõe seguranca/rbac.md       |
-| `TROUBLESHOOTING.md`      | Troubleshooting         | Operação    | todos     | **KEEP**       | Único - problemas comuns         |
-| `UI_UX_IMPROVEMENTS.md`   | Melhorias UI/UX         | Backlog     | frontend  | **ARCHIVE**    | Backlog - mover para \_backlog   |
-| `VALIDATION_CHECKLIST.md` | Checklist de Validação  | QA          | dev/qa    | **ARCHIVE**    | Histórico - fase 0 concluída     |
-
-### ADR Legado (`docs/adr/`)
-
-| Caminho                            | Título                | Assunto | Público | Status      | Motivo                                |
-| ---------------------------------- | --------------------- | ------- | ------- | ----------- | ------------------------------------- |
-| `adr/README.md`                    | ADR Index             | ADR     | dev     | **ARCHIVE** | Substituído por adr_v2/README.md      |
-| `adr/000-template.md`              | Template ADR          | ADR     | dev     | **ARCHIVE** | Substituído por adr_v2/template_v2.md |
-| `adr/001-stack-tecnologica.md`     | Stack Tecnológica     | ADR     | dev     | **ARCHIVE** | Migrado para adr_v2/001-\*.md         |
-| `adr/002-arquitetura-modular.md`   | Arquitetura Modular   | ADR     | dev     | **ARCHIVE** | Migrado para adr_v2/002-\*.md         |
-| `adr/003-autenticacao-jwt-rbac.md` | Autenticação JWT+RBAC | ADR     | dev     | **ARCHIVE** | Migrado para adr_v2/003-\*.md         |
-
-### ADR v2 (`docs/adr_v2/`) ✅ Padrão
-
-| Caminho                               | Título                   | Assunto | Público | Status   | Motivo              |
-| ------------------------------------- | ------------------------ | ------- | ------- | -------- | ------------------- |
-| `adr_v2/README.md`                    | ADR v2 Index             | ADR     | dev     | **KEEP** | Índice oficial ADRs |
-| `adr_v2/template_v2.md`               | Template ADR v2          | ADR     | dev     | **KEEP** | Template oficial    |
-| `adr_v2/001-stack-tecnologica.md`     | Stack Tecnológica v2     | ADR     | dev     | **KEEP** | ADR oficial         |
-| `adr_v2/002-arquitetura-modular.md`   | Arquitetura Modular v2   | ADR     | dev     | **KEEP** | ADR oficial         |
-| `adr_v2/003-autenticacao-jwt-rbac.md` | Autenticação JWT+RBAC v2 | ADR     | dev     | **KEEP** | ADR oficial         |
-
-### Arquitetura (`docs/arquitetura/`)
-
-| Caminho                       | Título               | Assunto     | Público | Status   | Motivo         |
-| ----------------------------- | -------------------- | ----------- | ------- | -------- | -------------- |
-| `arquitetura/c4-context.md`   | C4 Context Diagram   | Arquitetura | dev     | **KEEP** | Diagrama C4 L1 |
-| `arquitetura/c4-container.md` | C4 Container Diagram | Arquitetura | dev     | **KEEP** | Diagrama C4 L2 |
-| `arquitetura/c4-component.md` | C4 Component Diagram | Arquitetura | dev     | **KEEP** | Diagrama C4 L3 |
-
-### Contratos de Integração (`docs/contratos-integracao/`)
-
-| Caminho                           | Título           | Assunto    | Público | Status   | Motivo           |
-| --------------------------------- | ---------------- | ---------- | ------- | -------- | ---------------- |
-| `contratos-integracao/auth.md`    | Contrato de Auth | Integração | dev/ops | **KEEP** | Contrato oficial |
-| `contratos-integracao/api.md`     | Contrato de API  | Integração | dev/ops | **KEEP** | Contrato oficial |
-| `contratos-integracao/openapi.md` | OpenAPI/Swagger  | Integração | dev     | **KEEP** | Contrato oficial |
-
-### Operação (`docs/operacao/`)
-
-| Caminho                          | Título                | Assunto  | Público | Status   | Motivo                |
-| -------------------------------- | --------------------- | -------- | ------- | -------- | --------------------- |
-| `operacao/setup-local.md`        | Setup Local           | Operação | dev     | **KEEP** | Guia oficial de setup |
-| `operacao/variaveis-ambiente.md` | Variáveis de Ambiente | Operação | dev/ops | **KEEP** | Referência env vars   |
-
-### Segurança (`docs/seguranca/`)
-
-| Caminho                          | Título               | Assunto   | Público | Status   | Motivo              |
-| -------------------------------- | -------------------- | --------- | ------- | -------- | ------------------- |
-| `seguranca/rbac.md`              | RBAC - Roles         | Segurança | dev     | **KEEP** | Doc oficial de RBAC |
-| `seguranca/headers-seguranca.md` | Headers de Segurança | Segurança | dev/ops | **KEEP** | Doc oficial headers |
+| Localização         | Arquivos | Status                    |
+| ------------------- | -------- | ------------------------- |
+| Raiz (`/`)          | 3        | KEEP (entry points)       |
+| `apps/web/src/`     | 3        | KEEP (convenções in-situ) |
+| `infra/keycloak/`   | 1        | KEEP (setup específico)   |
+| `docs/` (canônicos) | 20       | KEEP                      |
+| `docs/_archive/`    | 11       | ARCHIVED                  |
+| `docs/_backlog/`    | 2        | BACKLOG                   |
+| `docs/_report/`     | 3        | META                      |
+| **Total**           | **43**   | -                         |
 
 ---
 
-## Ações por Status
+## Arquivos FORA de docs/
 
-### KEEP (12 arquivos)
+### Raiz do Repositório
 
-Manter como documentação canônica. Atualizar INDEX.md para apontar.
+| Caminho            | Tipo        | Tema         | Referenciado? | Duplicado?      | Canônico | Ação | Motivo                    |
+| ------------------ | ----------- | ------------ | ------------- | --------------- | -------- | ---- | ------------------------- |
+| `/README.md`       | Entry point | Visão geral  | Sim (GitHub)  | Parcial c/ docs | Sim      | KEEP | Entry point do repo       |
+| `/CONTRIBUTING.md` | Guia        | Contribuição | Sim (README)  | Não             | Sim      | KEEP | Guia de contribuição      |
+| `/todo.md`         | Backlog     | Tarefas      | Não           | Não             | Não      | MOVE | Mover para docs/\_backlog |
 
-### CONSOLIDAR (4 arquivos)
+### Apps (Convenções In-Situ)
 
-Migrar conteúdo relevante para docs canônicos:
+| Caminho                           | Tipo      | Tema     | Referenciado? | Duplicado? | Canônico | Ação | Motivo               |
+| --------------------------------- | --------- | -------- | ------------- | ---------- | -------- | ---- | -------------------- |
+| `apps/web/src/hooks/README.md`    | Convenção | Hooks    | Não           | Parcial    | Sim      | KEEP | Convenção local (DX) |
+| `apps/web/src/modules/README.md`  | Convenção | Módulos  | Não           | Parcial    | Sim      | KEEP | Convenção local (DX) |
+| `apps/web/src/services/README.md` | Convenção | Services | Não           | Parcial    | Sim      | KEEP | Convenção local (DX) |
 
-| De                   | Para                       | Ação                             |
-| -------------------- | -------------------------- | -------------------------------- |
-| `ARCHITECTURE.md`    | `arquitetura/` + `adr_v2/` | Extrair conteúdo único, arquivar |
-| `DEPLOY.md`          | `operacao/setup-local.md`  | Merge seção deploy               |
-| `GETTING_STARTED.md` | `operacao/setup-local.md`  | Já coberto, arquivar             |
-| `ROLES_E_ACESSO.md`  | `seguranca/rbac.md`        | Já coberto, arquivar             |
+### Infra
 
-### ARCHIVE (12 arquivos)
-
-Mover para `docs/_archive/2024-12-16/`:
-
-- `adr/` inteiro (5 arquivos) - Substituído por adr_v2
-- `PROPOSTA_ARQUITETURA.md` - Histórico de proposta
-- `UI_UX_IMPROVEMENTS.md` - Backlog/ideias
-- `VALIDATION_CHECKLIST.md` - Histórico fase 0
-- Consolidados após merge
+| Caminho                    | Tipo  | Tema     | Referenciado? | Duplicado? | Canônico | Ação | Motivo                 |
+| -------------------------- | ----- | -------- | ------------- | ---------- | -------- | ---- | ---------------------- |
+| `infra/keycloak/README.md` | Setup | Keycloak | Não           | Parcial    | Sim      | KEEP | Setup específico local |
 
 ---
 
-_Gerado em: 2024-12-16_
+## Arquivos em docs/ (Canônicos)
+
+### Índice e Referência
+
+| Caminho              | Tipo       | Tema      | Ação | Motivo           |
+| -------------------- | ---------- | --------- | ---- | ---------------- |
+| `INDEX.md`           | Índice     | TOC       | KEEP | Índice mestre    |
+| `99-mapa-do-repo.md` | Referência | Estrutura | KEEP | Mapa técnico     |
+| `DESIGN_SYSTEM.md`   | Referência | UI/UX     | KEEP | Design System    |
+| `BOOK_OF_TESTS.md`   | Referência | Testes    | KEEP | Matriz de testes |
+| `TROUBLESHOOTING.md` | Referência | Suporte   | KEEP | Problemas comuns |
+
+### Arquitetura (arquitetura/)
+
+| Caminho                       | Tipo     | Tema  | Ação | Motivo      |
+| ----------------------------- | -------- | ----- | ---- | ----------- |
+| `arquitetura/c4-context.md`   | Diagrama | C4 L1 | KEEP | Contexto    |
+| `arquitetura/c4-container.md` | Diagrama | C4 L2 | KEEP | Containers  |
+| `arquitetura/c4-component.md` | Diagrama | C4 L3 | KEEP | Componentes |
+
+### Contratos de Integração (contratos-integracao/)
+
+| Caminho                           | Tipo     | Tema     | Ação | Motivo        |
+| --------------------------------- | -------- | -------- | ---- | ------------- |
+| `contratos-integracao/auth.md`    | Contrato | OIDC/JWT | KEEP | Auth contract |
+| `contratos-integracao/api.md`     | Contrato | REST API | KEEP | API contract  |
+| `contratos-integracao/openapi.md` | Contrato | OpenAPI  | KEEP | Swagger docs  |
+
+### Operação (operacao/)
+
+| Caminho                          | Tipo       | Tema     | Ação | Motivo           |
+| -------------------------------- | ---------- | -------- | ---- | ---------------- |
+| `operacao/setup-local.md`        | Guia       | Setup    | KEEP | Setup dev        |
+| `operacao/deploy.md`             | Guia       | Deploy   | KEEP | Deploy guide     |
+| `operacao/variaveis-ambiente.md` | Referência | Env vars | KEEP | Env reference    |
+| `operacao/convencoes.md`         | Convenção  | Código   | KEEP | Code conventions |
+
+### Segurança (seguranca/)
+
+| Caminho                          | Tipo       | Tema    | Ação | Motivo           |
+| -------------------------------- | ---------- | ------- | ---- | ---------------- |
+| `seguranca/rbac.md`              | Referência | RBAC    | KEEP | Roles system     |
+| `seguranca/headers-seguranca.md` | Referência | Headers | KEEP | Security headers |
+
+### ADRs (adr_v2/)
+
+| Caminho                               | Tipo     | Tema        | Ação | Motivo       |
+| ------------------------------------- | -------- | ----------- | ---- | ------------ |
+| `adr_v2/README.md`                    | Índice   | ADRs        | KEEP | ADR index    |
+| `adr_v2/template_v2.md`               | Template | ADR         | KEEP | ADR template |
+| `adr_v2/001-stack-tecnologica.md`     | ADR      | Stack       | KEEP | ADR aceito   |
+| `adr_v2/002-arquitetura-modular.md`   | ADR      | Arquitetura | KEEP | ADR aceito   |
+| `adr_v2/003-autenticacao-jwt-rbac.md` | ADR      | Auth        | KEEP | ADR aceito   |
+
+---
+
+## Arquivos Arquivados (\_archive/)
+
+| Caminho                                       | Motivo do Arquivamento                      |
+| --------------------------------------------- | ------------------------------------------- |
+| `_archive/2024-12-16/ARCHITECTURE.md`         | Consolidado em arquitetura/ + convencoes.md |
+| `_archive/2024-12-16/GETTING_STARTED.md`      | Coberto por operacao/setup-local.md         |
+| `_archive/2024-12-16/ROLES_E_ACESSO.md`       | Coberto por seguranca/rbac.md               |
+| `_archive/2024-12-16/PROPOSTA_ARQUITETURA.md` | Histórico - plano concluído                 |
+| `_archive/2024-12-16/VALIDATION_CHECKLIST.md` | Histórico - fase 0 concluída                |
+| `_archive/2024-12-16/MOTIVO.md`               | Meta - justificativa                        |
+| `_archive/2024-12-16/adr/*.md` (5 arquivos)   | Migrados para adr_v2/                       |
+
+---
+
+## Arquivos em Backlog (\_backlog/)
+
+| Caminho                          | Descrição                  |
+| -------------------------------- | -------------------------- |
+| `_backlog/README.md`             | Índice do backlog          |
+| `_backlog/UI_UX_IMPROVEMENTS.md` | Melhorias UI/UX planejadas |
+
+---
+
+## Ações Pendentes
+
+### MOVE (1 arquivo)
+
+| Arquivo   | De         | Para                    | Motivo                    |
+| --------- | ---------- | ----------------------- | ------------------------- |
+| `todo.md` | `/` (raiz) | `docs/_backlog/todo.md` | Backlog não é entry point |
+
+### UPDATE (1 arquivo)
+
+| Arquivo      | Ação                                 | Motivo                              |
+| ------------ | ------------------------------------ | ----------------------------------- |
+| `/README.md` | Atualizar links para docs arquivados | Links apontam para arquivos movidos |
+
+---
+
+## Análise de Duplicidades com docs/
+
+### README.md (raiz) vs docs/
+
+| Seção no README      | Sobrepõe | Doc Canônico            |
+| -------------------- | -------- | ----------------------- |
+| Início Rápido        | ~60%     | operacao/setup-local.md |
+| Autenticação e Roles | ~40%     | seguranca/rbac.md       |
+| Estrutura do Projeto | ~30%     | 99-mapa-do-repo.md      |
+| Scripts Disponíveis  | ~50%     | operacao/convencoes.md  |
+
+**Decisão:** KEEP - README é entry point do GitHub, deve ter visão geral. Links devem apontar para docs/ canônicos para detalhes.
+
+### CONTRIBUTING.md vs docs/
+
+| Seção                | Sobrepõe | Doc Canônico                   |
+| -------------------- | -------- | ------------------------------ |
+| Setup do Ambiente    | ~50%     | operacao/setup-local.md        |
+| Estrutura do Projeto | ~30%     | 99-mapa-do-repo.md             |
+| Como Criar Módulo    | ~70%     | apps/web/src/modules/README.md |
+| Convenções de Código | ~60%     | operacao/convencoes.md         |
+
+**Decisão:** KEEP - Guia de contribuição é padrão OSS. Pode adicionar links para docs/ canônicos.
+
+### infra/keycloak/README.md vs docs/
+
+| Seção                 | Sobrepõe | Doc Canônico                   |
+| --------------------- | -------- | ------------------------------ |
+| Setup Keycloak        | ~30%     | contratos-integracao/auth.md   |
+| Variáveis de Ambiente | ~20%     | operacao/variaveis-ambiente.md |
+
+**Decisão:** KEEP - README local para quem trabalha em infra/keycloak. Adicionar link para docs/ no final.
+
+---
+
+## Conclusão
+
+O repositório está **bem organizado** após a consolidação anterior. Ações restantes:
+
+1. **Mover** `todo.md` para `docs/_backlog/`
+2. **Atualizar** links no `README.md` para apontar para novos caminhos em docs/
+3. **Adicionar** links cruzados nos READMEs fora de docs/ para docs/ canônicos
+
+---
+
+_Inventário atualizado em: 2024-12-16_

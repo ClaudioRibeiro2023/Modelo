@@ -1,13 +1,19 @@
-# Relatório de Duplicidades
+# Relatório de Duplicidades - ATUALIZADO
 
-> **Data:** 2024-12-16  
-> **Objetivo:** Identificar sobreposição de conteúdo entre documentos
+> **Data:** 2024-12-16 (v2)  
+> **Escopo:** TODOS os .md no repositório (inclusive fora de docs/)
 
 ---
 
-## Grupos de Duplicidade
+## Status Pós-Consolidação
 
-### Grupo 1: Arquitetura
+A consolidação anterior eliminou as principais duplicidades em docs/. Este relatório analisa sobreposições remanescentes entre arquivos **fora de docs/** e os docs canônicos.
+
+---
+
+## Grupos de Duplicidade Remanescentes
+
+### Grupo 1: README.md (raiz) vs docs/
 
 | Documento                           | Conteúdo                                       | Sobreposição |
 | ----------------------------------- | ---------------------------------------------- | ------------ |

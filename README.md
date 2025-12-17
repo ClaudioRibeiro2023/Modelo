@@ -226,17 +226,17 @@ pnpm test:e2e:ui
 
 ## 📖 Documentação
 
-Toda a documentação está em [`docs/`](./docs/):
+Toda a documentação está em [`docs/`](./docs/INDEX.md):
 
-| Documento                                       | Descrição                       |
-| ----------------------------------------------- | ------------------------------- |
-| [ARCHITECTURE.md](./docs/ARCHITECTURE.md)       | Arquitetura e decisões técnicas |
-| [GETTING_STARTED.md](./docs/GETTING_STARTED.md) | Guia de início rápido           |
-| [DEPLOY.md](./docs/DEPLOY.md)                   | Deploy local e produção         |
-| [DESIGN_SYSTEM.md](./docs/DESIGN_SYSTEM.md)     | Componentes e tokens            |
-| [ROLES_E_ACESSO.md](./docs/ROLES_E_ACESSO.md)   | Sistema de permissões           |
-| [BOOK_OF_TESTS.md](./docs/BOOK_OF_TESTS.md)     | Matriz de testes                |
-| [TROUBLESHOOTING.md](./docs/TROUBLESHOOTING.md) | Resolução de problemas          |
+| Documento                                                         | Descrição                            |
+| ----------------------------------------------------------------- | ------------------------------------ |
+| [INDEX.md](./docs/INDEX.md)                                       | **Portal principal** - índice mestre |
+| [operacao/setup-local.md](./docs/operacao/setup-local.md)         | Setup do ambiente de desenvolvimento |
+| [operacao/deploy.md](./docs/operacao/deploy.md)                   | Deploy local, staging e produção     |
+| [arquitetura/c4-container.md](./docs/arquitetura/c4-container.md) | Arquitetura (diagramas C4)           |
+| [seguranca/rbac.md](./docs/seguranca/rbac.md)                     | Sistema de permissões (RBAC)         |
+| [DESIGN_SYSTEM.md](./docs/DESIGN_SYSTEM.md)                       | Componentes e tokens                 |
+| [TROUBLESHOOTING.md](./docs/TROUBLESHOOTING.md)                   | Resolução de problemas               |
 
 ## 🛠️ Tecnologias
 
