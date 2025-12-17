@@ -895,10 +895,14 @@ Este arquivo acompanha o plano de melhorias faseado descrito em `docs/PROPOSTA_A
   - ✅ broadcast_data_update() para updates em tempo real
   - ⚠️ Frontend: implementar hook useNotifications quando necessário
 
-- [ ] [P3] Implementar Collaborative Features:
-  - Presença de usuários online
-  - Indicador "fulano está editando"
-  - Cursor sharing (opcional)
+- [x] [P3] Implementar Collaborative Features:
+  - ✅ `packages/shared/src/collaboration/` - Sistema completo
+  - ✅ Presença de usuários online (usePresence, useOnlineCount)
+  - ✅ Indicador "fulano está editando" (useEditingIndicators, useEditingMessage)
+  - ✅ Field-level editing locks (useFieldEditing)
+  - ✅ Cursor tracking (useCursorTracking)
+  - ✅ Typing indicators (useTypingIndicator)
+  - ✅ Idle detection para status away
 
 ### Performance & Caching
 

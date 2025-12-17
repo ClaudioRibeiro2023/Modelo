@@ -21,3 +21,6 @@ export * from './export'
 
 // Tenant Branding
 export * from './branding'
+
+// Collaboration (presence, editing indicators)
+export * from './collaboration'
