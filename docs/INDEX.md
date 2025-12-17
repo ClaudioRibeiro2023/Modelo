@@ -44,12 +44,13 @@ Documentação para sistemas que integram com o Template Platform.
 
 Guias de setup, deploy e operação.
 
-| Documento                                                 | Descrição                                   |
-| --------------------------------------------------------- | ------------------------------------------- |
-| [setup-local.md](./operacao/setup-local.md)               | Configuração do ambiente de desenvolvimento |
-| [deploy.md](./operacao/deploy.md)                         | Deploy em Docker, staging, produção         |
-| [variaveis-ambiente.md](./operacao/variaveis-ambiente.md) | Referência de env vars                      |
-| [convencoes.md](./operacao/convencoes.md)                 | Convenções de código e scripts              |
+| Documento                                                                                           | Descrição                                   |
+| --------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| [setup-local.md](./operacao/setup-local.md)                                                         | Configuração do ambiente de desenvolvimento |
+| [deploy.md](./operacao/deploy.md)                                                                   | Deploy em Docker, staging, produção         |
+| [variaveis-ambiente.md](./operacao/variaveis-ambiente.md)                                           | Referência de env vars                      |
+| [convencoes.md](./operacao/convencoes.md)                                                           | Convenções de código e scripts              |
+| [workflows/criar_repo_a_partir_do_modelo.md](./operacao/workflows/criar_repo_a_partir_do_modelo.md) | Criar nova repo a partir do template        |
 
 ### 🔐 Segurança (`seguranca/`)
 
