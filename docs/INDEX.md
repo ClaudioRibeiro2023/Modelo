@@ -38,6 +38,14 @@ O TechDados foi iniciado a partir do template **modelo** e já possui como alice
 
 ---
 
+## 🎯 Guia Mestre MVP
+
+> **Documento principal para execução do MVP TechDados**
+
+- **Guia Mestre de Implementação:** [`docs/_backlog/GUIA_MESTRE_MVP.md`](_backlog/GUIA_MESTRE_MVP.md)
+
+---
+
 ## Onde começar
 
 - **Setup local:** `docs/operacao/setup-local.md`
