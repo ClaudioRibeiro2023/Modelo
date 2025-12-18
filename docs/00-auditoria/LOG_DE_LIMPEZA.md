@@ -274,10 +274,53 @@ _Atualizado em 2025-12-17 - Normalização da Documentação TechDados_
 
 ### Fases planejadas
 
-- [ ] Fase 0: Pré-flight (diagnóstico e baseline)
-- [ ] Fase 1: Contratos MVP (BFF ↔ Web ↔ Upstream)
-- [ ] Fase 2: Implementar BFF MVP
-- [ ] Fase 3: Web MVP (rotas + módulos + UI base)
-- [ ] Fase 4: Auth OIDC + RBAC no Frontend
-- [ ] Fase 5: Smoke Tests P0
-- [ ] Fase 6: Fechamento e Commit
+- [x] Fase 0: Pré-flight (diagnóstico e baseline)
+- [x] Fase 1: Contratos MVP (BFF ↔ Web ↔ Upstream)
+- [x] Fase 2: Implementar BFF MVP
+- [x] Fase 3: Web MVP (rotas + módulos + UI base)
+- [x] Fase 4: Auth OIDC + RBAC no Frontend
+- [x] Fase 5: Smoke Tests P0
+- [x] Fase 6: Fechamento e Commit
+
+---
+
+## 2025-12-17 — MVP Bootstrap Concluído
+
+**Operação:** Fechamento do MVP Bootstrap  
+**Branch:** `feat/mvp-bootstrap`  
+**Status:** ✅ Concluído
+
+### Commits realizados
+
+1. `f8080b2` - feat(mvp): bootstrap inicial do produto techdados
+2. `627a164` - feat(web): conectar modulos ao bff com hooks e tabelas
+3. `41a70c2` - feat(web): adicionar filtro territorial e grafico de barras
+
+### Arquivos criados/modificados
+
+**BFF:**
+
+- `api-template/app/techdados_bff/main.py` — wiring adicional
+- `api-template/app/techdados_bff/wiring.py` — /me e /nav routers
+- `api-template/.env.example` — variáveis de ambiente
+
+**Web:**
+
+- `apps/web/src/modules/epi/index.tsx` — Módulo Epidemiologia
+- `apps/web/src/modules/ops/index.tsx` — Módulo Operação
+- `apps/web/src/modules/risk/index.tsx` — Módulo Risco
+- `apps/web/src/modules/exports/index.tsx` — Módulo Exportações
+- `apps/web/src/modules/audit/index.tsx` — Módulo Auditoria
+- `apps/web/src/hooks/useBff.ts` — Hooks para comunicação BFF
+- `apps/web/src/components/filters/TerritoryFilter.tsx` — Filtro territorial
+- `apps/web/src/components/charts/SimpleBarChart.tsx` — Gráfico de barras
+- `apps/web/src/config/navigation-default.ts` — Navegação MVP
+
+**Docs:**
+
+- `docs/contratos-integracao/bff-techdados.md` — Contrato BFF MVP
+
+### Validações
+
+- `pnpm lint`: ✅ 0 erros (12 warnings de `any` types)
+- `pnpm typecheck`: ✅ Passando
