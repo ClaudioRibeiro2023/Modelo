@@ -240,9 +240,44 @@ _Atualizado em 2025-12-17 - Normalização da Documentação TechDados_
 - **Branch:** chore/apply-estrutura-docs
 - **ZIPs processados:** 17
   - techdados_bloco_01, techdados_bloco_02_bff_fastapi, techdados_bloco_03_bff_integracao_upstream, techdados_bloco_04_rbac_escopo_exportacao, techdados_bloco_05_export_filter_csv, techdados_bloco_06_export_filter_parquet_audit, techdados_bloco_07_keycloak_jwt_auth, techdados_bloco_08_keycloak_seed_realm_client_scopes, techdados_bloco_09_frontend_oidc_rbac_nav, techdados_bloco_10_bff_me_frontend, techdados_bloco_11_produto_planejamento, techdados_bloco_12_upstream_techdengue_api, techdados_bloco_13_wiring_definitivo_p0, techdados_bloco_14_bff_rbac_policies_nav_audit, techdados_bloco_15_catalogo_dados_matriz_analises_modulos, techdados_bloco_16_documentacao_mvp_finalizacao_c4_runbook_quality_governanca, techdados_bloco_17_refs_pdf_hierarquia_acessos_links
-- **Resumo numÃ©rico:**
+- **Resumo numérico:**
   - Analisados: 233
   - Copiados: 161
   - Skip: 2
   - Pendentes: 53
   - Meta: 17
+
+---
+
+## [2025-12-17 22:16] MVP Bootstrap Iniciado
+
+- **Branch:** `feat/mvp-bootstrap`
+- **Operação:** Inicialização da construção do MVP TechDados
+- **Objetivo:** Sair de "documentação pronta" para "produto rodando"
+
+### Escopo do MVP Bootstrap
+
+1. **BFF FastAPI** com endpoints MVP (health, me, nav, epidemiologia, operacao, export)
+2. **Web** com módulos MVP (sidebar, rotas, páginas)
+3. **Auth OIDC** (Keycloak) funcionando end-to-end
+4. **RBAC/território** aplicado no BFF e refletido na navegação
+5. **Auditoria básica** (acessos + exports)
+6. **Smoke tests P0** automatizados
+
+### Documentação de entrada
+
+- `docs/produto/arvore-modulos.md` — estrutura de módulos
+- `docs/produto/matriz-analises.md` — KPIs e análises
+- `docs/contratos-integracao/techdengue-upstream.md` — endpoints upstream
+- `docs/seguranca/rbac.md` + `hierarquia-acessos.md` — RBAC/ABAC
+- `docs/dados/catalogo-datasets.md` — datasets disponíveis
+
+### Fases planejadas
+
+- [ ] Fase 0: Pré-flight (diagnóstico e baseline)
+- [ ] Fase 1: Contratos MVP (BFF ↔ Web ↔ Upstream)
+- [ ] Fase 2: Implementar BFF MVP
+- [ ] Fase 3: Web MVP (rotas + módulos + UI base)
+- [ ] Fase 4: Auth OIDC + RBAC no Frontend
+- [ ] Fase 5: Smoke Tests P0
+- [ ] Fase 6: Fechamento e Commit

@@ -34,6 +34,13 @@ const FiltersConfigPage = lazy(() =>
 // Modules (lazy)
 const ExemploPage = lazy(() => import('@/modules/exemplo').then(m => ({ default: m.ExemploPage })))
 
+// TechDados MVP Modules
+const EpiPage = lazy(() => import('@/modules/epi'))
+const OpsPage = lazy(() => import('@/modules/ops'))
+const RiskPage = lazy(() => import('@/modules/risk'))
+const ExportsPage = lazy(() => import('@/modules/exports'))
+const AuditPage = lazy(() => import('@/modules/audit'))
+
 // ETL Module
 const ETLPage = lazy(() => import('@/modules/etl/ETLPage'))
 const ETLCatalogPage = lazy(() => import('@/modules/etl/ETLCatalogPage'))
@@ -74,6 +81,30 @@ function App() {
           >
             <Route path="/" element={<HomePage />} />
             <Route path="/profile" element={<ProfilePage />} />
+
+            {/* TechDados MVP Modules */}
+            <Route path="/epi" element={<EpiPage />} />
+            <Route path="/epi/*" element={<EpiPage />} />
+            <Route path="/ops" element={<OpsPage />} />
+            <Route path="/ops/*" element={<OpsPage />} />
+            <Route path="/risk" element={<RiskPage />} />
+            <Route path="/risk/*" element={<RiskPage />} />
+            <Route
+              path="/exports"
+              element={
+                <ProtectedRoute requiredRoles={['GESTOR', 'ADMIN']}>
+                  <ExportsPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/audit"
+              element={
+                <ProtectedRoute requiredRoles={['ADMIN']}>
+                  <AuditPage />
+                </ProtectedRoute>
+              }
+            />
 
             {/* Example module */}
             <Route path="/exemplo" element={<ExemploPage />} />

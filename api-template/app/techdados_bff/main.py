@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.techdados_bff.core.logging import setup_logging
 from app.techdados_bff.core.request_id import RequestIdMiddleware
 from app.techdados_bff.api.router import router as api_router
+from app.techdados_bff.wiring import wire_techdados_app
 
 
 def _csv_env(name: str, default: str) -> list[str]:
@@ -41,12 +42,20 @@ def create_app() -> FastAPI:
         expose_headers=["x-request-id"],
     )
 
-    # API
+    # API principal
     app.include_router(api_router, prefix="/api")
+
+    # Wiring adicional (me, nav, upstream)
+    wire_techdados_app(app)
 
     @app.get("/health")
     async def health():
-        return {"ok": True}
+        from datetime import datetime, timezone
+        return {
+            "status": "healthy",
+            "version": os.getenv("TD_BFF_VERSION", "1.0.0"),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+        }
 
     log.info("TechDados BFF iniciado", extra={"cors_origins": cors_origins})
     return app

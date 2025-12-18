@@ -94,3 +94,52 @@
 ---
 
 _Gerado em 2024-12-16 por auditoria automatizada_
+
+---
+
+## MVP Bootstrap — 2025-12-17
+
+> **Branch:** `feat/mvp-bootstrap`  
+> **Objetivo:** Inicializar construção do produto MVP
+
+### Checklist de Fases
+
+- [x] **Fase 0:** Pré-flight (diagnóstico e baseline)
+  - [x] `git status` limpo
+  - [x] pnpm v9.15.9 instalado
+  - [x] Branch `feat/mvp-bootstrap` criada
+  - [x] Auditoria inicial atualizada
+  - [x] Documentação de entrada lida
+
+- [ ] **Fase 1:** Contratos MVP (BFF ↔ Web ↔ Upstream)
+  - [ ] Criar `docs/contratos-integracao/bff-techdados.md`
+  - [ ] Definir endpoints MVP (health, me, nav, epi, ops, export)
+
+- [ ] **Fase 2:** Implementar BFF MVP (FastAPI)
+  - [ ] Routers: health, me, nav, epidemiologia, operacao, export
+  - [ ] Client upstream com timeout/retry
+  - [ ] Recorte territorial por claims
+  - [ ] Auditoria JSON (stdout)
+
+- [ ] **Fase 3:** Web MVP (rotas + módulos + UI)
+  - [ ] Sidebar com módulos de `arvore-modulos.md`
+  - [ ] Páginas placeholder MVP
+  - [ ] Data fetch layer (`services/bff.ts`)
+  - [ ] 1 gráfico real mínimo
+
+- [ ] **Fase 4:** Auth OIDC + RBAC Frontend
+  - [ ] Login/callback Keycloak
+  - [ ] `/me` e `/nav` no boot
+  - [ ] Guardas de rota por permissão
+
+- [ ] **Fase 5:** Smoke Tests P0
+  - [ ] Health check
+  - [ ] Login mock
+  - [ ] Nav retorna
+  - [ ] Export bloqueado sem scope
+
+- [ ] **Fase 6:** Fechamento
+  - [ ] `pnpm lint` ✅
+  - [ ] `pnpm typecheck` ✅
+  - [ ] Commits em blocos
+  - [ ] VALIDACAO_FINAL.md atualizado
