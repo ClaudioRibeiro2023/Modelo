@@ -1,0 +1,42 @@
+{
+  "block": "11",
+  "title": "produto_planejamento",
+  "created_at": "2025-12-17",
+  "files": [
+    {
+      "path": "LEIA-ME.txt",
+      "bytes": 1239,
+      "sha256": "0bcfd0be43962d7c6745709e4766b8b80196f9ab35b4cd251c509f9c4218e30e"
+    },
+    {
+      "path": "docs/00-auditoria/_blocos/2025-12-17_bloco_11_produto_planejamento.md",
+      "bytes": 738,
+      "sha256": "1c271ce355c5e8beec4ca270764bb127cab421b3681145cbea43a1237bd95740"
+    },
+    {
+      "path": "docs/contratos-integracao/api-dados.md",
+      "bytes": 4932,
+      "sha256": "d902be720e180a38d803db3c6984ba33d68941474446e31524ec45a34964f3a9"
+    },
+    {
+      "path": "docs/produto/arvore-modulos.md",
+      "bytes": 2562,
+      "sha256": "5c11713562ddc7ad48b3ab3b32accaf91efdd4bd053aad44b86afd00a35bed17"
+    },
+    {
+      "path": "docs/produto/matriz-analises.md",
+      "bytes": 8907,
+      "sha256": "944cff1b95e3c68a443030cf13606a26c24845a36448a27ecb4cc9d0db3338b3"
+    },
+    {
+      "path": "docs/produto/matriz-perfis-modulos.md",
+      "bytes": 2537,
+      "sha256": "90d7e809fa46b21561571ce910a3caddf0ac83a16db04147727b0d5b9bc11dbb"
+    },
+    {
+      "path": "docs/produto/modulos.yaml",
+      "bytes": 3019,
+      "sha256": "f6c9f70a27c99bd17ac50b70ead7dd5f19bc2980b86e7275cad73d8fff6c58b1"
+    }
+  ]
+}

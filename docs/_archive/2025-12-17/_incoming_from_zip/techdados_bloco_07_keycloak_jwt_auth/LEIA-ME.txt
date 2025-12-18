@@ -1,0 +1,9 @@
+TechDados — Bloco 07 — Auth JWT (Keycloak) + claims (roles/scopes) + cache JWKS
+
+1) Extraia este ZIP na raiz do repositório TechDados, mantendo os paths.
+2) Leia o guia canônico em:
+   docs/00-auditoria/_blocos/2025-12-17_bloco_07_keycloak_jwt_auth.md
+
+Obs:
+- Este bloco adiciona modo `TD_AUTH_MODE=jwt`.
+- Requer instalar dependência: python-jose[cryptography] (script incluso).

@@ -1,0 +1,16 @@
+{
+  "block": "bloco_12_upstream_techdengue_api",
+  "date": "2025-12-17",
+  "files": [
+    "api-template/app/techdados_bff/config/upstream.py",
+    "api-template/app/techdados_bff/deps/upstream_client.py",
+    "api-template/app/techdados_bff/integrations/techdengue_api/__init__.py",
+    "api-template/app/techdados_bff/integrations/techdengue_api/cache.py",
+    "api-template/app/techdados_bff/integrations/techdengue_api/client.py",
+    "api-template/app/techdados_bff/integrations/techdengue_api/models.py",
+    "api-template/app/techdados_bff/routers/techdengue_api.py",
+    "docs/contratos-integracao/upstream-techdengue-api.md",
+    "docs/operacao/upstream-techdengue-smoke.md",
+    "docs/00-auditoria/_blocos/2025-12-17_bloco_12_upstream_techdengue_api.md"
+  ]
+}

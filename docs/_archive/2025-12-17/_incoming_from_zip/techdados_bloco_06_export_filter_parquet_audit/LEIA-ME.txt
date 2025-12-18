@@ -1,0 +1,6 @@
+TechDados — Bloco 06 — Export Filter Parquet por escopo municipal + Auditoria de export
+
+1) Extraia este ZIP na raiz do repositório TechDados, mantendo os paths.
+2) Leia o guia canônico em:
+   docs/00-auditoria/_blocos/2025-12-17_bloco_06_export_filter_parquet_audit.md
+

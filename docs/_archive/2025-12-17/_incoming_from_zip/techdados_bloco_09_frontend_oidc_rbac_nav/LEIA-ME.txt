@@ -1,0 +1,9 @@
+TechDados — Bloco 09 — Frontend OIDC (Keycloak) + RBAC (UI gating) + Navegação por módulos
+
+1) Extraia este ZIP na raiz do repositório TechDados, mantendo os paths.
+2) Leia o guia canônico em:
+   docs/00-auditoria/_blocos/2025-12-17_bloco_09_frontend_oidc_rbac_nav.md
+
+Obs:
+- Este bloco cria helpers e páginas, mas NÃO altera rotas automaticamente (para evitar conflitos).
+- O guia inclui as mudanças mínimas a aplicar no app (1 arquivo por vez).

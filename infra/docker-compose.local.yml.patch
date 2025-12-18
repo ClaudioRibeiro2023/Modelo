@@ -1,0 +1,14 @@
+# Patch sugerido para infra/docker-compose.local.yml (TechDados — Bloco 08)
+# Aplique manualmente (ou via editor) no service keycloak.
+
+services:
+  keycloak:
+    environment:
+      # habilita import de realm
+      - KEYCLOAK_IMPORT=/opt/keycloak/data/import/techdados-realm.json
+    volumes:
+      - ./keycloak/techdados-realm.json:/opt/keycloak/data/import/techdados-realm.json:ro
+
+# Observação:
+# Se o seu compose usa Keycloak 24/25, o comando de start pode variar:
+# - /opt/keycloak/bin/kc.sh start-dev --import-realm

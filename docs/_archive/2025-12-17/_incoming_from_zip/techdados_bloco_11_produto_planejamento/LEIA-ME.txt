@@ -1,0 +1,26 @@
+TechDados — Bloco 11 (Produto): Planejamento + Matriz de Análises + Árvore de Módulos
+Data: 2025-12-17
+
+OBJETIVO DESTE BLOCO
+- Transformar a documentação de “dados disponíveis” (API TechDengue) em um plano executável de produto:
+  (1) inventário de data products/endpoints,
+  (2) matriz de análises (o que dá pra entregar e em que ordem),
+  (3) árvore de módulos/submódulos (navegação), 
+  (4) matriz Perfil x Módulo x Ações (RBAC aplicado ao produto).
+
+COMO APLICAR (PASSO A PASSO)
+1) Extraia este .zip na RAIZ do repositório TechDados (E:\.ai\TechDados)
+2) Revise os docs criados:
+   - docs/contratos-integracao/api-dados.md
+   - docs/produto/arvore-modulos.md
+   - docs/produto/matriz-analises.md
+   - docs/produto/matriz-perfis-modulos.md
+   - docs/produto/modulos.yaml
+3) (Opcional, mas recomendado) Adicione links no portal docs/INDEX.md apontando para os novos docs de produto.
+4) Commit:
+   git add docs
+   git commit -m "docs(produto): matriz de analises + arvore de modulos"
+
+NOTAS IMPORTANTES
+- Este bloco NÃO altera código. Ele fecha o “plano de produto” antes de começarmos UI e queries.
+- A matriz já nasce pronta para virar backlog (ClickUp/Jira) — IDs e prioridades já estão definidos.

@@ -1,0 +1,13 @@
+{
+  "block": "01",
+  "created_at": "2025-12-17",
+  "files": [
+    "docs/dados/dicionario-campos.md",
+    "docs/produto/matriz-analises.md",
+    "docs/produto/arvore-modulos-e-rotas.md",
+    "docs/backend/bff-contratos-e-rotas.md",
+    "docs/backend/bff-arquitetura-e-modulos.md",
+    "00-GUIA-APLICACAO.md",
+    "MANIFEST.json"
+  ]
+}

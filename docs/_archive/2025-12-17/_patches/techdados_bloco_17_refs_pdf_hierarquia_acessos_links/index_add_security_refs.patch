@@ -1,0 +1,8 @@
+*** a/docs/INDEX.md
+--- b/docs/INDEX.md
+***************
+*** 1,120 ****
+--- 1,140 ----
++ ## Segurança e Acesso
++ - docs/seguranca/rbac.md
++ - docs/seguranca/hierarquia-acessos.md

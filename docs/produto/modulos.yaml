@@ -1,0 +1,95 @@
+# TechDados — Catálogo de Módulos (fonte para navegação e RBAC de produto)
+# Observação: este YAML é propositalmente simples para virar “single source of truth”
+# e ser consumido por scripts (geração de nav, docs, permissões, etc.).
+
+version: 1
+modules:
+  - id: overview
+    label: "Visão geral"
+    path: "/"
+    description: "KPIs principais e alertas executivos."
+    roles: ["admin", "strategic", "tactical"]
+
+  - id: epi
+    label: "Epidemiologia"
+    path: "/epi"
+    description: "Casos, incidência, séries temporais e comparações."
+    roles: ["admin", "strategic", "tactical", "operational"]
+    children:
+      - id: epi_overview
+        label: "Resumo"
+        path: "/epi/overview"
+        roles: ["admin", "strategic", "tactical", "operational"]
+      - id: epi_series
+        label: "Séries temporais"
+        path: "/epi/series"
+        roles: ["admin", "strategic", "tactical", "operational"]
+      - id: epi_rankings
+        label: "Rankings"
+        path: "/epi/rankings"
+        roles: ["admin", "strategic", "tactical"]
+      - id: epi_comparisons
+        label: "Comparações"
+        path: "/epi/comparisons"
+        roles: ["admin", "strategic", "tactical"]
+      - id: epi_export
+        label: "Exportações"
+        path: "/epi/export"
+        roles: ["admin", "strategic", "tactical"]
+
+  - id: ops
+    label: "Operação"
+    path: "/ops"
+    description: "Atividades, cobertura, POIs e produtividade."
+    roles: ["admin", "tactical", "operational"]
+    children:
+      - id: ops_overview
+        label: "Resumo"
+        path: "/ops/overview"
+        roles: ["admin", "tactical", "operational"]
+      - id: ops_coverage
+        label: "Cobertura"
+        path: "/ops/coverage"
+        roles: ["admin", "tactical", "operational"]
+      - id: ops_pois
+        label: "POIs"
+        path: "/ops/pois"
+        roles: ["admin", "tactical", "operational"]
+      - id: ops_productivity
+        label: "Produtividade"
+        path: "/ops/productivity"
+        roles: ["admin", "tactical", "operational"]
+      - id: ops_export
+        label: "Exportações"
+        path: "/ops/export"
+        roles: ["admin", "tactical"]
+
+  - id: climate
+    label: "Clima"
+    path: "/clima"
+    description: "Clima atual, histórico (se houver), índice de favorabilidade e risco climático."
+    roles: ["admin", "strategic", "tactical", "operational"]
+
+  - id: risk
+    label: "Risco (IA)"
+    path: "/risco"
+    description: "Dashboard de risco e análises por município."
+    roles: ["admin", "strategic", "tactical", "operational"]
+
+  - id: etl
+    label: "ETL / Qualidade"
+    path: "/etl"
+    description: "Observabilidade de pipelines, qualidade e catálogos."
+    roles: ["admin", "audit"]
+
+  - id: audit
+    label: "Auditoria"
+    path: "/audit"
+    description: "Logs, acessos, exportações e trilha LGPD."
+    roles: ["admin", "audit"]
+
+  - id: admin
+    label: "Admin"
+    path: "/admin"
+    description: "Configurações e gestão de tenants/perfis."
+    roles: ["admin"]

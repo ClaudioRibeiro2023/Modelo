@@ -1,0 +1,8 @@
+*** a/docs/seguranca/rbac.md
+--- b/docs/seguranca/rbac.md
+***************
+*** 1,80 ****
+--- 1,95 ----
++ ## Referência normativa
++ - Guia: docs/seguranca/hierarquia-acessos.md
++ - PDF: docs/seguranca/_refs/Hierarquia_de_acessos_Sistema_Techdengue_v1.0.pdf

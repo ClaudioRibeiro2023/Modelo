@@ -1,0 +1,96 @@
+{
+  "realm": "techdados",
+  "enabled": true,
+  "displayName": "TechDados",
+  "sslRequired": "external",
+  "registrationAllowed": false,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "resetPasswordAllowed": true,
+  "editUsernameAllowed": false,
+  "users": [
+    {
+      "username": "dev@techdados.local",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "dev@techdados.local",
+      "firstName": "Dev",
+      "lastName": "TechDados",
+      "attributes": {
+        "td_scopes": ["MUNICIPIO:3106200"]
+      },
+      "credentials": [
+        {
+          "type": "password",
+          "value": "dev",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["tactical"]
+    }
+  ],
+  "roles": {
+    "realm": [
+      {
+        "name": "admin",
+        "description": "Admin TechDados"
+      },
+      {
+        "name": "audit",
+        "description": "Auditoria"
+      },
+      {
+        "name": "strategic",
+        "description": "Estratégico"
+      },
+      {
+        "name": "tactical",
+        "description": "Tático"
+      },
+      {
+        "name": "operational",
+        "description": "Operacional"
+      },
+      {
+        "name": "support",
+        "description": "Apoio indireto"
+      }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "techdados",
+      "name": "TechDados",
+      "enabled": true,
+      "publicClient": true,
+      "directAccessGrantsEnabled": true,
+      "standardFlowEnabled": true,
+      "serviceAccountsEnabled": false,
+      "redirectUris": ["http://localhost:13000/*", "http://localhost:3000/*"],
+      "webOrigins": ["http://localhost:13000", "http://localhost:3000"],
+      "protocol": "openid-connect",
+      "attributes": {
+        "pkce.code.challenge.method": "S256"
+      },
+      "defaultClientScopes": ["web-origins", "roles", "profile", "email"],
+      "optionalClientScopes": ["address", "phone", "offline_access", "microprofile-jwt"],
+      "protocolMappers": [
+        {
+          "name": "td_scopes",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.attribute": "td_scopes",
+            "claim.name": "td_scopes",
+            "jsonType.label": "String",
+            "multivalued": "true",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        }
+      ]
+    }
+  ]
+}

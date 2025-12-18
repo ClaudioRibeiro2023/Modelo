@@ -1,0 +1,9 @@
+TechDados — Bloco 08 — Seed Keycloak (realm + client + roles + mapper td_scopes) + compose local
+
+1) Extraia este ZIP na raiz do repositório TechDados, mantendo os paths.
+2) Leia o guia canônico em:
+   docs/00-auditoria/_blocos/2025-12-17_bloco_08_keycloak_seed.md
+
+Obs:
+- Este bloco assume que você usa o Keycloak do template (infra/keycloak).
+- Ele adiciona um realm JSON e um script de seed (python) para importar e criar usuário dev.

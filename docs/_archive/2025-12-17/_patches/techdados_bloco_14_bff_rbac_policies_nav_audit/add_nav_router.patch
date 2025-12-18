@@ -1,0 +1,11 @@
+*** a/api-template/app/techdados_bff/main.py
+--- b/api-template/app/techdados_bff/main.py
+***************
+*** 1,50 ****
+--- 1,58 ----
+  from fastapi import FastAPI
++ from app.techdados_bff.routers.nav import router as nav_router
+
+  app = FastAPI(...)
+
++ app.include_router(nav_router, prefix="/api/v1", tags=["nav"])

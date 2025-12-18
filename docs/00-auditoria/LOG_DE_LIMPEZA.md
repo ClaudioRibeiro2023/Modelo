@@ -232,3 +232,17 @@ _Atualizado em 2024-12-17 - Fundação TechDados_
 | `docs/seguranca/rbac.md` | Adicionado link para `_refs/README.md`                                       |
 
 _Atualizado em 2025-12-17 - Normalização da Documentação TechDados_
+
+---
+
+## [2025-12-17 22:11:52] AplicaÃ§Ã£o de Estrutura Docs
+
+- **Branch:** chore/apply-estrutura-docs
+- **ZIPs processados:** 17
+  - techdados_bloco_01, techdados_bloco_02_bff_fastapi, techdados_bloco_03_bff_integracao_upstream, techdados_bloco_04_rbac_escopo_exportacao, techdados_bloco_05_export_filter_csv, techdados_bloco_06_export_filter_parquet_audit, techdados_bloco_07_keycloak_jwt_auth, techdados_bloco_08_keycloak_seed_realm_client_scopes, techdados_bloco_09_frontend_oidc_rbac_nav, techdados_bloco_10_bff_me_frontend, techdados_bloco_11_produto_planejamento, techdados_bloco_12_upstream_techdengue_api, techdados_bloco_13_wiring_definitivo_p0, techdados_bloco_14_bff_rbac_policies_nav_audit, techdados_bloco_15_catalogo_dados_matriz_analises_modulos, techdados_bloco_16_documentacao_mvp_finalizacao_c4_runbook_quality_governanca, techdados_bloco_17_refs_pdf_hierarquia_acessos_links
+- **Resumo numÃ©rico:**
+  - Analisados: 233
+  - Copiados: 161
+  - Skip: 2
+  - Pendentes: 53
+  - Meta: 17

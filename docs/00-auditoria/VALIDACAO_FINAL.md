@@ -299,3 +299,133 @@ A documentação está normalizada:
 ---
 
 _Validação Normalização em 2025-12-17_
+
+---
+
+## Validação: Aplicação Estrutura Docs (Blocos ZIP) — 2025-12-17
+
+> **Operação:** Aplicação de 17 blocos ZIP de `docs/_estrutura.docs`  
+> **Branch:** `chore/apply-estrutura-docs`  
+> **Status:** ✅ APROVADO (com pendências para revisão manual)
+
+### Comandos Executados
+
+| Comando          | Resultado                        |
+| ---------------- | -------------------------------- |
+| `pnpm lint`      | ✅ Passou (0 erros, 12 warnings) |
+| `pnpm typecheck` | ✅ Passou                        |
+
+### Métricas de Aplicação
+
+| Métrica                 | Valor |
+| ----------------------- | ----- |
+| ZIPs processados        | 17    |
+| Arquivos analisados     | 233   |
+| Arquivos copiados       | 161   |
+| Ignorados (hash igual)  | 2     |
+| Pendentes (divergência) | 53    |
+| Meta arquivados         | 17    |
+
+### ZIPs Aplicados
+
+| Bloco | Descrição                      | Copiados | Pendentes |
+| ----- | ------------------------------ | -------- | --------- |
+| 01    | Estrutura inicial              | 5        | 1         |
+| 02    | BFF FastAPI                    | 31       | 1         |
+| 03    | BFF integração upstream        | 20       | 6         |
+| 04    | RBAC escopo exportação         | 8        | 7         |
+| 05    | Export filter CSV              | 6        | 12        |
+| 06    | Export filter parquet audit    | 3        | 8         |
+| 07    | Keycloak JWT auth              | 8        | 3         |
+| 08    | Keycloak seed realm            | 7        | 1         |
+| 09    | Frontend OIDC RBAC nav         | 12       | 1         |
+| 10    | BFF /me frontend               | 9        | 3         |
+| 11    | Produto planejamento           | 4        | 3         |
+| 12    | Upstream Techdengue API        | 10       | 0         |
+| 13    | Wiring definitivo P0           | 6        | 1         |
+| 14    | BFF RBAC policies nav audit    | 9        | 0         |
+| 15    | Catálogo dados matriz análises | 14       | 2         |
+| 16    | Documentação MVP finalização   | 7        | 3         |
+| 17    | Refs PDF hierarquia acessos    | 2        | 1         |
+
+### Estrutura de Arquivos Criada
+
+```
+api-template/app/techdados_bff/   → BFF completo (rotas, services, security, audit)
+apps/web/src/lib/                 → Auth (OIDC, claims, jwt, rbac)
+apps/web/src/pages/auth/          → Páginas de login/callback
+docs/backend/                     → Trilhas BFF
+docs/contratos-integracao/        → Contratos upstream, auth, export
+docs/dados/                       → Catálogo, dicionários, modelo dimensional
+docs/governanca/                  → Processo mudança, versionamento
+docs/operacao/                    → Runbook, smoke tests
+docs/produto/                     → Matriz análises, árvore módulos
+docs/seguranca/                   → RBAC policies, hierarquia acessos
+infra/keycloak/                   → Seed realm, configurações
+```
+
+### Arquivos de Auditoria Gerados
+
+| Arquivo                                         | Descrição                     |
+| ----------------------------------------------- | ----------------------------- |
+| `docs/00-auditoria/LOG_DE_LIMPEZA.md`           | Log cronológico da operação   |
+| `docs/00-auditoria/ESTRUTURA_DOCS_RELATORIO.md` | Relatório detalhado por bloco |
+| `docs/00-auditoria/VALIDACAO_FINAL.md`          | Este arquivo (atualizado)     |
+
+### Pendências para Revisão Manual
+
+53 arquivos com hash divergente foram arquivados em:
+
+```
+docs/_archive/2025-12-17/_incoming_from_zip/<bloco>/
+```
+
+**Principais categorias de pendências:**
+
+- `00-GUIA-APLICACAO.md` (bloqueados na raiz) → arquivados
+- `LEIA-ME.txt` (meta arquivos) → arquivados
+- Arquivos `.py` do BFF com evolução incremental → necessitam merge manual
+- Arquivos `.md` de docs com versões conflitantes → revisar conteúdo
+
+### Fixes Aplicados Pós-Extração
+
+| Arquivo                         | Fix                               |
+| ------------------------------- | --------------------------------- |
+| `techdadosOidc.ts`              | `import type { User }` (lint fix) |
+| `AuthDebugPage.tsx`             | Removido `React` import não usado |
+| `TechDadosAuthCallbackPage.tsx` | Removido `React` import não usado |
+| `TechDadosLoginPage.tsx`        | Removido `React` import não usado |
+
+### Checklist DoD
+
+- [x] ZIPs extraídos em staging (não na raiz)
+- [x] Whitelist aplicada corretamente
+- [x] Arquivos meta arquivados em `_zip_meta/`
+- [x] PATCHES arquivados em `_patches/`
+- [x] Conflitos arquivados em `_incoming_from_zip/`
+- [x] Backup de arquivos sobrescritos em `_pre_apply_backup/`
+- [x] `docs/INDEX.md` como portal canônico
+- [x] `pnpm lint` passando (0 erros)
+- [x] `pnpm typecheck` passando
+- [x] Relatórios de auditoria gerados
+- [x] Staging limpo após execução
+
+### Próximo Passo Recomendado
+
+1. Revisar arquivos em `docs/_archive/2025-12-17/_incoming_from_zip/`
+2. Para cada arquivo `.py` pendente, fazer merge manual das funcionalidades
+3. Executar smoke tests documentados em `docs/operacao/`
+
+### Conclusão
+
+**Status: ✅ APROVADO COM PENDÊNCIAS**
+
+- ✅ 161 arquivos aplicados com sucesso
+- ✅ Estrutura do BFF criada
+- ✅ Documentação expandida significativamente
+- ✅ Auth/OIDC frontend configurado
+- ⚠️ 53 arquivos pendentes de merge manual
+
+---
+
+_Validação Aplicação Estrutura Docs em 2025-12-17 22:12_

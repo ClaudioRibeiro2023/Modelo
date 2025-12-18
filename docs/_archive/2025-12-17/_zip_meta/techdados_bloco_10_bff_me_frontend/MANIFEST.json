@@ -1,0 +1,18 @@
+{
+  "block": 10,
+  "date": "2025-12-17",
+  "title": "BFF /me endpoint + runner main.py + frontend consumo",
+  "paths": [
+    "api-template/app/techdados_bff/main.py",
+    "api-template/app/techdados_bff/api/routes/me.py",
+    "api-template/app/techdados_bff/api/router.py",
+    "apps/web/src/lib/api/bffClient.ts",
+    "apps/web/src/lib/api/me.ts",
+    "apps/web/src/pages/admin/AuthDebugPage.tsx",
+    "apps/web/.env.example.techdados_additions",
+    "docs/00-auditoria/_blocos/2025-12-17_bloco_10_me_endpoint_frontend_consume.md",
+    "docs/contratos-integracao/bff-me.md",
+    "docs/operacao/bff-run-local.md",
+    "docs/operacao/bff-me-smoke.md"
+  ]
+}

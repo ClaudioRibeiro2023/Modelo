@@ -1,0 +1,15 @@
+*** a/api-template/app/techdados_bff/main.py
+--- b/api-template/app/techdados_bff/main.py
+***************
+*** 1,20 ****
+--- 1,28 ----
+  from fastapi import FastAPI
++
++ # Bloco 13: wiring central (routers)
++ from app.techdados_bff.wiring import wire_techdados_app
+
+  app = FastAPI(
+      title="TechDados BFF",
+  )
++
++ wire_techdados_app(app)
