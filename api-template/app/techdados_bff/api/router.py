@@ -21,6 +21,7 @@ from ..services.epi_service import EpiService
 from ..services.risk_service import RiskService
 from ..services.ref_service import RefService
 from ..services.weather_service import WeatherService
+from ..services.ops_service import OpsService
 
 router = APIRouter(tags=["techdados-bff"])
 
@@ -319,6 +320,37 @@ async def weather_city(
 
     if settings.cache_enabled:
         cache.set(key, data, settings.cache_ttl_weather_s)
+
+    return data
+
+
+@router.get("/operacao/cobertura")
+async def operacao_cobertura(
+    request: Request,
+    scope_type: str = Query(...),
+    scope_id: str = Query(...),
+    periodo: str = Query(default="month"),
+    limit: int = Query(default=20, ge=1, le=200),
+    user: UserContext = Depends(user_ctx),
+    cache: TTLCache = Depends(get_cache),
+    provider: DataProviderClient = Depends(get_provider),
+):
+    require_roles(user, ["admin", "estrategico", "tatico", "operacional", "auditoria"])
+    scope = require_scope(user, scope_type, scope_id)
+
+    key = _cache_key("ops:cobertura", user, scope, extra=f"{periodo}:{limit}")
+    if settings.cache_enabled:
+        hit = cache.get(key)
+        if hit:
+            return hit
+
+    svc = OpsService(provider)
+    data = await svc.cobertura(scope_type, scope_id, periodo=periodo, limit=limit)
+
+    emit(AuditEvent(name="DATA_QUERY_EXECUTED", user_id=user.user_id, request_id=request_id(request), route="/operacao/cobertura", metadata={"scope": scope}))
+
+    if settings.cache_enabled:
+        cache.set(key, data, settings.cache_ttl_epi_s)
 
     return data
 
