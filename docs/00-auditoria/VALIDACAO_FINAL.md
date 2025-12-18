@@ -429,3 +429,21 @@ docs/_archive/2025-12-17/_incoming_from_zip/<bloco>/
 ---
 
 _Validação Aplicação Estrutura Docs em 2025-12-17 22:12_
+
+---
+
+## Validação: Execução TODO Mestre MVP (2025-12-18)
+
+> **Operação:** Execução fase a fase do TODO Mestre  
+> **Branch:** `main`  
+> **Status:** 🔄 Em execução
+
+### F0 — Preflight ✅
+
+| Comando             | Resultado                 |
+| ------------------- | ------------------------- |
+| `git status`        | ✅ Working tree clean     |
+| `pnpm -w lint`      | ✅ 0 errors (12 warnings) |
+| `pnpm -w typecheck` | ✅ Passou                 |
+
+**Commit:** `chore: F0 preflight validado`
