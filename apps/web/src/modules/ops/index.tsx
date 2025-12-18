@@ -1,8 +1,20 @@
+import { useState } from 'react'
 import { Clipboard, MapPin, Users, RefreshCw, AlertCircle } from 'lucide-react'
 import { useOpsCoverage } from '@/hooks/useBff'
+import { TerritoryFilter, type TerritoryScope } from '@/components/filters/TerritoryFilter'
+import { SimpleBarChart } from '@/components/charts/SimpleBarChart'
 
 export default function OpsPage() {
-  const { data, isLoading, error, refetch } = useOpsCoverage({ limit: 10 })
+  const [scope, setScope] = useState<TerritoryScope>({
+    type: 'STATE',
+    id: 'MG',
+    name: 'Minas Gerais',
+  })
+  const { data, isLoading, error, refetch } = useOpsCoverage({
+    scope_type: scope.type,
+    scope_id: scope.id,
+    limit: 10,
+  })
 
   const totalPois = data?.data?.reduce((acc, item) => acc + item.pois_total, 0) ?? 0
   const avgCobertura = data?.data?.length
@@ -27,14 +39,17 @@ export default function OpsPage() {
             Cobertura, POIs, produtividade e devolutivas
           </p>
         </div>
-        <button
-          onClick={() => refetch()}
-          disabled={isLoading}
-          className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors disabled:opacity-50"
-          title="Atualizar dados"
-        >
-          <RefreshCw className={`w-5 h-5 text-gray-500 ${isLoading ? 'animate-spin' : ''}`} />
-        </button>
+        <div className="flex items-center gap-2">
+          <TerritoryFilter value={scope} onChange={setScope} />
+          <button
+            onClick={() => refetch()}
+            disabled={isLoading}
+            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors disabled:opacity-50"
+            title="Atualizar dados"
+          >
+            <RefreshCw className={`w-5 h-5 text-gray-500 ${isLoading ? 'animate-spin' : ''}`} />
+          </button>
+        </div>
       </header>
 
       {error && (
@@ -152,6 +167,28 @@ export default function OpsPage() {
           </p>
         )}
       </div>
+
+      {data?.data?.length ? (
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+            Cobertura por Município (Top 5)
+          </h2>
+          <SimpleBarChart
+            data={data.data.slice(0, 5).map(item => ({
+              label: item.municipio.substring(0, 10),
+              value: item.cobertura_pct,
+              color:
+                item.cobertura_pct >= 80
+                  ? 'bg-green-500'
+                  : item.cobertura_pct >= 50
+                    ? 'bg-amber-500'
+                    : 'bg-red-500',
+            }))}
+            maxValue={100}
+            height={180}
+          />
+        </div>
+      ) : null}
     </div>
   )
 }

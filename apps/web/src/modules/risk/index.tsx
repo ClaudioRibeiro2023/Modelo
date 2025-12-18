@@ -1,8 +1,19 @@
+import { useState } from 'react'
 import { AlertTriangle, TrendingUp, MapPin, RefreshCw, AlertCircle } from 'lucide-react'
 import { useRiskDashboard } from '@/hooks/useBff'
+import { TerritoryFilter, type TerritoryScope } from '@/components/filters/TerritoryFilter'
+import { SimpleBarChart } from '@/components/charts/SimpleBarChart'
 
 export default function RiskPage() {
-  const { data, isLoading, error, refetch } = useRiskDashboard()
+  const [scope, setScope] = useState<TerritoryScope>({
+    type: 'STATE',
+    id: 'MG',
+    name: 'Minas Gerais',
+  })
+  const { data, isLoading, error, refetch } = useRiskDashboard({
+    scope_type: scope.type,
+    scope_id: scope.id,
+  })
 
   return (
     <div className="p-6 space-y-6">
@@ -14,14 +25,17 @@ export default function RiskPage() {
           </h1>
           <p className="text-gray-500 dark:text-gray-400 mt-1">Dashboard de risco e priorização</p>
         </div>
-        <button
-          onClick={() => refetch()}
-          disabled={isLoading}
-          className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors disabled:opacity-50"
-          title="Atualizar dados"
-        >
-          <RefreshCw className={`w-5 h-5 text-gray-500 ${isLoading ? 'animate-spin' : ''}`} />
-        </button>
+        <div className="flex items-center gap-2">
+          <TerritoryFilter value={scope} onChange={setScope} />
+          <button
+            onClick={() => refetch()}
+            disabled={isLoading}
+            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors disabled:opacity-50"
+            title="Atualizar dados"
+          >
+            <RefreshCw className={`w-5 h-5 text-gray-500 ${isLoading ? 'animate-spin' : ''}`} />
+          </button>
+        </div>
       </header>
 
       {error && (
@@ -151,6 +165,28 @@ export default function RiskPage() {
           </p>
         )}
       </div>
+
+      {data?.top_risco?.length ? (
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+            Score de Risco (Top 5)
+          </h2>
+          <SimpleBarChart
+            data={data.top_risco.slice(0, 5).map(item => ({
+              label: item.municipio.substring(0, 10),
+              value: item.risk_score * 100,
+              color:
+                item.risk_level === 'alto'
+                  ? 'bg-red-500'
+                  : item.risk_level === 'medio'
+                    ? 'bg-amber-500'
+                    : 'bg-green-500',
+            }))}
+            maxValue={100}
+            height={180}
+          />
+        </div>
+      ) : null}
     </div>
   )
 }
