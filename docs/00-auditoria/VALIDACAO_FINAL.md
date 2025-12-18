@@ -446,4 +446,14 @@ _Validação Aplicação Estrutura Docs em 2025-12-17 22:12_
 | `pnpm -w lint`      | ✅ 0 errors (12 warnings) |
 | `pnpm -w typecheck` | ✅ Passou                 |
 
-**Commit:** `chore: F0 preflight validado`
+**Commit:** `chore(audit): f0 preflight validado`
+
+### F1 — Normalização Estrutura ✅
+
+| Verificação                  | Resultado                                |
+| ---------------------------- | ---------------------------------------- |
+| `.md` na raiz                | ✅ Apenas 3 (CONTRIBUTING, README, todo) |
+| Stubs apontam para canônicos | ✅ OK                                    |
+| `docs/INDEX.md` como portal  | ✅ OK                                    |
+
+**Commit:** `chore(audit): f1 estrutura normalizada`
