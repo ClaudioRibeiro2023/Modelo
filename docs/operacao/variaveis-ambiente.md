@@ -6,6 +6,53 @@
 
 ---
 
+## TechDados BFF (Variáveis Específicas)
+
+| Variável                 | Tipo   | Default | Descrição                                            |
+| ------------------------ | ------ | ------- | ---------------------------------------------------- |
+| `TD_AUTH_MODE`           | string | `mock`  | Modo de autenticação: `mock`, `keycloak`, `disabled` |
+| `TD_UPSTREAM_MODE`       | string | `mock`  | Modo upstream: `mock`, `real`                        |
+| `TD_TECHDENGUE_BASE_URL` | string | -       | URL base da API Techdengue                           |
+| `TD_EXPORT_MAX_ROWS`     | int    | `50000` | Limite de linhas para export                         |
+| `TD_EXPORT_FORMATS`      | string | `csv`   | Formatos permitidos (csv,xlsx,parquet)               |
+| `TD_CACHE_ENABLED`       | bool   | `true`  | Habilita cache de dados                              |
+| `TD_CACHE_TTL_SECONDS`   | int    | `300`   | TTL do cache em segundos                             |
+| `TD_AUDIT_ENABLED`       | bool   | `true`  | Habilita auditoria                                   |
+
+### Variáveis de Mock (quando TD_AUTH_MODE=mock)
+
+| Variável          | Tipo   | Default             | Descrição                      |
+| ----------------- | ------ | ------------------- | ------------------------------ |
+| `TD_MOCK_USER_ID` | string | `mock-user`         | ID do usuário mock             |
+| `TD_MOCK_ROLES`   | string | `admin,estrategico` | Roles do usuário mock (CSV)    |
+| `TD_MOCK_SCOPES`  | string | `STATE:MG`          | Scopes territoriais mock (CSV) |
+
+### Exemplo `.env` BFF
+
+```bash
+# Modo de operação
+TD_AUTH_MODE=mock
+TD_UPSTREAM_MODE=mock
+
+# Upstream (quando TD_UPSTREAM_MODE=real)
+TD_TECHDENGUE_BASE_URL=https://api.techdengue.com.br
+
+# Export
+TD_EXPORT_MAX_ROWS=50000
+TD_EXPORT_FORMATS=csv
+
+# Cache
+TD_CACHE_ENABLED=true
+TD_CACHE_TTL_SECONDS=300
+
+# Mock user (quando TD_AUTH_MODE=mock)
+TD_MOCK_USER_ID=dev-user
+TD_MOCK_ROLES=admin,estrategico,tatico
+TD_MOCK_SCOPES=STATE:MG
+```
+
+---
+
 ## Frontend (Vite)
 
 Prefixo obrigatório: `VITE_`
