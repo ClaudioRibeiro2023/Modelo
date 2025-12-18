@@ -1,6 +1,6 @@
 # 📊 Progresso MVP TechDados
 
-> **Atualizado em**: 2024-12-17
+> **Atualizado em**: 2024-12-18
 > **Branch**: `main`
 
 ---
@@ -39,95 +39,95 @@
 
 - [x] Atualizar `docs/INDEX.md` com link para Guia Mestre
 
-#### A3 - Auditoria 🔄
+#### A3 - Auditoria ✅
 
 - [x] Criar `PROGRESSO_MVP.md`
-- [ ] Criar `VALIDACAO_FINAL.md`
-- [ ] Atualizar `LOG_DE_LIMPEZA.md`
-- [ ] Criar `PLANO_DE_ACAO.md`
+- [x] Criar `VALIDACAO_FINAL.md`
+- [x] Atualizar `LOG_DE_LIMPEZA.md`
+- [x] Criar `PLANO_DE_ACAO.md`
 
 ---
 
-### F0 - Preflight & Baseline ⏳
+### F0 - Preflight & Baseline ✅
 
-- [ ] `git status` — working tree clean
-- [ ] `pnpm -w install`
-- [ ] `pnpm -w lint` — 0 erros
-- [ ] `pnpm -w typecheck` — 0 erros
-- [ ] Registrar em VALIDACAO_FINAL.md
-
----
-
-### F1 - Variáveis de Ambiente ⏳
-
-- [ ] Atualizar `docs/operacao/variaveis-ambiente.md`
-- [ ] Atualizar `.env.example` em infra/web/api-template
+- [x] `git status` — working tree clean
+- [x] `pnpm -w install`
+- [x] `pnpm -w lint` — 0 erros
+- [x] `pnpm -w typecheck` — 0 erros
+- [x] Registrar em VALIDACAO_FINAL.md
 
 ---
 
-### F2 - Keycloak ⏳
+### F1 - Variáveis de Ambiente ✅
 
-- [ ] Seed realm techdados
-- [ ] Roles: admin, estrategico, tatico, operacional, apoio_indireto, auditoria
-- [ ] Scopes: td:read, td:export, td:admin, td:audit
-- [ ] Claims de território
+- [x] Atualizar `docs/operacao/variaveis-ambiente.md`
+- [x] Atualizar `.env.example` em infra/web/api-template
 
 ---
 
-### F3 - BFF FastAPI ⏳
+### F2 - Keycloak ✅
 
-- [ ] GET /api/v1/health
-- [ ] GET /api/v1/me
-- [ ] GET /api/v1/nav
-- [ ] GET /api/v1/epidemiologia/ranking
-- [ ] GET /api/v1/operacao/cobertura
-- [ ] POST /api/v1/export
-- [ ] Enforcement RBAC
-- [ ] Auditoria estruturada
+- [x] Seed realm techdados
+- [x] Roles: admin, estrategico, tatico, operacional, apoio_indireto, auditoria
+- [x] Scopes: td:read, td:export, td:admin, td:audit
+- [x] Claims de território
 
 ---
 
-### F4 - Web Shell ⏳
+### F3 - BFF FastAPI ✅
 
-- [ ] Consumir /me e /nav
-- [ ] Sidebar dinâmica
-- [ ] Route guards
-- [ ] Páginas placeholder
-
----
-
-### F5 - Dashboard ⏳
-
-- [ ] Filtros UF/Município
-- [ ] Gráfico de barras
-- [ ] Tabela ranking
-- [ ] Estados loading/erro/vazio
-- [ ] Indicador MOCK/REAL
+- [x] GET /api/v1/health
+- [x] GET /api/v1/me
+- [x] GET /api/v1/nav
+- [x] GET /api/v1/epidemiologia/ranking
+- [x] GET /api/v1/operacao/cobertura
+- [x] POST /api/v1/export
+- [x] Enforcement RBAC
+- [x] Auditoria estruturada
 
 ---
 
-### F6 - Export ⏳
+### F4 - Web Shell ✅
 
-- [ ] Backend: limite + auditoria
-- [ ] Frontend: modal + download
-
----
-
-### F7 - Smoke Tests ⏳
-
-- [ ] BFF health
-- [ ] Nav endpoint
-- [ ] Export 403 sem scope
-- [ ] Web home carrega
+- [x] Consumir /me e /nav
+- [x] Sidebar dinâmica
+- [x] Route guards
+- [x] Páginas placeholder
 
 ---
 
-### F8 - Fechamento ⏳
+### F5 - Dashboard ✅
 
-- [ ] Lint final
-- [ ] Typecheck final
-- [ ] Documentação atualizada
-- [ ] Merge para main
+- [x] Filtros UF/Município
+- [x] Gráfico de barras
+- [x] Tabela ranking
+- [x] Estados loading/erro/vazio
+- [x] Indicador MOCK/REAL
+
+---
+
+### F6 - Export ✅
+
+- [x] Backend: limite + auditoria
+- [x] Frontend: modal + download
+
+---
+
+### F7 - Smoke Tests ✅
+
+- [x] BFF health
+- [x] Nav endpoint
+- [x] Export 403 sem scope
+- [x] Web home carrega
+
+---
+
+### F8 - Fechamento ✅
+
+- [x] Lint final
+- [x] Typecheck final
+- [x] Documentação atualizada
+- [x] Merge para main
 
 ---
 
@@ -135,9 +135,9 @@
 
 | Métrica          | Alvo | Atual |
 | ---------------- | ---- | ----- |
-| Lint errors      | 0    | -     |
-| Typecheck errors | 0    | -     |
-| Smoke tests      | 100% | -     |
+| Lint errors      | 0    | 0     |
+| Typecheck errors | 0    | 0     |
+| Smoke tests      | 100% | ✅    |
 | Cobertura        | ≥60% | -     |
 
 ---
