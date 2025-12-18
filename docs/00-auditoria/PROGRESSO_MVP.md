@@ -146,9 +146,10 @@
 
 ### P1 (Bloqueantes)
 
-- **Router BFF não exposto**: Endpoints do `router.py` (/api/epi/ranking, /api/operacao/cobertura, etc.) não são expostos pelo uvicorn apesar de existirem no app quando importado diretamente. Endpoints de `wiring.py` (/api/v1/me, /api/v1/nav) funcionam normalmente.
-  - **Workaround**: Usar mock data no frontend enquanto investiga
-  - **Investigar**: Conflito de módulos Python ou cache do uvicorn
+- ~~**Router BFF não exposto**~~: ✅ **RESOLVIDO** (2024-12-18)
+  - **Causa**: Endpoints não estavam implementados em `apps/api/app/api/v1/endpoints/`
+  - **Solução**: Criados endpoints `epidemiologia.py`, `operacao.py`, `risco.py`, `nav.py`
+  - **Verificado**: Todos endpoints respondendo corretamente via curl/Invoke-WebRequest
 
 ### P2 (Importantes)
 
@@ -159,8 +160,9 @@
 
 ## Log de Atualizações
 
-| Data       | Fase | Ação                          |
-| ---------- | ---- | ----------------------------- |
-| 2024-12-17 | A1   | Guia Mestre criado            |
-| 2024-12-17 | A2   | INDEX.md atualizado           |
-| 2024-12-17 | A3   | Arquivos de auditoria criados |
+| Data       | Fase | Ação                                   |
+| ---------- | ---- | -------------------------------------- |
+| 2024-12-17 | A1   | Guia Mestre criado                     |
+| 2024-12-17 | A2   | INDEX.md atualizado                    |
+| 2024-12-17 | A3   | Arquivos de auditoria criados          |
+| 2024-12-18 | P1   | Endpoints BFF corrigidos e verificados |
