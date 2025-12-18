@@ -104,18 +104,18 @@ Rodar localmente com:
 
 Antes de iniciar implementação "pesada", validar que estes docs existem e estão linkados no portal:
 
-- [ ] `docs/INDEX.md`
-- [ ] `docs/produto/arvore-modulos.md`
-- [ ] `docs/produto/matriz-analises.md`
-- [ ] `docs/contratos-integracao/bff-techdados.md` (ou criar na Fase 2)
-- [ ] `docs/contratos-integracao/techdengue-upstream.md` e/ou `docs/contratos-integracao/api-dados.md`
-- [ ] `docs/seguranca/rbac.md`
-- [ ] `docs/seguranca/hierarquia-acessos.md`
-- [ ] `docs/operacao/runbook.md`
-- [ ] `docs/operacao/variaveis-ambiente.md`
-- [ ] `docs/dados/catalogo-datasets.md`
-- [ ] `docs/dados/dicionario-metricas.md`
-- [ ] C4: `docs/arquitetura/c4-context.md`, `c4-container.md`, `c4-component.md`
+- [x] `docs/INDEX.md`
+- [x] `docs/produto/arvore-modulos.md`
+- [x] `docs/produto/matriz-analises.md`
+- [x] `docs/contratos-integracao/bff-techdados.md` (ou criar na Fase 2)
+- [x] `docs/contratos-integracao/techdengue-upstream.md` e/ou `docs/contratos-integracao/api-dados.md`
+- [x] `docs/seguranca/rbac.md`
+- [x] `docs/seguranca/hierarquia-acessos.md`
+- [x] `docs/operacao/runbook.md`
+- [x] `docs/operacao/variaveis-ambiente.md`
+- [x] `docs/dados/catalogo-datasets.md`
+- [x] `docs/dados/dicionario-metricas.md`
+- [x] C4: `docs/arquitetura/c4-context.md`, `c4-container.md`, `c4-component.md`
 
 ---
 
@@ -177,9 +177,9 @@ Sempre atualizar:
 
 Checklist:
 
-- [ ] `docs/operacao/variaveis-ambiente.md` atualizado
-- [ ] `.env.example` de web/bff/infra atualizado
-- [ ] Runbook cita as envs mínimas
+- [x] `docs/operacao/variaveis-ambiente.md` atualizado
+- [x] `.env.example` de web/bff/infra atualizado
+- [x] Runbook cita as envs mínimas
 
 ---
 
@@ -195,14 +195,14 @@ Objetivo: garantir repo saudável antes de mexer.
 
 Checklist:
 
-- [ ] `git status` (working tree limpa ou commit WIP)
-- [ ] Checkout/criar branch `feat/mvp-bootstrap`
-- [ ] `pnpm -w install` (se aplicável)
-- [ ] `pnpm -w lint`
-- [ ] `pnpm -w typecheck`
-- [ ] Registrar outputs em `docs/00-auditoria/VALIDACAO_FINAL.md`
-- [ ] Atualizar `docs/00-auditoria/PROGRESSO_MVP.md` (F0 ✅)
-- [ ] Commit (se houver mudança em docs): `chore: preflight + registro validacao`
+- [x] `git status` (working tree limpa ou commit WIP)
+- [x] Checkout/criar branch `feat/mvp-bootstrap`
+- [x] `pnpm -w install` (se aplicável)
+- [x] `pnpm -w lint`
+- [x] `pnpm -w typecheck`
+- [x] Registrar outputs em `docs/00-auditoria/VALIDACAO_FINAL.md`
+- [x] Atualizar `docs/00-auditoria/PROGRESSO_MVP.md` (F0 ✅)
+- [x] Commit (se houver mudança em docs): `chore: preflight + registro validacao`
 
 Condição de parada:
 
@@ -216,11 +216,11 @@ Objetivo: garantir que não há ZIP pendente e nem docs espalhados.
 
 Checklist:
 
-- [ ] Confirmar que blocos ZIP foram aplicados e removidos/stash conforme política
-- [ ] Não existem `.md` novos fora de `docs/` (exceto stubs já do template)
-- [ ] `docs/INDEX.md` linka os docs canônicos do projeto
-- [ ] `docs/00-auditoria/LOG_DE_LIMPEZA.md` tem entrada do apply
-- [ ] Commit se houver: `chore(docs): normalizar estrutura`
+- [x] Confirmar que blocos ZIP foram aplicados e removidos/stash conforme política
+- [x] Não existem `.md` novos fora de `docs/` (exceto stubs já do template)
+- [x] `docs/INDEX.md` linka os docs canônicos do projeto
+- [x] `docs/00-auditoria/LOG_DE_LIMPEZA.md` tem entrada do apply
+- [x] Commit se houver: `chore(docs): normalizar estrutura`
 
 ---
 
@@ -230,12 +230,12 @@ Objetivo: não codar no escuro.
 
 Checklist:
 
-- [ ] Verificar `docs/contratos-integracao/bff-techdados.md`
+- [x] Verificar `docs/contratos-integracao/bff-techdados.md`
   - se não existir: criar com endpoints MVP (abaixo)
-- [ ] Verificar `docs/contratos-integracao/techdengue-upstream.md` (ou `api-dados.md`)
+- [x] Verificar `docs/contratos-integracao/techdengue-upstream.md` (ou `api-dados.md`)
   - confirmar endpoints reais disponíveis (não inventar)
-- [ ] Atualizar portal `docs/INDEX.md` com links necessários
-- [ ] Commit: `docs(contratos): fechar contrato bff mvp`
+- [x] Atualizar portal `docs/INDEX.md` com links necessários
+- [x] Commit: `docs(contratos): fechar contrato bff mvp`
 
 ### Endpoints MVP (mínimo)
 
@@ -254,14 +254,14 @@ Objetivo: login real em dev.
 
 Checklist:
 
-- [ ] Subir Keycloak local: `docker compose -f infra/docker-compose.local.yml up -d keycloak`
-- [ ] Garantir realm `techdados` via seed idempotente
-- [ ] Garantir client do web (OIDC)
-- [ ] Garantir roles e scopes do MVP
-- [ ] Criar 2 usuários de teste (ex.: tactical e operational)
-- [ ] Validar emissão de token (issuer/jwks ok)
-- [ ] Documentar no runbook como gerar token dev
-- [ ] Commit: `feat(auth): keycloak realm + roles/scopes + users dev`
+- [x] Subir Keycloak local: `docker compose -f infra/docker-compose.local.yml up -d keycloak`
+- [x] Garantir realm `techdados` via seed idempotente
+- [x] Garantir client do web (OIDC)
+- [x] Garantir roles e scopes do MVP
+- [x] Criar 2 usuários de teste (ex.: tactical e operational)
+- [x] Validar emissão de token (issuer/jwks ok)
+- [x] Documentar no runbook como gerar token dev
+- [x] Commit: `feat(auth): keycloak realm + roles/scopes + users dev`
 
 Condição de parada:
 
@@ -275,40 +275,40 @@ Objetivo: backend confiável e enforce.
 
 Checklist de implementação:
 
-- [ ] `GET /api/v1/health` OK
-- [ ] `GET /api/v1/me` OK (retorna principal: roles/scopes/território)
-- [ ] `GET /api/v1/nav` OK (gera árvore permitida)
-- [ ] `GET /api/v1/epidemiologia/incidencia`
-  - [ ] Implementa adapter para upstream real quando `TD_UPSTREAM_MODE=real`
-  - [ ] Implementa mock quando `TD_UPSTREAM_MODE=mock`
-- [ ] `GET /api/v1/operacao/cobertura`
-  - [ ] Implementa regra: `cobertura = HA_MAP / HA_URBANOS` (quando HA_URBANOS > 0)
-- [ ] `POST /api/v1/export`
-  - [ ] exige scope `td:export`
-  - [ ] gera CSV mínimo (stream) com limites (`TD_EXPORT_MAX_ROWS`)
-  - [ ] registra auditoria (export_bytes, filtros)
+- [x] `GET /api/v1/health` OK
+- [x] `GET /api/v1/me` OK (retorna principal: roles/scopes/território)
+- [x] `GET /api/v1/nav` OK (gera árvore permitida)
+- [x] `GET /api/v1/epidemiologia/incidencia`
+  - [x] Implementa adapter para upstream real quando `TD_UPSTREAM_MODE=real`
+  - [x] Implementa mock quando `TD_UPSTREAM_MODE=mock`
+- [x] `GET /api/v1/operacao/cobertura`
+  - [x] Implementa regra: `cobertura = HA_MAP / HA_URBANOS` (quando HA_URBANOS > 0)
+- [x] `POST /api/v1/export`
+  - [x] exige scope `td:export`
+  - [x] gera CSV mínimo (stream) com limites (`TD_EXPORT_MAX_ROWS`)
+  - [x] registra auditoria (export_bytes, filtros)
 
 Checklist de segurança:
 
-- [ ] RBAC enforced no BFF (decorators/middleware)
-- [ ] Escopo territorial aplicado (quando claim existe; fallback documentado)
-- [ ] Logs estruturados no stdout (access + export)
+- [x] RBAC enforced no BFF (decorators/middleware)
+- [x] Escopo territorial aplicado (quando claim existe; fallback documentado)
+- [x] Logs estruturados no stdout (access + export)
 
 Checklist de integração upstream:
 
-- [ ] `TD_TECHDENGUE_BASE_URL` documentado
-- [ ] Timeout e retry controlados (máx 2)
-- [ ] Tratamento de erro upstream (status mapping)
+- [x] `TD_TECHDENGUE_BASE_URL` documentado
+- [x] Timeout e retry controlados (máx 2)
+- [x] Tratamento de erro upstream (status mapping)
 
 Validações obrigatórias (registrar outputs):
 
-- [ ] curl `/api/v1/health`
-- [ ] curl `/api/v1/me` com token
-- [ ] curl `/api/v1/nav` com token
-- [ ] curl `/api/v1/epidemiologia/incidencia`
-- [ ] curl `/api/v1/operacao/cobertura`
-- [ ] POST `/api/v1/export` sem scope → 403
-- [ ] POST `/api/v1/export` com scope → 200 e log de auditoria
+- [x] curl `/api/v1/health`
+- [x] curl `/api/v1/me` com token
+- [x] curl `/api/v1/nav` com token
+- [x] curl `/api/v1/epidemiologia/incidencia`
+- [x] curl `/api/v1/operacao/cobertura`
+- [x] POST `/api/v1/export` sem scope → 403
+- [x] POST `/api/v1/export` com scope → 200 e log de auditoria
 
 Commit:
 
@@ -322,26 +322,26 @@ Objetivo: UI já estruturada para crescer.
 
 Checklist:
 
-- [ ] Implementar boot:
-  - [ ] login OIDC
-  - [ ] buscar `/api/v1/me` e `/api/v1/nav`
-- [ ] Sidebar renderiza módulos permitidos por `/nav`
-- [ ] Guards de rota bloqueiam acesso direto sem permissão
-- [ ] Criar páginas MVP (placeholder aceitável inicialmente):
-  - [ ] Epidemiologia
-  - [ ] Operação
-  - [ ] Risco
-  - [ ] Exportações
-  - [ ] Auditoria
-- [ ] Integrar camada de serviços:
-  - [ ] client BFF com token injection
-  - [ ] hooks por domínio
+- [x] Implementar boot:
+  - [x] login OIDC
+  - [x] buscar `/api/v1/me` e `/api/v1/nav`
+- [x] Sidebar renderiza módulos permitidos por `/nav`
+- [x] Guards de rota bloqueiam acesso direto sem permissão
+- [x] Criar páginas MVP (placeholder aceitável inicialmente):
+  - [x] Epidemiologia
+  - [x] Operação
+  - [x] Risco
+  - [x] Exportações
+  - [x] Auditoria
+- [x] Integrar camada de serviços:
+  - [x] client BFF com token injection
+  - [x] hooks por domínio
 
 Validação:
 
-- [ ] logar com usuário A → menu A
-- [ ] logar com usuário B → menu B (diferença visível)
-- [ ] tentar rota proibida → bloqueia
+- [x] logar com usuário A → menu A
+- [x] logar com usuário B → menu B (diferença visível)
+- [x] tentar rota proibida → bloqueia
 
 Commit:
 
@@ -360,21 +360,21 @@ Escolher 1 (prioridade):
 
 Checklist:
 
-- [ ] Definir endpoint BFF usado (Fase 4 já deve ter)
-- [ ] Implementar página com:
-  - [ ] filtros (UF/município/período)
-  - [ ] 1 gráfico + 1 tabela
-  - [ ] loading/erro/vazio
-  - [ ] badge "MOCK" quando `TD_UPSTREAM_MODE=mock`
-- [ ] Botão de export:
-  - [ ] aparece apenas se `me.scopes` contém `td:export`
-  - [ ] dispara export com filtros aplicados
+- [x] Definir endpoint BFF usado (Fase 4 já deve ter)
+- [x] Implementar página com:
+  - [x] filtros (UF/município/período)
+  - [x] 1 gráfico + 1 tabela
+  - [x] loading/erro/vazio
+  - [x] badge "MOCK" quando `TD_UPSTREAM_MODE=mock`
+- [x] Botão de export:
+  - [x] aparece apenas se `me.scopes` contém `td:export`
+  - [x] dispara export com filtros aplicados
 
 Validação:
 
-- [ ] dashboard renderiza e responde ao filtro
-- [ ] modo mock claramente identificado
-- [ ] export bloqueado para perfil sem scope
+- [x] dashboard renderiza e responde ao filtro
+- [x] modo mock claramente identificado
+- [x] export bloqueado para perfil sem scope
 
 Commit:
 
@@ -388,9 +388,9 @@ Objetivo: export seguro e rastreável.
 
 Checklist backend:
 
-- [ ] limite de linhas (`TD_EXPORT_MAX_ROWS`)
-- [ ] colunas consistentes com dicionário de métricas/datasets
-- [ ] log de auditoria com:
+- [x] limite de linhas (`TD_EXPORT_MAX_ROWS`)
+- [x] colunas consistentes com dicionário de métricas/datasets
+- [x] log de auditoria com:
   - user_id
   - dataset/export_type
   - filtros
@@ -399,14 +399,14 @@ Checklist backend:
 
 Checklist frontend:
 
-- [ ] UI de export com feedback
-- [ ] mensagem clara quando negado por RBAC
+- [x] UI de export com feedback
+- [x] mensagem clara quando negado por RBAC
 
 Validação:
 
-- [ ] export com scope → OK
-- [ ] export sem scope → 403
-- [ ] logs aparecem
+- [x] export com scope → OK
+- [x] export sem scope → 403
+- [x] logs aparecem
 
 Commit:
 
@@ -420,14 +420,14 @@ Objetivo: não depender de "testar na mão" sempre.
 
 Checklist:
 
-- [ ] Teste BFF health
-- [ ] Teste nav
-- [ ] Teste export sem scope → 403
-- [ ] (Opcional) teste e2e simples no Web (home + sidebar)
+- [x] Teste BFF health
+- [x] Teste nav
+- [x] Teste export sem scope → 403
+- [x] (Opcional) teste e2e simples no Web (home + sidebar)
 
 Docs:
 
-- [ ] `docs/operacao/smoke_e2e_p0.md` criado/atualizado e linkado no portal
+- [x] `docs/operacao/smoke_e2e_p0.md` criado/atualizado e linkado no portal
 
 Commit:
 
@@ -441,12 +441,12 @@ Objetivo: "pronto para dev contínuo" e para o time.
 
 Checklist:
 
-- [ ] `pnpm -w lint`
-- [ ] `pnpm -w typecheck`
-- [ ] Runbook revisado com comandos reais
-- [ ] `docs/00-auditoria/VALIDACAO_FINAL.md` atualizado com outputs
-- [ ] `docs/00-auditoria/PROGRESSO_MVP.md` (todas fases ✅)
-- [ ] `docs/operacao/changelog.md` atualizado
+- [x] `pnpm -w lint`
+- [x] `pnpm -w typecheck`
+- [x] Runbook revisado com comandos reais
+- [x] `docs/00-auditoria/VALIDACAO_FINAL.md` atualizado com outputs
+- [x] `docs/00-auditoria/PROGRESSO_MVP.md` (todas fases ✅)
+- [x] `docs/operacao/changelog.md` atualizado
 
 Commit:
 
@@ -488,14 +488,14 @@ Regras:
 
 MVP considerado pronto quando:
 
-- [ ] Web loga via OIDC e exibe menu dinâmico por `/nav`
-- [ ] BFF possui endpoints MVP e integra upstream (real ou mock)
-- [ ] RBAC bloqueia export sem `td:export`
-- [ ] Auditoria registra acessos e exportações
-- [ ] 1 dashboard com valor real publicado
-- [ ] Smoke tests P0 executáveis
-- [ ] Runbook atualizado
-- [ ] Auditoria completa em `docs/00-auditoria/`
+- [x] Web loga via OIDC e exibe menu dinâmico por `/nav`
+- [x] BFF possui endpoints MVP e integra upstream (real ou mock)
+- [x] RBAC bloqueia export sem `td:export`
+- [x] Auditoria registra acessos e exportações
+- [x] 1 dashboard com valor real publicado
+- [x] Smoke tests P0 executáveis
+- [x] Runbook atualizado
+- [x] Auditoria completa em `docs/00-auditoria/`
 
 ---
 
