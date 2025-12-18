@@ -80,6 +80,159 @@ export interface RiskDashboardResponse {
 }
 
 // ═══════════════════════════════════════════════════════════════
+// MOCK DATA (fallback quando BFF não disponível)
+// ═══════════════════════════════════════════════════════════════
+
+const MOCK_DATA: Record<string, unknown> = {
+  '/api/epi/ranking': {
+    data: [
+      {
+        codigo_ibge: '3106200',
+        municipio: 'Belo Horizonte',
+        uf: 'MG',
+        casos: 1250,
+        incidencia_100k: 48.2,
+        variacao_pct: 12.5,
+      },
+      {
+        codigo_ibge: '3118601',
+        municipio: 'Contagem',
+        uf: 'MG',
+        casos: 890,
+        incidencia_100k: 42.1,
+        variacao_pct: -5.3,
+      },
+      {
+        codigo_ibge: '3170206',
+        municipio: 'Uberlândia',
+        uf: 'MG',
+        casos: 720,
+        incidencia_100k: 38.9,
+        variacao_pct: 8.2,
+      },
+      {
+        codigo_ibge: '3136702',
+        municipio: 'Juiz de Fora',
+        uf: 'MG',
+        casos: 580,
+        incidencia_100k: 35.4,
+        variacao_pct: -2.1,
+      },
+      {
+        codigo_ibge: '3106705',
+        municipio: 'Betim',
+        uf: 'MG',
+        casos: 450,
+        incidencia_100k: 32.8,
+        variacao_pct: 15.7,
+      },
+    ],
+    meta: { total: 5, limit: 20, offset: 0, period_type: 'SE', year: 2024 },
+  },
+  '/api/operacao/cobertura': {
+    data: [
+      {
+        codigo_ibge: '3106200',
+        municipio: 'Belo Horizonte',
+        uf: 'MG',
+        ha_mapeados: 12500,
+        ha_urbanos: 15000,
+        cobertura_pct: 83.3,
+        pois_total: 4200,
+        devolutivas: 3800,
+      },
+      {
+        codigo_ibge: '3118601',
+        municipio: 'Contagem',
+        uf: 'MG',
+        ha_mapeados: 8200,
+        ha_urbanos: 10000,
+        cobertura_pct: 82.0,
+        pois_total: 2800,
+        devolutivas: 2500,
+      },
+      {
+        codigo_ibge: '3170206',
+        municipio: 'Uberlândia',
+        uf: 'MG',
+        ha_mapeados: 7500,
+        ha_urbanos: 11000,
+        cobertura_pct: 68.2,
+        pois_total: 3100,
+        devolutivas: 2200,
+      },
+      {
+        codigo_ibge: '3136702',
+        municipio: 'Juiz de Fora',
+        uf: 'MG',
+        ha_mapeados: 5800,
+        ha_urbanos: 8500,
+        cobertura_pct: 68.2,
+        pois_total: 2400,
+        devolutivas: 1900,
+      },
+      {
+        codigo_ibge: '3106705',
+        municipio: 'Betim',
+        uf: 'MG',
+        ha_mapeados: 4200,
+        ha_urbanos: 9000,
+        cobertura_pct: 46.7,
+        pois_total: 1800,
+        devolutivas: 1200,
+      },
+    ],
+    meta: { total: 5, limit: 20, offset: 0 },
+  },
+  '/api/risk/dashboard': {
+    summary: { alto: 12, medio: 45, baixo: 156, total_municipios: 213 },
+    top_risco: [
+      {
+        codigo_ibge: '3106200',
+        municipio: 'Belo Horizonte',
+        risk_score: 0.87,
+        risk_level: 'alto',
+        drivers: ['clima', 'densidade'],
+      },
+      {
+        codigo_ibge: '3118601',
+        municipio: 'Contagem',
+        risk_score: 0.82,
+        risk_level: 'alto',
+        drivers: ['cobertura', 'historico'],
+      },
+      {
+        codigo_ibge: '3170206',
+        municipio: 'Uberlândia',
+        risk_score: 0.71,
+        risk_level: 'medio',
+        drivers: ['clima'],
+      },
+      {
+        codigo_ibge: '3136702',
+        municipio: 'Juiz de Fora',
+        risk_score: 0.65,
+        risk_level: 'medio',
+        drivers: ['densidade'],
+      },
+      {
+        codigo_ibge: '3106705',
+        municipio: 'Betim',
+        risk_score: 0.58,
+        risk_level: 'medio',
+        drivers: ['historico'],
+      },
+    ],
+    updated_at: new Date().toISOString(),
+  },
+}
+
+function getMockData<T>(path: string): T | null {
+  const basePath = path.split('?')[0]
+  return (MOCK_DATA[basePath] as T) || null
+}
+
+// ═══════════════════════════════════════════════════════════════
 // HOOK GENÉRICO
 // ═══════════════════════════════════════════════════════════════
 
@@ -111,11 +264,18 @@ function useBffQuery<T>(
       const result = await bffFetch(url)
       setData(result)
     } catch (err) {
-      setError(err instanceof Error ? err : new Error(String(err)))
+      // Fallback to mock data if BFF returns error
+      const mockData = getMockData<T>(path)
+      if (mockData) {
+        console.warn(`[useBff] Using mock data for ${path}`)
+        setData(mockData)
+      } else {
+        setError(err instanceof Error ? err : new Error(String(err)))
+      }
     } finally {
       setIsLoading(false)
     }
-  }, [buildUrl])
+  }, [buildUrl, path])
 
   useEffect(() => {
     fetchData()

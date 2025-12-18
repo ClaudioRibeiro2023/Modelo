@@ -146,11 +146,14 @@
 
 ### P1 (Bloqueantes)
 
-- Nenhuma até o momento
+- **Router BFF não exposto**: Endpoints do `router.py` (/api/epi/ranking, /api/operacao/cobertura, etc.) não são expostos pelo uvicorn apesar de existirem no app quando importado diretamente. Endpoints de `wiring.py` (/api/v1/me, /api/v1/nav) funcionam normalmente.
+  - **Workaround**: Usar mock data no frontend enquanto investiga
+  - **Investigar**: Conflito de módulos Python ou cache do uvicorn
 
 ### P2 (Importantes)
 
-- Nenhuma até o momento
+- Conectar upstream real (Techdengue API) quando disponível
+- Deploy Keycloak em staging
 
 ---
 
