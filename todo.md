@@ -1,9 +1,7 @@
-# TODO - Movido
+# TODO — TechDados (Guia Mestre)
 
-> Este arquivo foi movido para manter o repositório organizado.
+O guia mestre completo está em:
 
-**Nova localização:** [docs/\_backlog/todo.md](./docs/_backlog/todo.md)
+- `docs/_backlog/todo.md`
 
----
-
-O arquivo de tarefas agora faz parte do backlog de documentação.
+> Regra do template "modelo": documentação canônica vive em `docs/` e o portal é `docs/INDEX.md`.
