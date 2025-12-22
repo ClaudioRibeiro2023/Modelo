@@ -106,7 +106,26 @@
 | `docs/_archive/2025-12-22/_duplicados/seguranca/_refs/Hierarquia de acessos.pdf` | archive | LEGADO | Manter em `_archive` | PDF duplicado arquivado (vencedor: `Hierarquia_de_acessos_Sistema_Techdengue_v1.0.pdf`) |
 | `docs/_archive/2025-12-22/_duplicados/seguranca/_refs/MOTIVO.md` | archive | LEGADO | Manter em `_archive` | Registro de decisão de duplicidade |
 
-| `docs/_estrutura.docs/` | temp | LEGADO | Mover zips para `docs/_archive/2025-12-22/_zips/` | Artefatos (zip) de importação/estrutura |
+| `docs/_archive/2025-12-22/_zips/MOTIVO.md` | archive | LEGADO | Manter em `_archive` | Registro de arquivamento de artefatos (zips) |
+| `docs/_archive/2025-12-22/_zips/techdados_bloco_01.zip` | archive | LEGADO | Manter em `_archive` | Artefato (zip) de importação/estrutura |
+| `docs/_archive/2025-12-22/_zips/techdados_bloco_02_bff_fastapi.zip` | archive | LEGADO | Manter em `_archive` | Artefato (zip) de importação/estrutura |
+| `docs/_archive/2025-12-22/_zips/techdados_bloco_03_bff_integracao_upstream.zip` | archive | LEGADO | Manter em `_archive` | Artefato (zip) de importação/estrutura |
+| `docs/_archive/2025-12-22/_zips/techdados_bloco_04_rbac_escopo_exportacao.zip` | archive | LEGADO | Manter em `_archive` | Artefato (zip) de importação/estrutura |
+| `docs/_archive/2025-12-22/_zips/techdados_bloco_05_export_filter_csv.zip` | archive | LEGADO | Manter em `_archive` | Artefato (zip) de importação/estrutura |
+| `docs/_archive/2025-12-22/_zips/techdados_bloco_06_export_filter_parquet_audit.zip` | archive | LEGADO | Manter em `_archive` | Artefato (zip) de importação/estrutura |
+| `docs/_archive/2025-12-22/_zips/techdados_bloco_07_keycloak_jwt_auth.zip` | archive | LEGADO | Manter em `_archive` | Artefato (zip) de importação/estrutura |
+| `docs/_archive/2025-12-22/_zips/techdados_bloco_08_keycloak_seed_realm_client_scopes.zip` | archive | LEGADO | Manter em `_archive` | Artefato (zip) de importação/estrutura |
+| `docs/_archive/2025-12-22/_zips/techdados_bloco_09_frontend_oidc_rbac_nav.zip` | archive | LEGADO | Manter em `_archive` | Artefato (zip) de importação/estrutura |
+| `docs/_archive/2025-12-22/_zips/techdados_bloco_10_bff_me_frontend.zip` | archive | LEGADO | Manter em `_archive` | Artefato (zip) de importação/estrutura |
+| `docs/_archive/2025-12-22/_zips/techdados_bloco_11_produto_planejamento.zip` | archive | LEGADO | Manter em `_archive` | Artefato (zip) de importação/estrutura |
+| `docs/_archive/2025-12-22/_zips/techdados_bloco_12_upstream_techdengue_api.zip` | archive | LEGADO | Manter em `_archive` | Artefato (zip) de importação/estrutura |
+| `docs/_archive/2025-12-22/_zips/techdados_bloco_13_wiring_definitivo_p0.zip` | archive | LEGADO | Manter em `_archive` | Artefato (zip) de importação/estrutura |
+| `docs/_archive/2025-12-22/_zips/techdados_bloco_14_bff_rbac_policies_nav_audit.zip` | archive | LEGADO | Manter em `_archive` | Artefato (zip) de importação/estrutura |
+| `docs/_archive/2025-12-22/_zips/techdados_bloco_15_catalogo_dados_matriz_analises_modulos.zip` | archive | LEGADO | Manter em `_archive` | Artefato (zip) de importação/estrutura |
+| `docs/_archive/2025-12-22/_zips/techdados_bloco_16_documentacao_mvp_finalizacao_c4_runbook_quality_governanca.zip` | archive | LEGADO | Manter em `_archive` | Artefato (zip) de importação/estrutura |
+| `docs/_archive/2025-12-22/_zips/techdados_bloco_17_refs_pdf_hierarquia_acessos_links.zip` | archive | LEGADO | Manter em `_archive` | Artefato (zip) de importação/estrutura |
+
+| `docs/_estrutura.docs/` | temp | LEGADO | Manter vazio (diretório de trabalho) | Diretório reservado para importações (não canônico) |
 
 | `docs/_archive/2024-12-16/` | archive | LEGADO | Manter | Histórico já registrado em LOG_DE_LIMPEZA |
 | `docs/_archive/2024-12-17/` | archive | LEGADO | Manter | Histórico/backup de execução anterior |
@@ -139,4 +158,4 @@
 
 ## Temporários / tooling
 
-- `docs/_estrutura.docs/*.zip` (artefatos de importação)
+- `docs/_archive/2025-12-22/_zips/*.zip` (artefatos de importação)

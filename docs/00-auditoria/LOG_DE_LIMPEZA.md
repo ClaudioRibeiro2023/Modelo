@@ -324,3 +324,21 @@ _Atualizado em 2025-12-17 - Normalização da Documentação TechDados_
 
 - `pnpm lint`: ✅ 0 erros (12 warnings de `any` types)
 - `pnpm typecheck`: ✅ Passando
+
+---
+
+## 2025-12-22 — Limpeza de temporários (docs/\_estrutura.docs)
+
+### Ações
+
+- Movidos (preservando histórico via `git mv`):
+  - `docs/_estrutura.docs/*.zip` → `docs/_archive/2025-12-22/_zips/*.zip`
+  - Criado: `docs/_archive/2025-12-22/_zips/MOTIVO.md`
+
+- Removidos (artefatos temporários recriáveis a partir dos ZIPs):
+  - Diretórios extraídos em `docs/_estrutura.docs/techdados_bloco_*/`
+
+### Motivo
+
+- Os `.zip` são artefatos de importação/distribuição e não são documentação canônica.
+- As pastas extraídas eram resíduos de unzip e não devem ser versionadas.
