@@ -529,3 +529,108 @@ _Validação Aplicação Estrutura Docs em 2025-12-17 22:12_
 | Auditoria completa  | ✅ Este arquivo |
 
 **Status Final:** ✅ MVP Bootstrap Completo
+
+## 2025-12-22 — Validação pós auditoria/limpeza docs
+
+### pnpm -w lint
+
+```text
+
+> @techdados/platform@1.0.0 lint E:\.ai\TechDados
+> eslint . --ext .ts,.tsx,.js,.jsx
+
+
+E:\.ai\TechDados\apps\web\src\lib\api\bffClient.ts
+   9:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  19:79  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+E:\.ai\TechDados\apps\web\src\lib\api\bffFetch.ts
+   4:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  11:10  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  14:82  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+E:\.ai\TechDados\apps\web\src\lib\api\me.ts
+  7:11  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+E:\.ai\TechDados\apps\web\src\lib\auth\claims.ts
+   7:9   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  10:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+E:\.ai\TechDados\apps\web\src\lib\auth\jwt.ts
+  1:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+E:\.ai\TechDados\apps\web\src\lib\oidc\techdadosOidc.ts
+  5:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+E:\.ai\TechDados\apps\web\src\pages\auth\TechDadosAuthCallbackPage.tsx
+  14:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+E:\.ai\TechDados\docs\_archive\2025-12-17\_incoming_from_zip\techdados_bloco_10_bff_me_frontend\apps\web\src\pages\admin\AuthDebugPage.tsx
+  28:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+Ô£û 12 problems (0 errors, 12 warnings)
+
+
+```
+
+### pnpm -w typecheck
+
+```text
+
+> @techdados/platform@1.0.0 typecheck E:\.ai\TechDados
+> pnpm -r run typecheck
+
+Scope: 4 of 5 workspace projects
+packages/design-system typecheck$ tsc --noEmit
+packages/shared typecheck$ tsc --noEmit
+packages/types typecheck$ tsc --noEmit
+packages/types typecheck: Done
+packages/shared typecheck: Done
+packages/design-system typecheck: Done
+apps/web typecheck$ tsc --noEmit
+apps/web typecheck: Done
+
+```
+
+### scripts/validate.ps1 -SkipTests
+
+```text
+
+========================================
+  VALIDAÇÃO DO TEMPLATE MONOREPO
+========================================
+
+[1/6] Verificando estrutura de diretórios...
+  Estrutura de diretórios: OK
+
+[2/6] Verificando arquivos essenciais...
+  Arquivos essenciais: OK
+
+[3/6] Verificando dependências...
+  Dependências instaladas: OK
+
+[4/6] Executando TypeCheck...
+  TypeCheck: OK
+
+[5/6] Verificando build...
+  Build: OK
+
+[6/6] Testes E2E: IGNORADOS (--SkipTests)
+
+
+========================================
+  RESULTADO DA VALIDAÇÃO
+========================================
+
+V TEMPLATE VALIDADO COM SUCESSO!
+
+O template está pronto para uso.
+
+
+Próximos passos:
+  1. cd apps/web
+  2. pnpm run dev
+  3. Acesse http://localhost:13000
+
+
+```

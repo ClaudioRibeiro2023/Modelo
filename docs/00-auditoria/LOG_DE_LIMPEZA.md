@@ -107,7 +107,7 @@
 
 ## Estrutura Final
 
-```
+```text
 docs/
 ├── 00-auditoria/           ← Entregáveis de auditoria
 │   ├── VALIDACAO_FINAL.md
@@ -127,7 +127,7 @@ docs/
 
 ---
 
-_Gerado em 2024-12-16 por auditoria automatizada_
+Gerado em 2024-12-16 por auditoria automatizada.
 
 ---
 
@@ -169,7 +169,7 @@ _Gerado em 2024-12-16 por auditoria automatizada_
 | `docs/operacao/variaveis-ambiente.md`    | Referência de variáveis de ambiente     |
 | `docs/00-auditoria/VALIDACAO_FINAL.md`   | Resultado da validação final            |
 
-_Atualizado em 2024-12-17 - Fundação TechDados_
+Atualizado em 2024-12-17 - Fundação TechDados.
 
 ---
 
@@ -231,7 +231,7 @@ _Atualizado em 2024-12-17 - Fundação TechDados_
 | `docs/INDEX.md`          | Corrigido conteúdo corrompido; atualizado link para troubleshooting canônico |
 | `docs/seguranca/rbac.md` | Adicionado link para `_refs/README.md`                                       |
 
-_Atualizado em 2025-12-17 - Normalização da Documentação TechDados_
+Atualizado em 2025-12-17 - Normalização da Documentação TechDados.
 
 ---
 
