@@ -60,9 +60,9 @@ O TechDados foi iniciado a partir do template **modelo** e já possui como alice
 
 ### Projeto
 
-- (a criar) `docs/projeto/CONTEXT_PACK.md`
-- (a criar) `docs/projeto/ONBOARDING_RAPIDO.md`
-- (a criar) `docs/projeto/DECISOES_E_CONVICOES.md`
+- `docs/projeto/CONTEXT_PACK.md`
+- `docs/projeto/ONBOARDING_RAPIDO.md`
+- `docs/projeto/DECISOES_E_CONVICOES.md`
 
 ### Arquitetura
 
